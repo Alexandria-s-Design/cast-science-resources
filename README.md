@@ -15,6 +15,7 @@
 - [ModelIt K12 Alignment](#modelit-k12-alignment)
 - [LEVER Framework](#lever-framework)
 - [Content Style Guide](#content-style-guide)
+- [Dr. Helikar Research Bibliography](#dr-helikar-research-bibliography)
 - [CA Science Framework (2016)](#ca-science-framework-2016)
 - [CA NGSS Standards Documents](#ca-ngss-standards-documents)
 - [Official PDF Resources](#official-pdf-resources)
@@ -552,6 +553,42 @@ Teacher guides are designed for educators who may or may not have deep content e
 
 ---
 
+## Dr. Helikar Research Bibliography
+
+The scientific foundation of ModelIt / Cell Collective, documented through 130+ peer-reviewed publications.
+
+See: [docs/helikar-research-bibliography.md](docs/helikar-research-bibliography.md) for the complete bibliography.
+
+### Key Research Areas
+
+| Category | Notable Papers |
+|----------|----------------|
+| **Boolean Networks** | Emergent decision-making in biological signal transduction networks (PNAS, 2008) |
+| **Cell Collective Platform** | The Cell Collective: Toward an open and collaborative approach (BMC Systems Biology, 2012) |
+| **Immune System Modeling** | Comprehensive CD4+ T-cell model (PLOS Computational Biology, 2021) |
+| **Digital Twin Initiative** | Roadmap for building a digital twin of the immune system (Nature Digital Medicine, 2022) |
+| **COVID-19 Research** | COVID-19 Disease Map (Molecular Systems Biology, 2021) |
+| **Education Research** | Systems thinking with computational models in life sciences education |
+| **Standards** | SBML Level 3 Qualitative Models specification |
+
+### Why This Matters for ModelIt K12
+
+- **Scientific credibility** — Same methodology used in cutting-edge research
+- **Educational validation** — Evidence-based approaches to teaching systems thinking
+- **Platform lineage** — Students use research-grade tools adapted for education
+- **Standards compliance** — Models are scientifically valid and interoperable
+
+### PDFs in Repository
+
+Research papers are available in `pdfs/research/`:
+- `helikar-et-al-2008-emergent-decision-making...pdf` — Foundational Boolean networks paper
+- `1752-0509-6-96.pdf` — Cell Collective platform paper
+- `Dr. Helikar Article.pdf`
+
+**Google Scholar:** [scholar.google.com/citations?user=V4bPXYUAAAAJ](https://scholar.google.com/citations?user=V4bPXYUAAAAJ)
+
+---
+
 ## CA Science Framework (2016)
 
 The complete **California Science Framework** adopted by the State Board of Education in November 2016. These are the authoritative instructional guidance documents for CA NGSS implementation.
@@ -736,6 +773,7 @@ cast-science-resources/
 │   ├── modelit-alignment.md                  # ModelIt ↔ CAST mapping
 │   ├── lever-framework.md                    # LEVER pedagogical framework
 │   ├── content-style-guide.md                # Brainchild + NRC content standards
+│   ├── helikar-research-bibliography.md      # Dr. Helikar's 130+ publications
 │   └── official-resources.md                 # Comprehensive link directory
 ├── pdfs/                                     # 88+ official PDFs
 │   ├── science-framework/                    # 25 CA Science Framework chapters
@@ -760,10 +798,11 @@ cast-science-resources/
 | Category | Files |
 |----------|-------|
 | Official PDFs | 88 |
+| Research PDFs | 3 |
 | Item Specifications (DOCX) | 177 |
 | Practice Tests & Scoring Guides | 36 |
-| Documentation (Markdown) | 10 |
-| **Total resources** | **311+** |
+| Documentation (Markdown) | 11 |
+| **Total resources** | **315+** |
 
 ---
 
