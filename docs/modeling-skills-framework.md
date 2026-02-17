@@ -1,33 +1,56 @@
 # Ten Fundamental Skills of Modeling and Simulating
 
-## Biotechnology Computational Modeling Standards
+## Backend Framework for Platform & Curriculum Development
 
-These ten skills represent the **overarching proficiency standards** for computational modeling in K-12 science education. They define what students should be able to DO when they have mastered the ModelIt platform and Boolean modeling approach.
+These ten skills represent the **core competencies** students develop through computational modeling. However, they are **NOT explicitly taught as "skills"** to students or presented as checklists to teachers.
 
----
-
-## How to Use These Standards
-
-### For Teachers:
-- **Select 1-3 skills** to focus on per lesson — not all 10
-- **Track student progress** across skills over multiple lessons
-- **Sequence instruction** based on student readiness
-- **Assess proficiency** using skill-specific criteria
-
-### For Curriculum Design:
-- **Map skills across units** to ensure coverage
-- **Build progression** from foundational to advanced skills
-- **Align assessments** to specific skill standards
-
-### Relationship to LEVER Framework:
-- **LEVER** = Pedagogical practice (HOW to teach any lesson)
-- **10 Skills** = Proficiency standards (WHAT students learn to do)
-- These are **parallel frameworks**, not nested
-- Any skill can be practiced during any LEVER phase
+Instead, this framework serves as:
+- **Backend logic** for AI lesson generation
+- **Design foundation** for activity packs and games
+- **Teacher PD curriculum** structure
+- **Platform development** requirements
+- **Assessment design** criteria
 
 ---
 
-## The Ten Standards
+## Philosophy: Natural, Organic Learning
+
+### What Students Experience
+
+Students don't see "Skill 1" or "Skill 4" — they simply:
+
+1. **BUILD** → Add components, arrange them, name them
+2. **CONNECT** → Draw relationships between components
+3. **SIMULATE** → Run the model, play with variables, observe
+4. **EXTEND** → Add new components based on reading/research
+5. **DEBUG** → Fix things when they don't work as expected
+
+Skills 1-7 happen **naturally** in every modeling activity. Skills 8-10 emerge through exploration or targeted exercises.
+
+### What Teachers Experience
+
+Teachers don't track skills checklists — they focus on:
+- **Guiding questions**: "What would happen if...?"
+- **Providing resources**: Readings, videos, data for model extension
+- **Facilitating discussion**: "Why do you think that happened?"
+- **Supporting debugging**: Helping students diagnose issues
+
+---
+
+## Where This Framework IS Used
+
+| Application | How the 10 Skills Apply |
+|-------------|------------------------|
+| **AI Lesson Generation** | Prompt: "Create a debugging activity" → AI generates a broken model for students to fix (Skill 10) |
+| **Activity Packs / Games** | "Fix the Model" exercises, "Mystery System" challenges |
+| **Teacher Professional Development** | Training on facilitation strategies aligned to skill development |
+| **Platform UI/UX Design** | Ensuring interface supports all 10 skill actions intuitively |
+| **Assessment & Analytics** | Backend tracking of student proficiency (not shown to students) |
+| **Curriculum Sequencing** | Ensuring activities across a unit develop all competencies |
+
+---
+
+## The Ten Competencies
 
 | # | Skill | Category |
 |---|-------|----------|
@@ -309,59 +332,162 @@ These ten skills represent the **overarching proficiency standards** for computa
 
 ---
 
-## Using Skills in Lesson Planning
+## Natural Lesson Flow
 
-### Lesson Planning Template
-
-When planning a lesson, teachers should:
-
-1. **Identify the science content** (PE, DCI, phenomenon)
-2. **Select 1-3 modeling skills** to focus on
-3. **Design the LEVER flow** (all lessons use L-E-V-E-R structure)
-4. **Create skill-specific activities** within the lesson
-5. **Plan skill-specific assessment**
-
-### Example Lesson Header
+### Typical Modeling Lesson (What Students Do)
 
 ```
-LESSON: Ecosystem Matter Cycling
+┌─────────────────────────────────────────────────────────────┐
+│  1. BUILD                                                   │
+│     "What are the parts of this system?"                    │
+│     Students add components, arrange them, name them        │
+│     (Competencies 1-3 happen naturally)                     │
+│                                                             │
+│  2. CONNECT                                                 │
+│     "How do these parts affect each other?"                 │
+│     Students draw relationships, identify direction         │
+│     (Competencies 4-6 happen naturally)                     │
+│                                                             │
+│  3. SIMULATE                                                │
+│     "What happens when we run it?"                          │
+│     Students run model, adjust variables, observe outputs   │
+│     (Competencies 7-9 happen naturally)                     │
+│                                                             │
+│  4. EXTEND                                                  │
+│     "What else could we add based on what we learned?"      │
+│     Teacher provides reading/data, students expand model    │
+│     (Deepens all competencies)                              │
+│                                                             │
+│  5. SHARE & DISCUSS                                         │
+│     "Tell the story of your model"                          │
+│     Students present, explain, compare models               │
+│     (Develops scientific communication)                     │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Where Debugging Happens
+
+**Organically:** When students' models don't behave as expected during simulation, they naturally debug:
+- "Why isn't the predator population going down?"
+- "I think the arrow is pointing the wrong way"
+- "We forgot to add decomposers"
+
+**Through Targeted Activities:** Activity packs and games specifically designed for debugging:
+- "Fix the Broken Model" challenges
+- "What's Wrong Here?" puzzles
+- "Debug Detective" games
+
+**In Teacher PD:** Training teachers to guide debugging conversations:
+- "What did you expect to happen?"
+- "What actually happened?"
+- "What might be causing the difference?"
+
+---
+
+## Teacher Professional Development Focus
+
+Instead of teaching "skills," PD focuses on **facilitation strategies**:
+
+### Questioning Techniques
+
+| Purpose | Example Questions |
+|---------|-------------------|
+| **Eliciting thinking** | "What do you think will happen when...?" |
+| **Prompting connections** | "What else might affect this?" |
+| **Supporting debugging** | "What did you expect? What happened instead?" |
+| **Extending models** | "Based on the reading, what could you add?" |
+| **Encouraging explanation** | "Tell me the story of your model" |
+
+### Guiding Strategies
+
+| Situation | Teacher Action |
+|-----------|----------------|
+| Student stuck on what components to add | Prompt with: "What are the main parts you see in the phenomenon?" |
+| Student unsure about relationships | Ask: "When this is ON, what else turns ON or OFF?" |
+| Model not behaving as expected | Guide: "Let's trace through what happens step by step" |
+| Student ready to extend | Provide: Reading, video, or data that reveals new components |
+| Student finished early | Challenge: "What would happen if you added [X]?" |
+
+### When to Let Students Struggle
+
+Productive struggle is essential. Teachers should:
+- **Wait** before intervening (count to 10)
+- **Ask questions** rather than giving answers
+- **Normalize confusion** ("That's a great puzzle to figure out!")
+- **Celebrate debugging** ("You found an error! That's what scientists do!")
+
+---
+
+## Activity Packs & Games
+
+### Debugging-Focused Activities
+
+When the AI receives a prompt like "Create a debugging activity," it should:
+
+1. **Generate a pre-built model with intentional errors:**
+   - Missing components
+   - Incorrect relationship directions
+   - Wrong activation/inhibition types
+   - Illogical connections
+
+2. **Provide the expected behavior:**
+   - "This model should show predator-prey oscillation"
+   - "When sunlight is OFF, plants should eventually turn OFF"
+
+3. **Challenge students to find and fix the errors**
+
+### Example Debugging Challenge
+
+```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Performance Expectation: 5-LS2-1
-Duration: 45 minutes
+DEBUG DETECTIVE: The Broken Ecosystem
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-MODELING SKILLS FOCUS:
-  ☑ Skill 1: Adding/removing components
-  ☑ Skill 4: Adding/removing relationships
-  ☐ Skill 2   ☐ Skill 3   ☐ Skill 5   ☐ Skill 6
-  ☐ Skill 7   ☐ Skill 8   ☐ Skill 9   ☐ Skill 10
+This ecosystem model has 3 errors. Can you find and fix them?
 
-LEVER FLOW: L → E → V → E → R (standard lesson structure)
+EXPECTED BEHAVIOR:
+When Sunlight is ON, plants should grow.
+When plants are abundant, herbivores should increase.
+When herbivores increase, predators should follow.
+
+WHAT'S HAPPENING:
+When Sunlight is ON, nothing changes!
+
+YOUR MISSION:
+1. Run the simulation and observe
+2. Find the errors
+3. Fix them
+4. Run again to verify
+
+HINTS AVAILABLE: [Yes / No thanks, I've got this!]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-### Skills Across a Unit
+---
 
-Teachers should map skills across a unit to ensure all 10 are addressed:
+## Competency Progression (Backend Reference)
 
-| Lesson | Science Focus | Modeling Skills |
-|--------|---------------|-----------------|
-| 1 | Intro to Ecosystems | 1, 2, 3 |
-| 2 | Food Webs | 4, 6 |
-| 3 | Energy Flow | 5, 7 |
-| 4 | Variables & Predictions | 8, 9 |
-| 5 | Model Revision | 10, then all |
-
-### Skills Are Cumulative
-
-Earlier skills support later skills:
+This progression guides curriculum design, not lesson labeling:
 
 ```
-Foundational          Intermediate           Advanced
-─────────────────────────────────────────────────────────►
-1. Add components  →  4. Add relationships  →  8. Variables
-2. Move components →  5. View components    →  9. Output
-3. Name components →  6. Directionality     →  10. Debug
-                      7. Activity levels
+FOUNDATIONAL (Develop naturally in early modeling)
+─────────────────────────────────────────────────
+1. Adding/removing components
+2. Moving components
+3. Naming components
+
+INTERMEDIATE (Develop as students connect systems)
+─────────────────────────────────────────────────
+4. Adding/removing relationships
+5. Viewing/removing simulation components
+6. Identifying relationship directionality
+7. Setting/modifying simulation activity levels
+
+ADVANCED (Develop through exploration and targeted activities)
+─────────────────────────────────────────────────
+8. Identifying/changing dependent/independent variables
+9. Identifying/setting component activity/output
+10. Identifying/correcting errors in model/simulation
 ```
 
 ---

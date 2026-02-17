@@ -513,43 +513,39 @@ The framework directly supports California Science Test preparation by developin
 
 ---
 
-## Ten Fundamental Modeling Skills
+## Ten Fundamental Modeling Competencies
 
-Core competencies students develop through ModelIt platform and games.
+Backend framework for platform development, AI lesson generation, and teacher PD.
 
 See: [docs/modeling-skills-framework.md](docs/modeling-skills-framework.md) for the complete framework.
 
-### The Skills
+### Philosophy
 
-| # | Skill | Category |
-|---|-------|----------|
-| 1 | Adding/removing components | Model Construction |
-| 2 | Moving components | Model Construction |
-| 3 | Naming components | Model Construction |
-| 4 | Adding/removing relationships | Model Construction |
-| 5 | Viewing/removing simulation components | Simulation Setup |
-| 6 | Identifying relationships directionality | Model Analysis |
-| 7 | Setting/modifying simulation activity levels | Simulation Setup |
-| 8 | Identifying/changing dependent/independent variables | Model Analysis |
-| 9 | Identifying/setting component activity/output | Simulation Analysis |
-| 10 | Identifying/correcting errors in the model/simulation | Debugging & Revision |
+Students don't see "Skill 1" or "Skill 4" — they naturally **BUILD → CONNECT → SIMULATE → EXTEND** their models. Competencies 1-7 develop organically through any modeling activity. Advanced competencies (8-10) emerge through exploration or targeted activity packs.
 
-### How to Use These Standards
+### The Competencies
 
-- **Select 1-3 skills** per lesson — not all 10
-- **Track progress** across skills over multiple lessons
-- **LEVER** = HOW to teach (pedagogical flow)
-- **10 Skills** = WHAT students learn to do (proficiency standards)
-- These are **parallel frameworks**, not nested
+| # | Competency | Category |
+|---|------------|----------|
+| 1-3 | Add, move, name components | Foundational (implicit) |
+| 4-7 | Relationships, directionality, simulation setup | Intermediate (implicit) |
+| 8-10 | Variables, outputs, debugging | Advanced (targeted activities) |
 
-### Skills Progression
+### Where This Framework Is Used
 
-| Grade Band | Focus |
-|------------|-------|
-| **PreK-2** | Skills 1-4 (basic construction) |
-| **3-5** | Skills 1-7 (construction + simulation setup) |
-| **6-8** | Skills 1-10 (full skill set with guidance) |
-| **9-12** | All skills + extensions (sensitivity analysis, model comparison) |
+| Application | Purpose |
+|-------------|---------|
+| **AI Lesson Generation** | "Create a debugging activity" → AI builds broken model |
+| **Activity Packs / Games** | "Fix the Model" challenges, debugging exercises |
+| **Teacher PD** | Questioning strategies, facilitation techniques |
+| **Platform Development** | Ensuring UI supports all competency actions |
+
+### Teacher Focus
+
+Instead of tracking skills, teachers focus on:
+- **Questioning**: "What would happen if...?"
+- **Guiding**: Helping students extend models with new information
+- **Facilitating**: Supporting productive struggle and debugging
 
 ---
 
