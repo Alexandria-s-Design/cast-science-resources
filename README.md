@@ -14,6 +14,7 @@
 - [Item Specifications](#item-specifications)
 - [ModelIt K12 Alignment](#modelit-k12-alignment)
 - [LEVER Framework](#lever-framework)
+- [Ten Fundamental Modeling Skills](#ten-fundamental-modeling-skills)
 - [Content Style Guide](#content-style-guide)
 - [Dr. Helikar Research Bibliography](#dr-helikar-research-bibliography)
 - [CA Science Framework (2016)](#ca-science-framework-2016)
@@ -512,6 +513,48 @@ The framework directly supports California Science Test preparation by developin
 
 ---
 
+## Ten Fundamental Modeling Skills
+
+Core competencies students develop through ModelIt platform and games.
+
+See: [docs/modeling-skills-framework.md](docs/modeling-skills-framework.md) for the complete framework.
+
+### The Skills
+
+| # | Skill | Category |
+|---|-------|----------|
+| 1 | Adding/removing components | Model Construction |
+| 2 | Moving components | Model Construction |
+| 3 | Naming components | Model Construction |
+| 4 | Adding/removing relationships | Model Construction |
+| 5 | Viewing/removing simulation components | Simulation Setup |
+| 6 | Identifying relationships directionality | Model Analysis |
+| 7 | Setting/modifying simulation activity levels | Simulation Setup |
+| 8 | Identifying/changing dependent/independent variables | Model Analysis |
+| 9 | Identifying/setting component activity/output | Simulation Analysis |
+| 10 | Identifying/correcting errors in the model/simulation | Debugging & Revision |
+
+### Skills Progression
+
+| Grade Band | Focus |
+|------------|-------|
+| **PreK-2** | Skills 1-4 (basic construction) |
+| **3-5** | Skills 1-7 (construction + simulation setup) |
+| **6-8** | Skills 1-10 (full skill set with guidance) |
+| **9-12** | All skills + extensions (sensitivity analysis, model comparison) |
+
+### NGSS Alignment
+
+| Skills | SEP Alignment |
+|--------|---------------|
+| 1-4 | Developing and Using Models |
+| 5-7 | Using Mathematics and Computational Thinking |
+| 8 | Planning and Carrying Out Investigations |
+| 9 | Analyzing and Interpreting Data |
+| 10 | Constructing Explanations |
+
+---
+
 ## Content Style Guide
 
 Our content follows a consistent voice and approach grounded in research-based principles.
@@ -772,6 +815,7 @@ cast-science-resources/
 │   ├── practice-tests.md                     # Practice test directory
 │   ├── modelit-alignment.md                  # ModelIt ↔ CAST mapping
 │   ├── lever-framework.md                    # LEVER pedagogical framework
+│   ├── modeling-skills-framework.md          # 10 fundamental modeling skills
 │   ├── content-style-guide.md                # Brainchild + NRC content standards
 │   ├── helikar-research-bibliography.md      # Dr. Helikar's 130+ publications
 │   └── official-resources.md                 # Comprehensive link directory
@@ -801,8 +845,8 @@ cast-science-resources/
 | Research PDFs | 3 |
 | Item Specifications (DOCX) | 177 |
 | Practice Tests & Scoring Guides | 36 |
-| Documentation (Markdown) | 11 |
-| **Total resources** | **315+** |
+| Documentation (Markdown) | 12 |
+| **Total resources** | **316+** |
 
 ---
 
