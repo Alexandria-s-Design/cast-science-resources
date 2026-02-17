@@ -534,6 +534,14 @@ See: [docs/modeling-skills-framework.md](docs/modeling-skills-framework.md) for 
 | 9 | Identifying/setting component activity/output | Simulation Analysis |
 | 10 | Identifying/correcting errors in the model/simulation | Debugging & Revision |
 
+### How to Use These Standards
+
+- **Select 1-3 skills** per lesson — not all 10
+- **Track progress** across skills over multiple lessons
+- **LEVER** = HOW to teach (pedagogical flow)
+- **10 Skills** = WHAT students learn to do (proficiency standards)
+- These are **parallel frameworks**, not nested
+
 ### Skills Progression
 
 | Grade Band | Focus |
@@ -542,16 +550,6 @@ See: [docs/modeling-skills-framework.md](docs/modeling-skills-framework.md) for 
 | **3-5** | Skills 1-7 (construction + simulation setup) |
 | **6-8** | Skills 1-10 (full skill set with guidance) |
 | **9-12** | All skills + extensions (sensitivity analysis, model comparison) |
-
-### NGSS Alignment
-
-| Skills | SEP Alignment |
-|--------|---------------|
-| 1-4 | Developing and Using Models |
-| 5-7 | Using Mathematics and Computational Thinking |
-| 8 | Planning and Carrying Out Investigations |
-| 9 | Analyzing and Interpreting Data |
-| 10 | Constructing Explanations |
 
 ---
 

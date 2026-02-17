@@ -1,12 +1,33 @@
 # Ten Fundamental Skills of Modeling and Simulating
 
-## The ModelIt K12 Skills Framework
+## Biotechnology Computational Modeling Standards
 
-These ten skills form the core competencies students develop through the ModelIt platform and associated games. Each skill builds upon the previous, creating a progression from basic model manipulation to sophisticated systems analysis.
+These ten skills represent the **overarching proficiency standards** for computational modeling in K-12 science education. They define what students should be able to DO when they have mastered the ModelIt platform and Boolean modeling approach.
 
 ---
 
-## Skills Overview
+## How to Use These Standards
+
+### For Teachers:
+- **Select 1-3 skills** to focus on per lesson — not all 10
+- **Track student progress** across skills over multiple lessons
+- **Sequence instruction** based on student readiness
+- **Assess proficiency** using skill-specific criteria
+
+### For Curriculum Design:
+- **Map skills across units** to ensure coverage
+- **Build progression** from foundational to advanced skills
+- **Align assessments** to specific skill standards
+
+### Relationship to LEVER Framework:
+- **LEVER** = Pedagogical practice (HOW to teach any lesson)
+- **10 Skills** = Proficiency standards (WHAT students learn to do)
+- These are **parallel frameworks**, not nested
+- Any skill can be practiced during any LEVER phase
+
+---
+
+## The Ten Standards
 
 | # | Skill | Category |
 |---|-------|----------|
@@ -288,15 +309,60 @@ These ten skills form the core competencies students develop through the ModelIt
 
 ---
 
-## Alignment to LEVER Framework
+## Using Skills in Lesson Planning
 
-| LEVER Phase | Primary Skills |
-|-------------|----------------|
-| **L**ocate the System | 1, 3 (Adding & naming components) |
-| **E**stablish Relationships | 4, 6 (Adding relationships, directionality) |
-| **V**isualize & Model | 2, 5, 7 (Moving, viewing, setting levels) |
-| **E**valuate Outcomes | 8, 9 (Variables, output analysis) |
-| **R**evise & Extend | 10 (Error correction) |
+### Lesson Planning Template
+
+When planning a lesson, teachers should:
+
+1. **Identify the science content** (PE, DCI, phenomenon)
+2. **Select 1-3 modeling skills** to focus on
+3. **Design the LEVER flow** (all lessons use L-E-V-E-R structure)
+4. **Create skill-specific activities** within the lesson
+5. **Plan skill-specific assessment**
+
+### Example Lesson Header
+
+```
+LESSON: Ecosystem Matter Cycling
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Performance Expectation: 5-LS2-1
+Duration: 45 minutes
+
+MODELING SKILLS FOCUS:
+  ☑ Skill 1: Adding/removing components
+  ☑ Skill 4: Adding/removing relationships
+  ☐ Skill 2   ☐ Skill 3   ☐ Skill 5   ☐ Skill 6
+  ☐ Skill 7   ☐ Skill 8   ☐ Skill 9   ☐ Skill 10
+
+LEVER FLOW: L → E → V → E → R (standard lesson structure)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+### Skills Across a Unit
+
+Teachers should map skills across a unit to ensure all 10 are addressed:
+
+| Lesson | Science Focus | Modeling Skills |
+|--------|---------------|-----------------|
+| 1 | Intro to Ecosystems | 1, 2, 3 |
+| 2 | Food Webs | 4, 6 |
+| 3 | Energy Flow | 5, 7 |
+| 4 | Variables & Predictions | 8, 9 |
+| 5 | Model Revision | 10, then all |
+
+### Skills Are Cumulative
+
+Earlier skills support later skills:
+
+```
+Foundational          Intermediate           Advanced
+─────────────────────────────────────────────────────────►
+1. Add components  →  4. Add relationships  →  8. Variables
+2. Move components →  5. View components    →  9. Output
+3. Name components →  6. Directionality     →  10. Debug
+                      7. Activity levels
+```
 
 ---
 
