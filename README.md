@@ -13,6 +13,7 @@
 - [Practice Tests & Assessment Resources](#practice-tests--assessment-resources)
 - [Item Specifications](#item-specifications)
 - [ModelIt K12 Alignment](#modelit-k12-alignment)
+- [LEVER Framework](#lever-framework)
 - [CA Science Framework (2016)](#ca-science-framework-2016)
 - [CA NGSS Standards Documents](#ca-ngss-standards-documents)
 - [Official PDF Resources](#official-pdf-resources)
@@ -475,6 +476,40 @@ See: [docs/modelit-alignment.md](docs/modelit-alignment.md) for the detailed map
 
 ---
 
+## LEVER Framework
+
+The **LEVER Framework** is our pedagogical approach for teaching systems thinking through computational Boolean modeling. It integrates NGSS three-dimensional learning, AI literacy, and 4th Industrial Revolution skills.
+
+See: [docs/lever-framework.md](docs/lever-framework.md) for the complete framework.
+
+### What is LEVER?
+
+| Letter | Component | Core Question |
+|--------|-----------|---------------|
+| **L** | **Locate the System** | What is the phenomenon? What are its boundaries? |
+| **E** | **Establish Relationships** | How do parts connect and influence each other? |
+| **V** | **Visualize & Model** | What does the system look like in action? |
+| **E** | **Evaluate Outcomes** | What do the results tell us? What patterns emerge? |
+| **R** | **Revise & Extend** | How can we improve our understanding? |
+
+### Key Features
+
+- **Boolean modeling integration** — Students learn ON/OFF logic used in real scientific research
+- **NGSS three-dimensional alignment** — Maps to all SEPs, CCCs, and DCIs
+- **AI literacy development** — Prepares students to work WITH artificial intelligence
+- **4th Industrial Revolution readiness** — Systems thinking for biotech, IoT, and emerging technologies
+- **Scalable PreK-12** — Adaptable language and complexity for all grade levels
+
+### LEVER + CAST Alignment
+
+The framework directly supports California Science Test preparation by developing:
+- Graph literacy for interpreting simulation outputs
+- Systems analysis skills central to CAST performance tasks
+- Three-dimensional proficiency across all domains
+- Constructed response skills through model explanation
+
+---
+
 ## CA Science Framework (2016)
 
 The complete **California Science Framework** adopted by the State Board of Education in November 2016. These are the authoritative instructional guidance documents for CA NGSS implementation.
@@ -657,6 +692,7 @@ cast-science-resources/
 │   ├── test-structure.md                     # CAST format, timing, tools
 │   ├── practice-tests.md                     # Practice test directory
 │   ├── modelit-alignment.md                  # ModelIt ↔ CAST mapping
+│   ├── lever-framework.md                    # LEVER pedagogical framework
 │   └── official-resources.md                 # Comprehensive link directory
 ├── pdfs/                                     # 88+ official PDFs
 │   ├── science-framework/                    # 25 CA Science Framework chapters
@@ -683,8 +719,8 @@ cast-science-resources/
 | Official PDFs | 88 |
 | Item Specifications (DOCX) | 177 |
 | Practice Tests & Scoring Guides | 36 |
-| Documentation (Markdown) | 8 |
-| **Total resources** | **309+** |
+| Documentation (Markdown) | 9 |
+| **Total resources** | **310+** |
 
 ---
 
