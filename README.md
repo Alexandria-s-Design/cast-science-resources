@@ -233,7 +233,7 @@ See: [docs/grade-8-performance-expectations.md](docs/grade-8-performance-expecta
 | MS-LS4-5 | Gather and synthesize information about technologies that have changed the way humans influence the inheritance of desired traits in organisms |
 | MS-LS4-6 | Use mathematical representations to support explanations of how natural selection may lead to increases and decreases of specific traits in populations over time |
 
-### Earth and Space Science (14 PEs)
+### Earth and Space Science (15 PEs)
 
 | Code | Description |
 |------|-------------|
@@ -251,6 +251,7 @@ See: [docs/grade-8-performance-expectations.md](docs/grade-8-performance-expecta
 | MS-ESS3-2 | Analyze and interpret data on natural hazards to forecast future catastrophic events and inform the development of technologies to mitigate their effects |
 | MS-ESS3-3 | Apply scientific principles to design a method for monitoring and minimizing a human impact on the environment |
 | MS-ESS3-4 | Construct an argument supported by evidence for how increases in human population and per-capita consumption of natural resources impact Earth's systems |
+| MS-ESS3-5 | Ask questions to clarify evidence of the factors that have caused the rise in global temperatures over the past century |
 
 ### Engineering, Technology & Applications of Science (7 PEs)
 
