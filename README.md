@@ -9,7 +9,12 @@
 - [Grade 3 — Interim Assessments Only](#grade-3--interim-assessments-only)
 - [Grade 5 — Performance Expectations](#grade-5--performance-expectations)
 - [Grade 8 — Performance Expectations](#grade-8--performance-expectations)
+- [High School — Performance Expectations](#high-school--performance-expectations)
+- [Practice Tests & Assessment Resources](#practice-tests--assessment-resources)
+- [Item Specifications](#item-specifications)
 - [ModelIt K12 Alignment](#modelit-k12-alignment)
+- [CA Science Framework (2016)](#ca-science-framework-2016)
+- [CA NGSS Standards Documents](#ca-ngss-standards-documents)
 - [Official PDF Resources](#official-pdf-resources)
 - [Online Portals & Interactive Resources](#online-portals--interactive-resources)
 - [Third-Party Resources](#third-party-resources)
@@ -278,6 +283,154 @@ See: [docs/grade-8-performance-expectations.md](docs/grade-8-performance-expecta
 
 ---
 
+## High School — Performance Expectations
+
+The CAST is administered **once** in high school (typically grade 10, 11, or 12 as determined by the district). It assesses all **71 Performance Expectations** from the HS CA NGSS standards.
+
+See: [docs/high-school-performance-expectations.md](docs/high-school-performance-expectations.md) for full descriptions.
+
+### Physical Science (24 PEs)
+
+| Code | Description |
+|------|-------------|
+| HS-PS1-1 | Use the periodic table as a model to predict the relative properties of elements based on patterns of electrons in the outermost energy level |
+| HS-PS1-2 | Construct and revise an explanation for the outcome of a simple chemical reaction based on the outermost electron states of atoms |
+| HS-PS1-3 | Plan and conduct an investigation to gather evidence to compare the structure of substances at the bulk scale to infer the strength of electrical forces between particles |
+| HS-PS1-4 | Develop a model to illustrate that the release or absorption of energy from a chemical reaction system depends upon the changes in total bond energy |
+| HS-PS1-5 | Apply scientific principles and evidence to provide an explanation about the effects of changing the temperature or concentration of the reacting particles on the rate at which a reaction occurs |
+| HS-PS1-6 | Refine the design of a chemical system by specifying a change in conditions that would produce increased amounts of products at equilibrium |
+| HS-PS1-7 | Use mathematical representations to support the claim that atoms, and therefore mass, are conserved during a chemical reaction |
+| HS-PS1-8 | Develop models to illustrate the changes in the composition of the nucleus of the atom and the energy released during the processes of fission, fusion, and radioactive decay |
+| HS-PS2-1 | Analyze data to support the claim that Newton's second law of motion describes the mathematical relationship among the net force on a macroscopic object, its mass, and its acceleration |
+| HS-PS2-2 | Use mathematical representations to support the claim that the total momentum of a system of objects is conserved when there is no net force on the system |
+| HS-PS2-3 | Apply scientific and engineering ideas to design, evaluate, and refine a device that minimizes the force on a macroscopic object during a collision |
+| HS-PS2-4 | Use mathematical representations of Newton's Law of Gravitation and Coulomb's Law to describe and predict the gravitational and electrostatic forces between objects |
+| HS-PS2-5 | Plan and conduct an investigation to provide evidence that an electric current can produce a magnetic field and that a changing magnetic field can produce an electric current |
+| HS-PS2-6 | Communicate scientific and technical information about why the molecular-level structure is important in the functioning of designed materials |
+| HS-PS3-1 | Create a computational model to calculate the change in the energy of one component in a system |
+| HS-PS3-2 | Develop and use models to illustrate that energy at the macroscopic scale can be accounted for as a combination of energy associated with the motions and relative positions of particles |
+| HS-PS3-3 | Design, build, and refine a device that works within given constraints to convert one form of energy into another form of energy |
+| HS-PS3-4 | Plan and conduct an investigation to provide evidence that the transfer of thermal energy when two components of different temperature are combined within a closed system results in a more uniform energy distribution |
+| HS-PS3-5 | Develop and use a model of two objects interacting through electric or magnetic fields to illustrate the forces between objects and the changes in energy of the objects due to the interaction |
+| HS-PS4-1 | Use mathematical representations to support a claim regarding relationships among the frequency, wavelength, and speed of waves traveling in various media |
+| HS-PS4-2 | Evaluate questions about the advantages of using a digital transmission and storage of information |
+| HS-PS4-3 | Evaluate the claims, evidence, and reasoning behind the idea that electromagnetic radiation can be described either by a wave model or a particle model |
+| HS-PS4-4 | Evaluate the validity and reliability of claims in published materials of the effects that different frequencies of electromagnetic radiation have when absorbed by matter |
+| HS-PS4-5 | Communicate technical information about how some technological devices use the principles of wave behavior and wave interactions with matter to transmit and capture information and energy |
+
+### Life Science (24 PEs)
+
+| Code | Description |
+|------|-------------|
+| HS-LS1-1 | Construct an explanation based on evidence for how the structure of DNA determines the structure of proteins which carry out the essential functions of life through systems of specialized cells |
+| HS-LS1-2 | Develop and use a model to illustrate the hierarchical organization of interacting systems that provide specific functions within multicellular organisms |
+| HS-LS1-3 | Plan and conduct an investigation to provide evidence that feedback mechanisms maintain homeostasis |
+| HS-LS1-4 | Use a model to illustrate the role of cellular division (mitosis) in producing and maintaining complex organisms |
+| HS-LS1-5 | Use a model to illustrate how photosynthesis transforms light energy into stored chemical energy |
+| HS-LS1-6 | Construct and revise an explanation based on evidence for how carbon, hydrogen, and oxygen from sugar molecules may combine with other elements to form amino acids and/or other large carbon-based molecules |
+| HS-LS1-7 | Use a model to illustrate that cellular respiration is a chemical process whereby the bonds of food molecules and oxygen molecules are broken and the bonds in new compounds are formed resulting in a net transfer of energy |
+| HS-LS2-1 | Use mathematical and/or computational representations to support explanations of factors that affect carrying capacity of ecosystems at different scales |
+| HS-LS2-2 | Use mathematical representations to support and revise explanations based on evidence about factors affecting biodiversity and populations in ecosystems |
+| HS-LS2-3 | Construct and revise an explanation based on evidence for the cycling of matter and flow of energy in aerobic and anaerobic conditions |
+| HS-LS2-4 | Use mathematical representations to support claims for the cycling of matter and flow of energy among organisms in an ecosystem |
+| HS-LS2-5 | Develop a model to illustrate the role of photosynthesis and cellular respiration in the cycling of carbon among the biosphere, atmosphere, hydrosphere, and geosphere |
+| HS-LS2-6 | Evaluate the claims, evidence, and reasoning that the complex interactions in ecosystems maintain relatively consistent numbers and types of organisms in stable conditions |
+| HS-LS2-7 | Design, evaluate, and refine a solution for reducing the impacts of human activities on the environment and biodiversity |
+| HS-LS2-8 | Evaluate the evidence for the role of group behavior on individual and species' chances to survive and reproduce |
+| HS-LS3-1 | Ask questions to clarify relationships about the role of DNA and chromosomes in coding the instructions for characteristic traits passed from parents to offspring |
+| HS-LS3-2 | Make and defend a claim based on evidence that inheritable genetic variations may result from new genetic combinations through meiosis, viable errors occurring during replication, and/or mutations caused by environmental factors |
+| HS-LS3-3 | Apply concepts of statistics and probability to explain the variation and distribution of expressed traits in a population |
+| HS-LS4-1 | Communicate scientific information that common ancestry and biological evolution are supported by multiple lines of empirical evidence |
+| HS-LS4-2 | Construct an explanation based on evidence that the process of evolution primarily results from four factors |
+| HS-LS4-3 | Apply concepts of statistics and probability to support explanations that organisms with an advantageous heritable trait tend to increase in proportion to organisms lacking this trait |
+| HS-LS4-4 | Construct an explanation based on evidence for how natural selection leads to adaptation of populations |
+| HS-LS4-5 | Evaluate the evidence supporting claims that changes in environmental conditions may result in increases in the number of individuals of some species, the emergence of new species over time, and the extinction of other species |
+| HS-LS4-6 | Create or revise a simulation to test a solution to mitigate adverse impacts of human activity on biodiversity |
+
+### Earth and Space Science (19 PEs)
+
+| Code | Description |
+|------|-------------|
+| HS-ESS1-1 | Develop a model based on evidence to illustrate the life span of the sun and the role of nuclear fusion in the sun's core to release energy |
+| HS-ESS1-2 | Construct an explanation of the Big Bang theory based on astronomical evidence of light spectra, motion of distant galaxies, and composition of matter in the universe |
+| HS-ESS1-3 | Communicate scientific ideas about the way stars, over their life cycle, produce elements |
+| HS-ESS1-4 | Use mathematical or computational representations to predict the motion of orbiting objects in the solar system |
+| HS-ESS1-5 | Evaluate evidence of the past and current movements of continental and oceanic crust and the theory of plate tectonics to explain the ages of crustal rocks |
+| HS-ESS1-6 | Apply scientific reasoning and evidence from ancient Earth materials, meteorites, and other planetary surfaces to construct an account of Earth's formation and early history |
+| HS-ESS2-1 | Develop a model to illustrate how Earth's internal and surface processes operate at different spatial and temporal scales to form continental and ocean-floor features |
+| HS-ESS2-2 | Analyze geoscience data to make the claim that one change to Earth's surface can create feedbacks that cause changes to other Earth systems |
+| HS-ESS2-3 | Develop a model based on evidence of Earth's interior to describe the cycling of matter by thermal convection |
+| HS-ESS2-4 | Use a model to describe how variations in the flow of energy into and out of Earth's systems result in changes in climate |
+| HS-ESS2-5 | Plan and conduct an investigation of the properties of water and its effects on Earth materials and surface processes |
+| HS-ESS2-6 | Develop a quantitative model to describe the cycling of carbon among the hydrosphere, atmosphere, geosphere, and biosphere |
+| HS-ESS2-7 | Construct an argument based on evidence about the simultaneous coevolution of Earth's systems and life on Earth |
+| HS-ESS3-1 | Construct an explanation based on evidence for how the availability of natural resources, occurrence of natural hazards, and changes in climate have influenced human activity |
+| HS-ESS3-2 | Evaluate competing design solutions for developing, managing, and utilizing energy and mineral resources based on cost-benefit ratios |
+| HS-ESS3-3 | Create a computational simulation to illustrate the relationships among management of natural resources, the sustainability of human populations, and biodiversity |
+| HS-ESS3-4 | Evaluate or refine a technological solution that reduces impacts of human activities on natural systems |
+| HS-ESS3-5 | Analyze geoscience data and the results from global climate models to make an evidence-based forecast of the current rate of global or regional climate change |
+| HS-ESS3-6 | Use a computational representation to illustrate the relationships among Earth systems and how those relationships are being modified due to human activity |
+
+### Engineering, Technology & Applications of Science (4 PEs)
+
+| Code | Description |
+|------|-------------|
+| HS-ETS1-1 | Analyze a major global challenge to specify qualitative and quantitative criteria and constraints for solutions that account for societal needs and wants |
+| HS-ETS1-2 | Design a solution to a complex real-world problem by breaking it down into smaller, more manageable problems that can be solved through engineering |
+| HS-ETS1-3 | Evaluate a solution to a complex real-world problem based on prioritized criteria and trade-offs that account for a range of constraints |
+| HS-ETS1-4 | Use a computer simulation to model the impact of proposed solutions to a complex real-world problem |
+
+---
+
+## Practice Tests & Assessment Resources
+
+Comprehensive collection of official and third-party practice tests, sample items, and scoring guides.
+
+See: [docs/practice-tests.md](docs/practice-tests.md) for the full directory.
+
+### Official Online Practice
+| Resource | URL |
+|----------|-----|
+| **CAASPP Practice Tests** (Grades 5, 8, HS) | [caaspp-elpac.org](https://www.caaspp-elpac.org/resources/preparation/practice-and-training-tests) |
+| **CAASPP Training Tests** | Same link — Training Tests tab |
+
+### Downloaded Practice Resources (36 files)
+
+| Category | Files | Location |
+|----------|-------|----------|
+| Education4Equity Sample Tests | 3 | `practice-tests/education4equity/` |
+| NGSS Assessment Tasks (MS + HS) | 10 | `practice-tests/ngss-tasks/` |
+| CST Legacy Released Questions | 3 | `practice-tests/cst-legacy/` |
+| CAA Alternate Practice Tests + Scoring | 20 | `practice-tests/caa-alternate/` |
+
+### Scoring Guides (in `pdfs/`)
+
+| Document | Grade |
+|----------|-------|
+| [Grade 5 Scoring Guide](pdfs/Grade-5-Scoring-Guide.pdf) | Grade 5 |
+| [Grade 5 CR Exemplars](pdfs/Grade-5-Constructed-Response-Examples.pdf) | Grade 5 |
+| [Grade 8 Scoring Guide](pdfs/Grade-8-Scoring-Guide.pdf) | Grade 8 |
+| [Grade 8 CR Exemplars](pdfs/Grade-8-Constructed-Response-Examples.pdf) | Grade 8 |
+| [HS Scoring Guide](pdfs/HS-Scoring-Guide.pdf) | High School |
+
+---
+
+## Item Specifications
+
+Complete set of **177 official CDE item specification documents** (DOCX format) — one per Performance Expectation. These describe exactly how CAST items are designed for each PE.
+
+| Directory | Files | Grade Band |
+|-----------|-------|-----------|
+| `item-specs/elementary/` | 45 | Grades 3–5 |
+| `item-specs/middle-school/` | 59 | Grades 6–8 |
+| `item-specs/high-school/` | 71 | High School |
+| `item-specs/castintroitemspecs.docx` | 1 | Introduction |
+| `item-specs/cast_itemspecsappendixa.docx` | 1 | Appendix A |
+
+Source: [CDE CAST Item Specifications](https://www.cde.ca.gov/ta/tg/ca/castitemspecs.asp)
+
+---
+
 ## ModelIt K12 Alignment
 
 [ModelIt K12](https://modelit.io) is a systems thinking and computational modeling platform designed for K–12 science education. Its simulation-based approach naturally aligns with CAST's three-dimensional assessment framework.
@@ -322,9 +475,98 @@ See: [docs/modelit-alignment.md](docs/modelit-alignment.md) for the detailed map
 
 ---
 
+## CA Science Framework (2016)
+
+The complete **California Science Framework** adopted by the State Board of Education in November 2016. These are the authoritative instructional guidance documents for CA NGSS implementation.
+
+Source: [CDE Science Framework Page](https://www.cde.ca.gov/ci/sc/cf/cascienceframework2016.asp)
+
+All **25 PDFs** are in [`pdfs/science-framework/`](pdfs/science-framework/):
+
+### Chapters
+| File | Content |
+|------|---------|
+| Ch01-Overview-CA-NGSS.pdf | Overview of the CA NGSS |
+| Ch02-Transitional-Kindergarten.pdf | Transitional Kindergarten |
+| Ch03-Grades-K-2.pdf | Kindergarten through Grade 2 |
+| Ch04-Grades-3-5.pdf | Grades 3–5 |
+| Ch05-Grades-6-8-Integrated.pdf | Grades 6–8 Preferred Integrated Course Model |
+| Ch06-Grades-6-8-Discipline-Specific.pdf | Grades 6–8 Discipline-Specific Course Model |
+| Ch07-HS-Three-Course-Model.pdf | High School Three-Course Model |
+| Ch08-HS-Four-Course-Model.pdf | High School Four-Course Model |
+| Ch09-Assessment.pdf | Assessment |
+| Ch10-Access-and-Equity.pdf | Access and Equity |
+| Ch11-Instructional-Strategies.pdf | Instructional Strategies for 21st Century Teaching |
+| Ch12-Professional-Learning.pdf | Professional Learning, Leadership, and Supports |
+| Ch13-Instructional-Resources.pdf | Instructional Resources |
+
+### Appendices & Supporting Materials
+| File | Content |
+|------|---------|
+| Appendix1-K12-Progressions.pdf | K–12 Progression of SEPs, DCIs, and CCCs |
+| Appendix2-Environmental-Principles.pdf | Connections to Environmental Principles and Concepts |
+| Appendix3-Computer-Science.pdf | Computer Science in Science |
+| Appendix4-HS-Three-Year-Model.pdf | HS Three-Year Model: Every Science, Every Year |
+| Appendix5-Recommended-Literature.pdf | Recommended Literature for the Science Classroom |
+| Glossary-Part1.pdf | Glossary Part 1 |
+| Glossary-Part2.pdf | Glossary Part 2 |
+| Science-Resources.pdf | Science Resources |
+| Front-Matter.pdf | Front Matter |
+| Foreword.pdf | Foreword |
+| Acknowledgments.pdf | Acknowledgments |
+| SBE-Policy-Teaching-Science.pdf | SBE Policy on Teaching of Natural Sciences |
+
+---
+
+## CA NGSS Standards Documents
+
+Complete set of **20 official CA NGSS standards PDFs** organized by grade level and course model.
+
+Source: [CDE NGSS Standards Page](https://www.cde.ca.gov/ci/pl/ngssstandards.asp)
+
+All files are in [`pdfs/ngss-standards/`](pdfs/ngss-standards/):
+
+### Overview Documents
+| File | Description |
+|------|-------------|
+| NGSS-At-a-Glance.pdf | Quick reference guide to NGSS |
+| CA-Edits-NGSS-Clarification.pdf | California's edits to NGSS clarification statements |
+| How-to-Read-CA-NGSS.pdf | Guide to reading and understanding CA NGSS |
+
+### Elementary Standards (K–5, by DCI)
+| File | Grade |
+|------|-------|
+| K-Standards-DCI.pdf | Kindergarten |
+| Grade1-Standards-DCI.pdf | Grade 1 |
+| Grade2-Standards-DCI.pdf | Grade 2 |
+| Grade3-Standards-DCI.pdf | Grade 3 |
+| Grade4-Standards-DCI.pdf | Grade 4 |
+| Grade5-Standards-DCI.pdf | Grade 5 |
+
+### Middle School Standards (6–8)
+| File | Model |
+|------|-------|
+| MS-Learning-Progressions.pdf | Integrated learning progression rationale |
+| Grade6-Integrated-Model.pdf | Grade 6 Integrated |
+| Grade7-Integrated-Model.pdf | Grade 7 Integrated |
+| Grade8-Integrated-Model.pdf | Grade 8 Integrated |
+| Grade6-Discipline-Specific.pdf | Grade 6 Earth Science |
+| Grade7-Discipline-Specific.pdf | Grade 7 Life Science |
+| Grade8-Discipline-Specific.pdf | Grade 8 Physical Science |
+
+### High School Standards (9–12, by DCI)
+| File | Domain |
+|------|--------|
+| HS-Physical-Science-DCI.pdf | Physical Science |
+| HS-Life-Science-DCI.pdf | Life Science |
+| HS-Earth-Space-Science-DCI.pdf | Earth and Space Science |
+| HS-Engineering-Design-DCI.pdf | Engineering Design |
+
+---
+
 ## Official PDF Resources
 
-All **24 PDFs** are available in the [`pdfs/`](pdfs/) directory. Original sources linked below.
+All PDFs are available in the [`pdfs/`](pdfs/) directory. Original sources linked below.
 
 ### CAST Test Documents
 | Document | Source |
@@ -406,41 +648,43 @@ All **24 PDFs** are available in the [`pdfs/`](pdfs/) directory. Original source
 
 ```
 cast-science-resources/
-├── README.md                          # This file — main hub
+├── README.md                              # This file — main hub
 ├── docs/
-│   ├── grade-5-performance-expectations.md
-│   ├── grade-8-performance-expectations.md
-│   ├── grade-3-interim-assessments.md
-│   ├── test-structure.md
-│   ├── modelit-alignment.md
-│   └── official-resources.md
-├── pdfs/                              # 24 official PDFs from CDE & CAASPP
-│   ├── CAST-Blueprint.pdf
-│   ├── CAST-Blueprint-Revised.pdf
-│   ├── CAST-Fact-Sheet.pdf
-│   ├── CAST-Item-Specs-Intro.pdf
-│   ├── CAST-Practice-Training-Overview.pdf
-│   ├── CAST-Reporting-ALDs.pdf
-│   ├── CAST-Assessment-Timeline.pdf
-│   ├── CAST-IA-Blueprint.pdf
-│   ├── CAST-IA-At-a-Glance.pdf
-│   ├── Grade-5-Scoring-Guide.pdf
-│   ├── Grade-5-Constructed-Response-Examples.pdf
-│   ├── Grade-8-Scoring-Guide.pdf
-│   ├── Grade-8-Constructed-Response-Examples.pdf
-│   ├── HS-Scoring-Guide.pdf
-│   ├── Parent-Guide-CAST.pdf
-│   ├── Parent-Overview-Grades-3-5.pdf
-│   ├── CAST-HS-Admin.pdf
-│   ├── CAST-Quick-Reference.pdf
-│   ├── CA-NGSS-How-to-Read.pdf
-│   ├── CA-NGSS-Grade-3-DCI.pdf
-│   ├── CA-NGSS-Grade-4-DCI.pdf
-│   ├── CA-NGSS-Grade-7-Discipline-Specific.pdf
-│   ├── CA-NGSS-Grade-8-Discipline-Specific.pdf
-│   └── CAST-IA-Organization.pdf
+│   ├── grade-5-performance-expectations.md   # 45 Grade 5 PEs
+│   ├── grade-8-performance-expectations.md   # 59 Grade 8 PEs
+│   ├── high-school-performance-expectations.md # 71 HS PEs
+│   ├── grade-3-interim-assessments.md        # Grade 3 IA info
+│   ├── test-structure.md                     # CAST format, timing, tools
+│   ├── practice-tests.md                     # Practice test directory
+│   ├── modelit-alignment.md                  # ModelIt ↔ CAST mapping
+│   └── official-resources.md                 # Comprehensive link directory
+├── pdfs/                                     # 88+ official PDFs
+│   ├── science-framework/                    # 25 CA Science Framework chapters
+│   ├── ngss-standards/                       # 20 CA NGSS standards by grade
+│   ├── CAST-Blueprint.pdf                    # + 43 test/scoring/admin PDFs
+│   └── ...
+├── item-specs/                               # 177 DOCX item specifications
+│   ├── elementary/                           # 45 files (Grades 3–5)
+│   ├── middle-school/                        # 59 files (Grades 6–8)
+│   ├── high-school/                          # 71 files (High School)
+│   ├── castintroitemspecs.docx
+│   └── cast_itemspecsappendixa.docx
+├── practice-tests/                           # 36 practice test files
+│   ├── education4equity/                     # 3 sample tests with keys
+│   ├── ngss-tasks/                           # 10 MS + HS assessment tasks
+│   ├── cst-legacy/                           # 3 CST released questions
+│   └── caa-alternate/                        # 20 CAA alternate assessments
 └── LICENSE
 ```
+
+### File Counts
+| Category | Files |
+|----------|-------|
+| Official PDFs | 88 |
+| Item Specifications (DOCX) | 177 |
+| Practice Tests & Scoring Guides | 36 |
+| Documentation (Markdown) | 8 |
+| **Total resources** | **309+** |
 
 ---
 

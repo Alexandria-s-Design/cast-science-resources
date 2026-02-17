@@ -9,10 +9,10 @@ Comprehensive directory of official California Science Test (CAST) resources fro
 ### Science Standards
 | Resource | URL |
 |----------|-----|
-| CA NGSS Standards Page | https://www.cde.ca.gov/pd/ca/sc/ngssstandards.asp |
+| NGSS for CA Public Schools, K-12 | https://www.cde.ca.gov/ci/pl/ngssstandards.asp |
+| CA NGSS Standards Page (legacy URL) | https://www.cde.ca.gov/pd/ca/sc/ngssstandards.asp |
 | CA Science Framework (2016) | https://www.cde.ca.gov/ci/sc/cf/cascienceframework2016.asp |
 | Science Curriculum & Instruction | https://www.cde.ca.gov/ci/sc/ |
-| CA NGSS for CA Public Schools (Full PDF) | https://www.cde.ca.gov/pd/ca/sc/ngssstandards.asp |
 
 ### CAST Assessment Information
 | Resource | URL |
@@ -104,6 +104,28 @@ All documents below are available in the [`pdfs/`](../pdfs/) directory:
 |------|-------------|
 | `CA-NGSS-Grade-3-DCI.pdf` | Grade 3 standards organized by Disciplinary Core Idea |
 | `CA-NGSS-Grade-8-Discipline-Specific.pdf` | Grade 8 standards in California's discipline-specific arrangement |
+
+### CA Science Framework 2016 (`science-framework/`)
+| File | Description |
+|------|-------------|
+| `Ch01-Overview-CA-NGSS.pdf` – `Ch13-Instructional-Resources.pdf` | 13 chapters covering TK through HS, assessment, equity, and PD |
+| `Appendix1-K12-Progressions.pdf` – `Appendix5-Recommended-Literature.pdf` | 5 appendices |
+| `Glossary-Part1.pdf`, `Glossary-Part2.pdf` | Scientific terminology |
+| `Front-Matter.pdf`, `Foreword.pdf`, `Acknowledgments.pdf` | Introductory materials |
+| `SBE-Policy-Teaching-Science.pdf` | SBE policy on natural science instruction |
+| `Science-Resources.pdf` | Additional resources |
+
+### CA NGSS Standards by Grade (`ngss-standards/`)
+| File | Description |
+|------|-------------|
+| `NGSS-At-a-Glance.pdf` | Quick reference to all NGSS |
+| `How-to-Read-CA-NGSS.pdf` | Guide to reading CA NGSS standards |
+| `CA-Edits-NGSS-Clarification.pdf` | California-specific clarification edits |
+| `K-Standards-DCI.pdf` – `Grade5-Standards-DCI.pdf` | Elementary K–5 standards by DCI |
+| `Grade6-Integrated-Model.pdf` – `Grade8-Integrated-Model.pdf` | MS Integrated course model |
+| `Grade6-Discipline-Specific.pdf` – `Grade8-Discipline-Specific.pdf` | MS Discipline-specific model |
+| `HS-Physical-Science-DCI.pdf` – `HS-Engineering-Design-DCI.pdf` | HS standards by domain |
+| `MS-Learning-Progressions.pdf` | Middle school learning progression rationale |
 
 ---
 
