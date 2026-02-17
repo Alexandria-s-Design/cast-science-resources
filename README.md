@@ -14,6 +14,7 @@
 - [Item Specifications](#item-specifications)
 - [ModelIt K12 Alignment](#modelit-k12-alignment)
 - [LEVER Framework](#lever-framework)
+- [Content Style Guide](#content-style-guide)
 - [CA Science Framework (2016)](#ca-science-framework-2016)
 - [CA NGSS Standards Documents](#ca-ngss-standards-documents)
 - [Official PDF Resources](#official-pdf-resources)
@@ -510,6 +511,47 @@ The framework directly supports California Science Test preparation by developin
 
 ---
 
+## Content Style Guide
+
+Our content follows a consistent voice and approach grounded in research-based principles.
+
+See: [docs/content-style-guide.md](docs/content-style-guide.md) for complete guidelines.
+
+### Foundation
+
+All content is built on **A Framework for K-12 Science Education** (National Research Council, 2012), which established the three-dimensional learning approach:
+- Science & Engineering Practices (what students DO)
+- Crosscutting Concepts (how students CONNECT ideas)
+- Disciplinary Core Ideas (what students KNOW)
+
+### Student-Facing Content (Brainchild Style)
+
+Inspired by Netflix's *Brainchild*, our student materials are:
+
+| Principle | Description |
+|-----------|-------------|
+| **Relatable** | Talk WITH students, not AT them |
+| **Fun but substantive** | Entertainment serves learning |
+| **Question-driven** | Start with genuine curiosity |
+| **Visual and active** | Show, don't just tell |
+| **Connected to their world** | Link to things they care about |
+
+### Teacher-Facing Content
+
+Teacher guides are designed for educators who may or may not have deep content expertise:
+- Clear, practical language (no unexplained jargon)
+- Unpacked standards with plain-language explanations
+- Scripted facilitation prompts
+- Anticipated misconceptions with response strategies
+- Realistic timing and material requirements
+
+### References
+
+- [A Framework for K-12 Science Education](https://nap.nationalacademies.org/catalog/13165) (NRC, 2012)
+- [Brainchild Curriculum](https://www.brainchildshow.com/) (Netflix)
+
+---
+
 ## CA Science Framework (2016)
 
 The complete **California Science Framework** adopted by the State Board of Education in November 2016. These are the authoritative instructional guidance documents for CA NGSS implementation.
@@ -693,6 +735,7 @@ cast-science-resources/
 │   ├── practice-tests.md                     # Practice test directory
 │   ├── modelit-alignment.md                  # ModelIt ↔ CAST mapping
 │   ├── lever-framework.md                    # LEVER pedagogical framework
+│   ├── content-style-guide.md                # Brainchild + NRC content standards
 │   └── official-resources.md                 # Comprehensive link directory
 ├── pdfs/                                     # 88+ official PDFs
 │   ├── science-framework/                    # 25 CA Science Framework chapters
@@ -719,8 +762,8 @@ cast-science-resources/
 | Official PDFs | 88 |
 | Item Specifications (DOCX) | 177 |
 | Practice Tests & Scoring Guides | 36 |
-| Documentation (Markdown) | 9 |
-| **Total resources** | **310+** |
+| Documentation (Markdown) | 10 |
+| **Total resources** | **311+** |
 
 ---
 
