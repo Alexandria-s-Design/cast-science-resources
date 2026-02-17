@@ -21,6 +21,16 @@ The California Science Test (CAST) at Grade 5 assesses all **Performance Expecta
 **SEPs:** Planning/Carrying Out Investigations, Asking Questions, Defining Problems
 **CCCs:** Cause and Effect, Patterns
 
+### Forces and Interactions (Grade 5)
+
+| Code | Performance Expectation |
+|------|------------------------|
+| **5-PS2-1** | Support an argument that the gravitational force exerted by Earth on objects is directed down. |
+
+**DCIs:** PS2.B (Types of Interactions)
+**SEPs:** Engaging in Argument from Evidence
+**CCCs:** Cause and Effect
+
 ### Energy (Grade 4)
 
 | Code | Performance Expectation |
@@ -33,6 +43,16 @@ The California Science Test (CAST) at Grade 5 assesses all **Performance Expecta
 **DCIs:** PS3.A (Definitions of Energy), PS3.B (Conservation of Energy and Energy Transfer), PS3.C (Relationship Between Energy and Forces), PS3.D (Energy in Chemical Processes and Everyday Life)
 **SEPs:** Constructing Explanations, Asking Questions, Designing Solutions
 **CCCs:** Energy and Matter, Cause and Effect
+
+### Energy (Grade 5)
+
+| Code | Performance Expectation |
+|------|------------------------|
+| **5-PS3-1** | Use models to describe that energy in animals' food (used for body repair, growth, motion, and to maintain body warmth) was once energy from the sun. |
+
+**DCIs:** PS3.D (Energy in Chemical Processes and Everyday Life), LS1.C (Organization for Matter and Energy Flow in Organisms)
+**SEPs:** Developing and Using Models
+**CCCs:** Energy and Matter
 
 ### Waves and Information (Grade 4)
 

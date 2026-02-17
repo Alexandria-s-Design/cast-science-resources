@@ -103,7 +103,7 @@ Grade 5 CAST assesses all PEs from the **Grades 3–5 band**. There are **45 Per
 
 See: [docs/grade-5-performance-expectations.md](docs/grade-5-performance-expectations.md) for full descriptions.
 
-### Physical Science (12 PEs)
+### Physical Science (16 PEs)
 
 | Code | Description |
 |------|-------------|
@@ -117,10 +117,13 @@ See: [docs/grade-5-performance-expectations.md](docs/grade-5-performance-expecta
 | 4-PS3-4 | Apply scientific ideas to design, test, and refine a device that converts energy from one form to another |
 | 4-PS4-1 | Develop a model of waves to describe patterns in terms of amplitude and wavelength and that waves can cause objects to move |
 | 4-PS4-2 | Develop a model to describe that light reflecting from objects and entering the eye allows objects to be seen |
+| 4-PS4-3 | Generate and compare multiple solutions that use patterns to transfer information |
 | 5-PS1-1 | Develop a model to describe that matter is made of particles too small to be seen |
 | 5-PS1-2 | Measure and graph quantities to provide evidence that regardless of the type of change that occurs when heating, cooling, or mixing substances, the total weight of matter is conserved |
 | 5-PS1-3 | Make observations and measurements to identify materials based on their properties |
 | 5-PS1-4 | Conduct an investigation to determine whether the mixing of two or more substances results in new substances |
+| 5-PS2-1 | Support an argument that the gravitational force exerted by Earth on objects is directed down |
+| 5-PS3-1 | Use models to describe that energy in animals' food (used for body repair, growth, motion, and to maintain body warmth) was once energy from the sun |
 
 ### Life Science (12 PEs)
 
