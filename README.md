@@ -45,32 +45,38 @@ CAST is administered annually during a **spring testing window** (typically mid-
 
 ## Test Structure at a Glance
 
-| Grade | Segments | Estimated Time | PEs Assessed | Domains |
-|-------|----------|---------------|--------------|---------|
-| **5** | 2 | ~2 hours (untimed) | 45 PEs (Grades 3–5 band) | PS, LS, ESS, ETS |
-| **8** | 2 | ~2 hours (untimed) | 59 PEs (Grades 6–8 band) | PS, LS, ESS, ETS |
-| **HS** | 2 | ~2 hours (untimed) | HS PEs | PS, LS, ESS, ETS |
+| Grade | Segments | Items | Estimated Time | PEs Assessed | Domains |
+|-------|----------|-------|---------------|--------------|---------|
+| **5** | 6 + survey | 44–60 | ~2 hours (untimed) | 45 PEs (Grades 3–5 band) | PS, LS, ESS, ETS |
+| **8** | 6 + survey | 44–60 | ~2 hours (untimed) | 59 PEs (Grades 6–8 band) | PS, LS, ESS, ETS |
+| **HS** | 6 + survey | 44–60 | ~2 hours (untimed) | HS PEs | PS, LS, ESS, ETS |
 
-**Domains:**
-- **PS** — Physical Science
-- **LS** — Life Science
-- **ESS** — Earth and Space Science
-- **ETS** — Engineering, Technology, and Applications of Science
+**Segment A** (1–3): Discrete stand-alone items | **Segment B** (4–6): Performance Tasks (4–6 items per PT, one PT per domain)
 
-### Universal Tools (Available to All Students)
-- Highlighter
-- Strikethrough
-- Notepad/scratchpad
-- Zoom/magnification
-- Line reader
-- Periodic table (Grade 8 and HS)
-- Calculator (where applicable)
-- Reference sheets
+**2025–26 Testing Window:** February 24 – June 2, 2026
+
+**Domains:** PS (Physical Science) · LS (Life Science) · ESS (Earth & Space Science) · ETS (Engineering, integrated)
+
+### Grade-Specific Tools
+
+| Tool | Grade 5 | Grade 8 | HS |
+|------|---------|---------|-----|
+| Calculator | Four-function | Desmos Scientific | Desmos Scientific |
+| Periodic Table | — | Available (EN/ES) | Available (EN/ES) |
+| Reference Sheet | — | Available (EN/ES) | Available (EN/ES) |
+
+### Scoring
+
+| Grade | Level 1 (Not Met) | Level 2 (Nearly Met) | Level 3 (Met) | Level 4 (Exceeded) |
+|-------|-------------------|----------------------|---------------|---------------------|
+| **5** | 150–178 | 179–213 | 214–230 | 231–250 |
+| **8** | 350–377 | 378–414 | 415–432 | 433–450 |
+| **HS** | 550–575 | 576–614 | 615–635 | 636–650 |
 
 ### Accessibility
-- **Universal tools** — available to all students
-- **Designated supports** — require educator authorization (e.g., color contrast, text-to-speech)
-- **Accommodations** — require IEP/504 plan (e.g., braille, ASL video)
+- **Universal tools** — available to all students (highlighter, strikethrough, zoom, notepad, line reader)
+- **Designated supports** — require educator authorization (e.g., color contrast, text-to-speech, translated glossaries)
+- **Accommodations** — require IEP/504 plan (e.g., braille, ASL video, speech-to-text)
 
 ---
 

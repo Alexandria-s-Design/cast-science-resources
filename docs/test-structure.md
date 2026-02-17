@@ -6,7 +6,7 @@ Comprehensive reference for the California Science Test (CAST) format, logistics
 
 ## Overview
 
-The CAST is a **computer-based, fixed-form** science assessment administered as part of the California Assessment of Student Performance and Progress (CAASPP) system. It was developed by Educational Testing Service (ETS) in partnership with the California Department of Education (CDE).
+The CAST is a **computer-based, fixed-form** science assessment administered as part of the California Assessment of Student Performance and Progress (CAASPP) system. Unlike the Smarter Balanced ELA and Math tests (which are computer-adaptive), the CAST uses a **linear test design**.
 
 | Feature | Details |
 |---------|---------|
@@ -15,59 +15,67 @@ The CAST is a **computer-based, fixed-form** science assessment administered as 
 | **Alignment** | California Next Generation Science Standards (CA NGSS) |
 | **Three dimensions** | Science & Engineering Practices (SEPs), Disciplinary Core Ideas (DCIs), Crosscutting Concepts (CCCs) |
 | **First operational year** | 2018–19 |
-| **Developer** | ETS (Educational Testing Service) |
+| **Total items per test** | 44–60 items (varies by grade level) |
 
 ---
 
 ## Grade Levels and Timing
 
-| Grade Level | Grade Span Assessed | Segments | Estimated Duration | Notes |
-|-------------|---------------------|----------|--------------------|-------|
-| **Grade 5** | Grades 3–5 PEs | 2 | ~2 hours | Untimed; most students finish in 1.5–2 hours |
-| **Grade 8** | Grades 6–8 PEs | 2 | ~2 hours | Untimed; most students finish in 1.5–2 hours |
-| **High School** | HS PEs | 2 | ~2 hours | Typically administered in Grade 11 or 12 |
+| Grade Level | Grade Span Assessed | Segments | Total Items | Estimated Duration |
+|-------------|---------------------|----------|-------------|-------------------|
+| **Grade 5** | Grades 3–5 PEs (45 PEs) | 6 + survey | 44–60 | ~2 hours (untimed) |
+| **Grade 8** | Grades 6–8 PEs (59 PEs) | 6 + survey | 44–60 | ~2 hours (untimed) |
+| **High School** | HS PEs | 6 + survey | 44–60 | ~2 hours (untimed) |
 
 ### Important Timing Notes
 - The CAST is **untimed** — students are given as much time as they need
-- Schools typically schedule **two sessions** (one per segment) on the same or different days
-- Each segment takes approximately **45–60 minutes** for most students
-- There is a **mandatory break** between segments
+- Each of the first five segments averages approximately **20 minutes**
+- Testing can be paused and resumed across multiple days within the school's testing window
+- A **Student Survey** follows the test (3 questions for Gr 5/8; 4 for HS)
 
 ---
 
 ## Testing Window
 
-CAST is administered during a **spring testing window** set by the CDE each year:
-
-- **Typical window:** Mid-March through mid-June
-- **Exact dates** are set by each Local Education Agency (LEA) / district
-- Districts have flexibility within the state window
+### 2025–26 Administration
+- **State window:** February 24 – June 2, 2026
+- **Earliest possible start:** January 20, 2026
+- **Minimum requirement:** Each testing window must contain at least **25 instructional days**
+- Districts set their own specific dates within the state window
 - Make-up testing is allowed within the window
+
+### Grades Tested
+- **Grade 5** — summative
+- **Grade 8** — summative
+- **High School** — once (grade 10, 11, or 12 as determined by the LEA/district)
 
 ---
 
 ## Test Format
 
-### Segments
+### Segment Structure
 
-Each grade level has **2 segments**:
+Each grade level has **6 content segments plus a student survey**:
 
-| Segment | Content |
-|---------|---------|
-| **Segment 1** | Mix of performance tasks (PTs) and discrete items |
-| **Segment 2** | Mix of performance tasks (PTs) and discrete items |
+| Segment Group | Segments | Content | Item Types |
+|---------------|----------|---------|------------|
+| **Segment A** | 1, 2, 3 | Discrete (stand-alone) items | SR, CR, Table Fill-In, Graphing |
+| **Segment B** | 4, 5, 6 | Performance Tasks (PTs) | Multi-item clusters around a single phenomenon |
+| **Survey** | — | Student experience questions | 3–4 questions |
 
-Students must complete Segment 1 before beginning Segment 2.
+- **Segment A** items are individual questions not grouped around a single phenomenon
+- **Segment B** contains at least one Performance Task from **each** of the three science domains (PS, LS, ESS)
+- Each PT is a cluster of **4–6 items** built around a single observable science phenomenon
 
 ### Item Types
 
-| Item Type | Description | Typical Count |
-|-----------|-------------|---------------|
-| **Performance Tasks (PTs)** | Multi-part scenarios requiring extended reasoning; include simulations, data analysis, modeling | 2–4 per test |
-| **Discrete Items** | Standalone items; shorter than PTs | 20–30 per test |
-| **Constructed Response (CR)** | Open-ended written responses scored with rubrics | 3–6 per test |
-| **Selected Response (SR)** | Multiple-choice or multi-select | Most common discrete type |
-| **Technology-Enhanced (TE)** | Drag-and-drop, simulations, graphing, sorting, matching, hot spots | Integrated throughout |
+| Item Type | Description | Scoring |
+|-----------|-------------|---------|
+| **Selected Response (SR)** | Multiple-choice or multi-select items | Machine-scored |
+| **Constructed Response (CR)** | Open-ended written responses requiring scientific reasoning | 2 points; hand-scored by educators |
+| **Table Fill-In** | Students complete data tables | Machine-scored |
+| **Graphing** | Students create or manipulate graphs | Machine-scored |
+| **Performance Tasks (PTs)** | Multi-part scenarios (4–6 items) around a science phenomenon; assess 2–3 PEs within a single domain; include at least one CR item | Mixed scoring |
 
 ### Three-Dimensional Assessment
 
@@ -83,6 +91,8 @@ This means items are not simple factual recall — they require students to *app
 
 ## Domains and Reporting Categories
 
+The CAST assesses three core science domains. Engineering (ETS) is **integrated** into the other three domains rather than assessed as a standalone section. Each student receives at least one Performance Task from each domain.
+
 ### Grade 5
 
 | Domain | Abbreviation | Approximate % of Test |
@@ -90,7 +100,7 @@ This means items are not simple factual recall — they require students to *app
 | Physical Science | PS | ~25% |
 | Life Science | LS | ~30% |
 | Earth and Space Science | ESS | ~30% |
-| Engineering, Technology & Applications | ETS | ~15% |
+| Engineering (integrated) | ETS | ~15% |
 
 ### Grade 8
 
@@ -99,9 +109,9 @@ This means items are not simple factual recall — they require students to *app
 | Physical Science | PS | ~30% |
 | Life Science | LS | ~30% |
 | Earth and Space Science | ESS | ~25% |
-| Engineering, Technology & Applications | ETS | ~15% |
+| Engineering (integrated) | ETS | ~15% |
 
-> **Note:** Percentages are approximate. The CAST Blueprint provides the authoritative domain weights.
+> **Note:** Percentages are approximate. The [CAST Blueprint](../pdfs/CAST-Blueprint.pdf) provides the authoritative domain weights.
 
 ---
 
@@ -109,12 +119,20 @@ This means items are not simple factual recall — they require students to *app
 
 ### Achievement Levels
 
-| Level | Code | Description |
-|-------|------|-------------|
-| **Standard Exceeded** | 4 | Demonstrates thorough understanding of CA NGSS |
-| **Standard Met** | 3 | Demonstrates adequate understanding |
-| **Standard Nearly Met** | 2 | Demonstrates partial understanding |
-| **Standard Not Met** | 1 | Demonstrates minimal understanding |
+| Level | Label | Description |
+|-------|-------|-------------|
+| 4 | **Standard Exceeded** | Demonstrates thorough understanding of CA NGSS |
+| 3 | **Standard Met** | Demonstrates adequate understanding |
+| 2 | **Standard Nearly Met** | Demonstrates partial understanding |
+| 1 | **Standard Not Met** | Demonstrates minimal understanding |
+
+### Scale Score Ranges
+
+| Grade | Level 1 (Not Met) | Level 2 (Nearly Met) | Level 3 (Met) | Level 4 (Exceeded) |
+|-------|-------------------|----------------------|---------------|---------------------|
+| **Grade 5** | 150–178 | 179–213 | 214–230 | 231–250 |
+| **Grade 8** | 350–377 | 378–414 | 415–432 | 433–450 |
+| **High School** | 550–575 | 576–614 | 615–635 | 636–650 |
 
 ### Score Reporting
 
@@ -122,14 +140,15 @@ This means items are not simple factual recall — they require students to *app
 - **Achievement level** — one of the four levels above
 - **Domain-level performance** — relative strengths/weaknesses by domain
 - Scores are reported at **student, school, district, county, and state** levels
-- Results are available on the [CAASPP reporting site](https://caaspp-elpac.cde.ca.gov/caaspp/)
+- Results are available on the [CAASPP reporting site](https://caaspp-elpac.ets.org/caaspp/)
+- Statewide, approximately **31% of students** meet or exceed the standard on CAST
 
 ### Constructed Response Scoring
 
-- Scored using **rubrics** (typically 0–3 or 0–4 point scales)
+- Worth **2 points** each
+- **Hand-scored by educators** (not machine-scored)
 - Rubrics assess the **quality of reasoning and evidence**, not just correctness
-- Human scoring with AI-assisted second scoring for reliability
-- Exemplar scored responses are published by CDE (see PDFs)
+- Exemplar scored responses are published by CDE (see [scoring guide PDFs](../pdfs/))
 
 ---
 
@@ -145,63 +164,69 @@ This means items are not simple factual recall — they require students to *app
 | Zoom/Magnification | Enlarge text and images |
 | Line Reader | Mask surrounding text to focus on one line |
 | Mark for Review | Flag items to return to later within a segment |
-| Writing Tools | Spell check for constructed response items |
 
-### Grade-Specific Tools
+### Grade-Specific Embedded Tools
 
 | Tool | Grade 5 | Grade 8 | HS |
 |------|---------|---------|-----|
-| Basic Calculator | Where applicable | Where applicable | Where applicable |
-| Scientific Calculator | — | Where applicable | Where applicable |
-| Periodic Table | — | Yes | Yes |
-| Reference Sheets | Where applicable | Where applicable | Where applicable |
+| **Calculator** | Four-function (basic) | Desmos Scientific | Desmos Scientific |
+| **Periodic Table** | Not available | Available (EN/ES) | Available (EN/ES) |
+| **Reference Sheet** | Not available | Available (EN/ES) | Available (EN/ES) |
+
+- The **Desmos calculator** is embedded on-screen within the test delivery system
+- Periodic table and reference sheets are available in both **English and Spanish**
+- Printable 11x17 enlargements are available for students who need them
+- The same Desmos calculators are available on the [Desmos website](https://www.desmos.com/) for classroom practice
 
 ---
 
 ## Accessibility
 
-The CAST follows the CAASPP accessibility framework with three tiers:
+The CAST follows the CAASPP three-tier accessibility framework:
 
 ### Tier 1: Universal Tools
-Available to **all students** without special authorization:
-- Highlighter, strikethrough, zoom, notepad, line reader
+Available to **all students** based on student preference — no permission needed:
+- Highlighter, strikethrough, zoom, notepad, line reader, calculator, mark for review
 
 ### Tier 2: Designated Supports
-Require **educator authorization** (set in TOMS):
+Available when determined by **an educator or team of educators** (with parent/guardian and student input), or specified in IEP/504:
 - Color contrast settings
-- Text-to-speech (for items, not passages)
-- Translated glossaries (available in 17+ languages)
+- Text-to-speech
+- Translated glossaries
 - Separate setting
-- Simplified test directions
+- Specified area/setting
 
 ### Tier 3: Accommodations
-Require **IEP or Section 504 plan**:
+Must be specified in the student's **IEP or Section 504 plan**:
 - Braille
+- American Sign Language (ASL) video
 - Closed captioning
-- ASL video
+- Print-on-demand
 - Speech-to-text
 - Scribe
-- Large print
 - Alternate response options
+
+Each resource can be either **embedded** (built into the testing platform) or **non-embedded** (provided outside the platform). The full matrix is published in the [California Assessment Accessibility Resources Matrix](https://www.caaspp-elpac.org/resources/preparation/accessibility-resources/matrix).
 
 ---
 
 ## Practice and Training Tests
 
-### Available Resources
+### Three Types of Preparation Resources
 
-| Resource | Description | Access |
-|----------|-------------|--------|
-| **Practice Tests** | Full-length practice tests mirroring the CAST format | [CAASPP Practice Tests](https://www.caaspp.org/practice-and-training/) |
-| **Training Tests** | Short tutorials showing how to use the testing interface | [CAASPP Training Tests](https://www.caaspp.org/practice-and-training/) |
-| **Interim Assessments** | Formative assessments available to educators year-round | Through TOMS (educator login required) |
+| Resource | Purpose | Audience |
+|----------|---------|----------|
+| **Training Tests** | Familiarize students with the test interface, navigation, and item types; not content-focused | Students new to the testing platform |
+| **Practice Tests** | Full content-aligned practice with items similar to the summative; includes scoring guides | All students preparing for CAST |
+| **Interim Assessments** | Classroom-embedded formative/benchmark assessments with real test items; hand-scoring required for CR items | Teachers for instructional planning |
 
 ### Practice Test Features
 - Available for **Grades 5, 8, and HS**
-- Include **all item types** (PT, CR, SR, TE)
+- Include **all item types** (PT, CR, SR, Table Fill-In, Graphing)
 - Use the **same testing platform** as the operational CAST
 - **No login required** for practice tests
 - Can be taken **unlimited times**
+- Access at [CAASPP Practice and Training Tests](https://www.caaspp-elpac.org/resources/preparation/practice-and-training-tests)
 
 ---
 
@@ -224,3 +249,15 @@ Require **IEP or Section 504 plan**:
 - Secure browser prevents access to other applications during testing
 - Test content cannot be copied, photographed, or shared
 - Violations are reported through the CAASPP incident reporting system
+
+---
+
+## Sources
+
+- [CDE CAST Main Page](https://www.cde.ca.gov/ta/tg/ca/caasppscience.asp)
+- [CAASPP-ELPAC CAST Page](https://www.caaspp-elpac.org/assessments/caaspp/cast)
+- [Organization of the CAST (PDF)](https://www.caaspp-elpac.org/s/docs/organizationcast.pdf)
+- [CAST Scale Score Ranges](https://www.cde.ca.gov/ta/tg/ca/castscalescores.asp)
+- [CAST Blueprint (PDF)](https://www.cde.ca.gov/ta/tg/ca/documents/castblueprint.pdf)
+- [CAST Fact Sheet (PDF)](https://www.cde.ca.gov/ta/tg/ca/documents/castfactsheet23.pdf)
+- [Accessibility Resources Matrix](https://www.caaspp-elpac.org/resources/preparation/accessibility-resources/matrix)
