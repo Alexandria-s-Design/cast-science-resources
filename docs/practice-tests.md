@@ -8,11 +8,18 @@ Comprehensive directory of practice tests, sample items, and assessment preparat
 
 The most important preparation resource. These use the **same testing platform** as the real CAST.
 
+### How to Access (No Login Required)
+1. Go to the **Student Testing Portal**: https://capt.cambiumtds.com/student/?a=Student
+2. Select **"Continue as Guest"** then **"Guest Session"**
+3. Select the grade level
+4. Choose **"California Science Test"** as the test type
+5. Select either **"Practice Test"** or **"Training Test"**
+
 | Resource | Grade Levels | URL |
 |----------|-------------|-----|
 | **Practice Tests** | Grade 5, 8, HS | [CAASPP Practice Tests](https://www.caaspp-elpac.org/resources/preparation/practice-and-training-tests) |
 | **Training Tests** | Grade 5, 8, HS | Same link above — Training Tests tab |
-| **Interim Assessments** | Varies | Available through TOMS (requires district login) |
+| **Interim Assessments** | Varies | Available through TOMS (requires educator login) |
 
 ### Practice Test Features
 - **No login required** — anyone can access
@@ -20,6 +27,22 @@ The most important preparation resource. These use the **same testing platform**
 - Include **all item types**: Selected Response, Constructed Response, Table Fill-In, Graphing, Performance Tasks
 - Use the **same secure browser interface** as the real test
 - Available in **English and Spanish**
+- Include **three Performance Tasks** (one per science domain: PS, LS, ESS)
+
+### Interim Assessment Blocks (IABs) — Educator Access Only
+- **Requires** educator login through TOMS (Test Operations Management System)
+- **Grades 3–5:** Each IAB assesses all three science domains in one test
+- **MS & HS:** Three separate IABs, each assessing a single science domain
+- **Structure:** Two segments per IAB (discrete items + performance task)
+- **Lookup Tool:** [IA Lookup](https://www.caaspp-elpac.org/assessments/interim/caaspp-and-elpac/interim-assessment-lookup)
+- **Video Series:** [IA Videos](https://www.caaspp-elpac.org/assessments/interim/caaspp-and-elpac/interim-assessment-video-series)
+
+### Quick Reference Guides (in `pdfs/`)
+| File | Description |
+|------|-------------|
+| `CAST-QRG-Access-Practice-Tests.pdf` | How to access practice and training tests |
+| `CAST-QRG-Administer-Test.pdf` | How to administer tests with session IDs |
+| `CAST-Organization.pdf` | Organization of the California Science Test |
 
 ---
 
@@ -27,12 +50,23 @@ The most important preparation resource. These use the **same testing platform**
 
 Located in [`../pdfs/`](../pdfs/):
 
-| File | Description |
-|------|-------------|
+### Scoring Guides
+| File | Grade |
+|------|-------|
+| `Grade-5-Scoring-Guide.pdf` | Grade 5 Practice Test Scoring Guide |
+| `Grade-5-Scoring-Guide-2024-25.pdf` | Grade 5 Scoring Guide (2024–25 edition) |
+| `Grade-5-Scoring-Guide-Braille.pdf` | Grade 5 Scoring Guide (Braille) |
+| `Grade-8-Scoring-Guide.pdf` | Grade 8 Practice Test Scoring Guide |
+| `Grade-8-Scoring-Guide-Braille.pdf` | Grade 8 Scoring Guide (Braille) |
+| `HS-Scoring-Guide.pdf` | High School Practice Test Scoring Guide |
+| `HS-Scoring-Guide-Braille.pdf` | High School Scoring Guide (Braille) |
+
+### Constructed Response Annotated Examples
+| File | Grade |
+|------|-------|
 | `Grade-5-Constructed-Response-Examples.pdf` | Grade 5 CR items with scored student responses |
 | `Grade-8-Constructed-Response-Examples.pdf` | Grade 8 CR items with scored student responses |
-| `Grade-8-Scoring-Guide.pdf` | Rubrics and scoring guidelines for Grade 8 |
-| `Grade-5-CAASPP-Scoring-Guide.pdf` | CAASPP scoring guide for Grade 5 |
+| `HS-Constructed-Response-Examples.pdf` | High School CR items with scored student responses |
 
 ---
 
@@ -150,14 +184,48 @@ Located in [`../practice-tests/caa-alternate/`](../practice-tests/caa-alternate/
 
 ## Online Interactive Practice Resources
 
-| Resource | URL | Description |
-|----------|-----|-------------|
-| CAASPP Practice Tests | https://www.caaspp-elpac.org/resources/preparation/practice-and-training-tests | Official online practice (same platform as real test) |
-| CAASPP Digital Library | https://www.caaspp-elpac.org/resources/digital-library | Formative assessment resources |
-| NGSS@NSTA Hub | https://ngss.nsta.org/ | Standards search, classroom resources |
-| PhET Simulations | https://phet.colorado.edu/ | Interactive science simulations (free) |
-| CK-12 | https://www.ck12.org/ | Free science practice by standard |
-| OpenSciEd | https://www.openscied.org/ | Free curriculum with embedded assessments |
+### Official
+| Resource | URL | Free? | Description |
+|----------|-----|-------|-------------|
+| **CAASPP Practice Tests** | [capt.cambiumtds.com](https://capt.cambiumtds.com/student/?a=Student) | Yes | Official tests on same platform as real CAST |
+| **CAASPP Digital Library** | [caaspp-elpac.org](https://www.caaspp-elpac.org/resources/digital-library) | Yes | Formative assessment resources for educators |
+| **Connecticut NGSS Practice** | [ct.portal.cambiumast.com](https://ct.portal.cambiumast.com/ngss.html) | Yes | Same Cambium test engine as CA — good for interface practice |
+
+### Third-Party (Free)
+| Resource | URL | Grades | Description |
+|----------|-----|--------|-------------|
+| **Khan Academy (NGSS)** | [khanacademy.org](https://www.khanacademy.org/khan-for-educators/teacher-resources-ngss) | MS, HS | Free NGSS-aligned videos, exercises, quizzes, unit tests |
+| **PhET Simulations** | [phet.colorado.edu](https://phet.colorado.edu/) | 3–12 | Interactive science simulations |
+| **CK-12** | [ck12.org](https://www.ck12.org/) | All | Free science textbooks and simulations |
+| **OpenSciEd** | [openscied.org](https://www.openscied.org/) | MS, HS | Free curriculum with embedded assessments |
+| **NGSS@NSTA Hub** | [ngss.nsta.org](https://ngss.nsta.org/) | All | Standards search, classroom resources |
+| **NGSS Sample Tasks** | [nextgenscience.org](https://www.nextgenscience.org/resources/classroom-sample-tasks) | MS, HS | Free PDF/DOCX classroom assessment tasks |
+| **Quizlet CAST Flashcards** | [quizlet.com](https://quizlet.com/206465573/california-science-test-cast-flash-cards/) | 5, 8 | Teacher-created CAST flashcard sets |
+
+### Third-Party (Paid / Freemium)
+| Resource | URL | Grades | Description |
+|----------|-----|--------|-------------|
+| **Education4Equity** | [education4equity.com](https://education4equity.com) | 5, 8, HS | Dedicated CAST prep publisher — student & teacher editions |
+| **IXL Science** | [ixl.com](https://www.ixl.com/science/skill-plans/caaspp-cast-grade-5) | 5+ | Skill-by-skill CAST alignment, limited free daily |
+| **Pear Assessment / Edulastic** | [peardeck.com](https://www.peardeck.com/assessments/state-test-prep/caaspp-practice-test) | MS, HS | CAASPP-style interface with TEIs, free tier available |
+| **Teachers Pay Teachers** | [teacherspayteachers.com](https://www.teacherspayteachers.com/browse?search=cast+science+test+practice) | 5, 8, HS | Teacher-created CAST prep ($3–$15 range) |
+
+### Amazon CAST Prep Books (Paid)
+| Book | Grade | Description |
+|------|-------|-------------|
+| *Mastering CAST for Grade 5* (Karry S.) | 5 | Review notes + timed practice tests |
+| *California Grade 5 Science CAST Practice Tests* (BrightPath Prep) | 5 | 4 full-length tests, 160+ questions |
+| *Mastering CAST for Grade 8* (Karry S.) | 8 | Practice workbook with review notes |
+| *California CAASPP Practice Tests* (BrightPath Prep) | Multi | SBAC + CAST combined series |
+
+### District-Created Public Resources
+| District | URL |
+|----------|-----|
+| Magnolia School District | [magnoliasd.org/cast](https://www.magnoliasd.org/apps/pages/cast) |
+| San Luis Coastal USD | [slcusd.org/cast](https://www.slcusd.org/academics/assessments/caaspp/cast) |
+| LAUSD Student Testing | [lausd.org/cast](https://www.lausd.org/Page/15002) |
+| Pasadena USD | [pusd.us/cast](https://www.pusd.us/departments/its/pusd-caaspp-homepage/california-science-tests) |
+| CA Association of Science Educators | [cascience.org/cast](https://cascience.org/ngss/assessments/california-science-test-cast) |
 
 ---
 
@@ -168,12 +236,14 @@ Located in [`../practice-tests/caa-alternate/`](../practice-tests/caa-alternate/
 2. Take **CAASPP Practice Tests** to experience real item types
 3. Review **Constructed Response Exemplars** to understand scoring expectations
 4. Use **Item Specifications** to understand what each PE requires
+5. Practice with **PhET Simulations** and **Khan Academy** for content reinforcement
 
 ### For Teachers
 1. Use **Interim Assessments** (through TOMS) for formative data
 2. Reference **Item Specifications** when creating classroom assessments
 3. Use **Scoring Guides** to calibrate CR scoring
 4. Align instruction to the **three-dimensional** assessment approach (SEP + DCI + CCC)
+5. Use **Pear Assessment** or **Education4Equity** for additional practice items
 
 ---
 
@@ -186,5 +256,6 @@ Located in [`../practice-tests/caa-alternate/`](../practice-tests/caa-alternate/
 | NGSS Assessment Tasks | 10 | `practice-tests/ngss-tasks/` |
 | CST Legacy Released Questions | 3 | `practice-tests/cst-legacy/` |
 | CAA Alternate Practice | 20 | `practice-tests/caa-alternate/` |
-| Official Scoring Guides | 4 | `pdfs/` |
-| **Total practice/assessment files** | **217** | — |
+| Official Scoring Guides & Exemplars | 10 | `pdfs/` |
+| Quick Reference Guides | 3 | `pdfs/` |
+| **Total practice/assessment files** | **226** | — |
