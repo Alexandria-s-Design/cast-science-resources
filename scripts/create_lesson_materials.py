@@ -888,6 +888,35 @@ def create_powerpoint(images):
     if images.get('stem'):
         add_image_to_slide(slide, images['stem'], 5.8, 2.5, 3.8, 3.5, center=True)
 
+    # Career Connection blurb
+    career_box = slide.shapes.add_textbox(Inches(0.5), Inches(6.3), Inches(9.0), Inches(0.95))
+    career_box.fill.solid()
+    career_box.fill.fore_color.rgb = RGBColor(0x1A, 0x23, 0x7E)  # NAVY background
+    tf = career_box.text_frame
+    tf.word_wrap = True
+    tf.margin_left = Pt(8)
+    tf.margin_right = Pt(8)
+    tf.margin_top = Pt(4)
+    tf.margin_bottom = Pt(4)
+
+    p = tf.paragraphs[0]
+    p.text = "REAL CAREER CONNECTION: "
+    p.font.size = Pt(11)
+    p.font.bold = True
+    p.font.color.rgb = RGBColor(0xFF, 0xA5, 0x00)  # orange label
+
+    run = p.add_run()
+    run.text = "Fire Protection Engineers design real firebreaks to protect communities — and earn $95,000–$150,000/year. "
+    run.font.size = Pt(11)
+    run.font.bold = False
+    run.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
+
+    run2 = p.add_run()
+    run2.text = "Environmental Scientists studying wildfire systems earn $75,000–$120,000/year. The skills you're using TODAY are the same ones they use on the job!"
+    run2.font.size = Pt(11)
+    run2.font.bold = False
+    run2.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
+
     add_slide_number(slide, 9)
 
     prs.save(output_path)
