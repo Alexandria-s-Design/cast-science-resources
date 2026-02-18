@@ -1,7 +1,19 @@
 """
-ModelIt Lesson Materials Generator
-Creates PowerPoint, Student Worksheets, and Teacher's Guide
-for the California Wildfires lesson (G05-L01)
+ModelIt Lesson Materials Generator v2
+Creates PowerPoint, Student Activity Pack (Word), and Teacher's Guide (Word)
+matching the official TPT branding style.
+
+Output: .pptx for presentations, .docx for documents (user converts to PDF later)
+
+Brand Elements:
+- Blue diagonal geometric corners (navy, medium blue, light blue layers)
+- ModelIt! logo with molecule/network icon
+- Science doodle border concept for B&W worksheet pages
+- Student Name/Date on every page
+- STEM Challenge included with detailed teacher guidance
+- Recording Page included
+- NGSS unpacking with Framework references
+- LEVER methodology explanation
 """
 
 from pptx import Presentation
@@ -9,846 +21,1349 @@ from pptx.util import Inches, Pt
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.enum.shapes import MSO_SHAPE
-from reportlab.lib.pagesizes import letter
-from reportlab.lib.units import inch
-from reportlab.lib.colors import HexColor, black, white, gray
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.pdfgen import canvas
-from reportlab.lib.enums import TA_CENTER, TA_LEFT
+from docx import Document
+from docx.shared import Inches as DocxInches, Pt as DocxPt, RGBColor as DocxRGB
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.table import WD_TABLE_ALIGNMENT
+from docx.enum.style import WD_STYLE_TYPE
+from docx.oxml.ns import qn
+from docx.oxml import OxmlElement
 import os
 
-# Brand Colors
-BRAND_BLUE_DARK = RGBColor(0x1A, 0x47, 0x80)  # Deep scientific blue
-BRAND_BLUE_MID = RGBColor(0x2E, 0x86, 0xAB)   # Cell membrane blue
-BRAND_BLUE_LIGHT = RGBColor(0x7E, 0xC8, 0xE3) # Light accent
-BRAND_NAVY = RGBColor(0x0D, 0x1B, 0x2A)       # Dark text
-BRAND_WHITE = RGBColor(0xFF, 0xFF, 0xFF)
+# ============================================
+# BRAND COLORS
+# ============================================
+NAVY = RGBColor(0x0D, 0x1B, 0x2A)
+BRAND_BLUE = RGBColor(0x1A, 0x47, 0x80)
+MID_BLUE = RGBColor(0x2E, 0x86, 0xAB)
+LIGHT_BLUE = RGBColor(0x7E, 0xC8, 0xE3)
+SKY_BLUE = RGBColor(0x5D, 0xB7, 0xDE)
+WHITE = RGBColor(0xFF, 0xFF, 0xFF)
+DARK_TEXT = RGBColor(0x1A, 0x1A, 0x1A)
 
-# Hex versions for PDF
-HEX_BLUE_DARK = HexColor('#1A4780')
-HEX_BLUE_MID = HexColor('#2E86AB')
-HEX_BLUE_LIGHT = HexColor('#7EC8E3')
-HEX_NAVY = HexColor('#0D1B2A')
+# Word colors
+DOCX_NAVY = DocxRGB(0x0D, 0x1B, 0x2A)
+DOCX_BRAND_BLUE = DocxRGB(0x1A, 0x47, 0x80)
+DOCX_MID_BLUE = DocxRGB(0x2E, 0x86, 0xAB)
 
-OUTPUT_DIR = os.path.join(os.path.dirname(__file__), '..', 'materials', 'G05-L01')
+# Lesson configuration
+LESSON_ID = "G05-L01"
+LESSON_TITLE = "When Trees Become Matches"
+LESSON_SUBTITLE = "California's Burning Season and the Earth Systems That Fuel It"
+NGSS_STANDARD = "5-ESS2-1"
+GRADE_LEVEL = "5th Grade"
+
+OUTPUT_DIR = os.path.join(os.path.dirname(__file__), '..', 'materials', 'grade-05', LESSON_ID)
+
 
 def ensure_output_dir():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
+    os.makedirs(os.path.join(OUTPUT_DIR, 'images'), exist_ok=True)
+
 
 # ============================================
-# POWERPOINT CREATION
+# POWERPOINT FUNCTIONS
 # ============================================
 
-def add_title_slide(prs, title, subtitle=""):
-    """Add a title slide with blue gradient feel"""
-    slide_layout = prs.slide_layouts[6]  # Blank
-    slide = prs.slides.add_slide(slide_layout)
+def add_diagonal_corners(slide, prs, position='both'):
+    """Add the signature blue diagonal corner design"""
+    if position in ['top', 'both']:
+        shape1 = slide.shapes.add_shape(MSO_SHAPE.RIGHT_TRIANGLE,
+            Inches(-0.5), Inches(-0.5), Inches(4), Inches(1.5))
+        shape1.fill.solid()
+        shape1.fill.fore_color.rgb = NAVY
+        shape1.line.fill.background()
 
-    # Background shape
-    bg = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, 0, 0, prs.slide_width, prs.slide_height)
-    bg.fill.solid()
-    bg.fill.fore_color.rgb = BRAND_BLUE_DARK
-    bg.line.fill.background()
+        shape2 = slide.shapes.add_shape(MSO_SHAPE.PARALLELOGRAM,
+            Inches(2.5), Inches(0), Inches(3), Inches(0.8))
+        shape2.fill.solid()
+        shape2.fill.fore_color.rgb = MID_BLUE
+        shape2.line.fill.background()
 
-    # Title
-    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(2.5), Inches(9), Inches(1.5))
-    tf = title_box.text_frame
-    tf.word_wrap = True
+        shape3 = slide.shapes.add_shape(MSO_SHAPE.PARALLELOGRAM,
+            Inches(3.5), Inches(0.5), Inches(2.5), Inches(0.4))
+        shape3.fill.solid()
+        shape3.fill.fore_color.rgb = LIGHT_BLUE
+        shape3.line.fill.background()
+
+    if position in ['bottom', 'both']:
+        shape4 = slide.shapes.add_shape(MSO_SHAPE.RIGHT_TRIANGLE,
+            Inches(6.5), Inches(6), Inches(4), Inches(1.5))
+        shape4.fill.solid()
+        shape4.fill.fore_color.rgb = NAVY
+        shape4.line.fill.background()
+        shape4.rotation = 180
+
+        shape5 = slide.shapes.add_shape(MSO_SHAPE.PARALLELOGRAM,
+            Inches(4.5), Inches(6.7), Inches(3), Inches(0.8))
+        shape5.fill.solid()
+        shape5.fill.fore_color.rgb = MID_BLUE
+        shape5.line.fill.background()
+
+        shape6 = slide.shapes.add_shape(MSO_SHAPE.PARALLELOGRAM,
+            Inches(4), Inches(6.3), Inches(2.5), Inches(0.4))
+        shape6.fill.solid()
+        shape6.fill.fore_color.rgb = LIGHT_BLUE
+        shape6.line.fill.background()
+
+
+def add_modelit_logo(slide, x, y, width=3):
+    """Add ModelIt! logo box"""
+    logo_bg = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,
+        Inches(x), Inches(y), Inches(width), Inches(0.9))
+    logo_bg.fill.solid()
+    logo_bg.fill.fore_color.rgb = SKY_BLUE
+    logo_bg.line.fill.background()
+
+    icon = slide.shapes.add_shape(MSO_SHAPE.OVAL,
+        Inches(x + 0.15), Inches(y + 0.25), Inches(0.4), Inches(0.4))
+    icon.fill.solid()
+    icon.fill.fore_color.rgb = WHITE
+    icon.line.fill.background()
+
+    text_box = slide.shapes.add_textbox(
+        Inches(x + 0.6), Inches(y + 0.15), Inches(width - 0.8), Inches(0.6))
+    tf = text_box.text_frame
     p = tf.paragraphs[0]
-    p.text = title
-    p.font.size = Pt(44)
-    p.font.bold = True
-    p.font.color.rgb = BRAND_WHITE
-    p.alignment = PP_ALIGN.CENTER
-
-    # Subtitle
-    if subtitle:
-        sub_box = slide.shapes.add_textbox(Inches(0.5), Inches(4), Inches(9), Inches(1))
-        tf = sub_box.text_frame
-        p = tf.paragraphs[0]
-        p.text = subtitle
-        p.font.size = Pt(24)
-        p.font.color.rgb = BRAND_BLUE_LIGHT
-        p.alignment = PP_ALIGN.CENTER
-
-    # ModelIt branding
-    brand_box = slide.shapes.add_textbox(Inches(0.5), Inches(6.5), Inches(9), Inches(0.5))
-    tf = brand_box.text_frame
-    p = tf.paragraphs[0]
-    p.text = "ModelIt | Systems Thinking for K-12"
-    p.font.size = Pt(14)
-    p.font.color.rgb = BRAND_BLUE_LIGHT
-    p.alignment = PP_ALIGN.CENTER
-
-    return slide
-
-def add_content_slide(prs, title, bullets, accent_color=BRAND_BLUE_MID):
-    """Add a content slide with bullet points"""
-    slide_layout = prs.slide_layouts[6]  # Blank
-    slide = prs.slides.add_slide(slide_layout)
-
-    # Accent bar on left
-    bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, 0, 0, Inches(0.15), prs.slide_height)
-    bar.fill.solid()
-    bar.fill.fore_color.rgb = accent_color
-    bar.line.fill.background()
-
-    # Title
-    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
-    tf = title_box.text_frame
-    p = tf.paragraphs[0]
-    p.text = title
+    p.text = "ModelIt!"
     p.font.size = Pt(32)
     p.font.bold = True
-    p.font.color.rgb = BRAND_NAVY
+    p.font.color.rgb = NAVY
+    p.font.name = "Comic Sans MS"
 
-    # Bullets
-    content_box = slide.shapes.add_textbox(Inches(0.6), Inches(1.3), Inches(8.8), Inches(5))
-    tf = content_box.text_frame
-    tf.word_wrap = True
 
-    for i, bullet in enumerate(bullets):
-        if i == 0:
-            p = tf.paragraphs[0]
-        else:
-            p = tf.add_paragraph()
-        p.text = f"• {bullet}"
-        p.font.size = Pt(22)
-        p.font.color.rgb = BRAND_NAVY
-        p.space_after = Pt(12)
+def add_image_placeholder(slide, x, y, width, height, description):
+    """Add a placeholder box for images with description"""
+    box = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,
+        Inches(x), Inches(y), Inches(width), Inches(height))
+    box.fill.solid()
+    box.fill.fore_color.rgb = RGBColor(0xF0, 0xF5, 0xFA)
+    box.line.color.rgb = MID_BLUE
+    box.line.width = Pt(2)
 
-    # Footer
-    footer = slide.shapes.add_textbox(Inches(0.5), Inches(6.8), Inches(4), Inches(0.3))
-    tf = footer.text_frame
-    p = tf.paragraphs[0]
-    p.text = "ModelIt | G05-L01"
-    p.font.size = Pt(10)
-    p.font.color.rgb = RGBColor(0x99, 0x99, 0x99)
-
-    return slide
-
-def add_question_slide(prs, question, visual_desc=""):
-    """Add a driving question slide"""
-    slide_layout = prs.slide_layouts[6]
-    slide = prs.slides.add_slide(slide_layout)
-
-    # Background
-    bg = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, 0, 0, prs.slide_width, prs.slide_height)
-    bg.fill.solid()
-    bg.fill.fore_color.rgb = BRAND_BLUE_MID
-    bg.line.fill.background()
-
-    # Question mark accent
-    q_box = slide.shapes.add_textbox(Inches(0.3), Inches(0.3), Inches(1), Inches(1.5))
-    tf = q_box.text_frame
-    p = tf.paragraphs[0]
-    p.text = "?"
-    p.font.size = Pt(80)
-    p.font.bold = True
-    p.font.color.rgb = BRAND_BLUE_LIGHT
-
-    # Question text
-    q_text = slide.shapes.add_textbox(Inches(0.5), Inches(2.2), Inches(9), Inches(2))
-    tf = q_text.text_frame
+    text_box = slide.shapes.add_textbox(
+        Inches(x + 0.2), Inches(y + height/2 - 0.3),
+        Inches(width - 0.4), Inches(0.6))
+    tf = text_box.text_frame
     tf.word_wrap = True
     p = tf.paragraphs[0]
-    p.text = question
-    p.font.size = Pt(36)
-    p.font.bold = True
-    p.font.color.rgb = BRAND_WHITE
-    p.alignment = PP_ALIGN.CENTER
-
-    if visual_desc:
-        desc_box = slide.shapes.add_textbox(Inches(1), Inches(5), Inches(8), Inches(1))
-        tf = desc_box.text_frame
-        p = tf.paragraphs[0]
-        p.text = f"[{visual_desc}]"
-        p.font.size = Pt(14)
-        p.font.italic = True
-        p.font.color.rgb = BRAND_BLUE_LIGHT
-        p.alignment = PP_ALIGN.CENTER
-
-    return slide
-
-def add_activity_slide(prs, activity_num, activity_name, steps):
-    """Add an activity instruction slide"""
-    slide_layout = prs.slide_layouts[6]
-    slide = prs.slides.add_slide(slide_layout)
-
-    # Activity number badge
-    badge = slide.shapes.add_shape(MSO_SHAPE.OVAL, Inches(0.3), Inches(0.3), Inches(0.8), Inches(0.8))
-    badge.fill.solid()
-    badge.fill.fore_color.rgb = BRAND_BLUE_DARK
-    badge.line.fill.background()
-
-    badge_text = slide.shapes.add_textbox(Inches(0.3), Inches(0.45), Inches(0.8), Inches(0.5))
-    tf = badge_text.text_frame
-    p = tf.paragraphs[0]
-    p.text = str(activity_num)
-    p.font.size = Pt(28)
-    p.font.bold = True
-    p.font.color.rgb = BRAND_WHITE
-    p.alignment = PP_ALIGN.CENTER
-
-    # Activity name
-    title_box = slide.shapes.add_textbox(Inches(1.3), Inches(0.35), Inches(8), Inches(0.7))
-    tf = title_box.text_frame
-    p = tf.paragraphs[0]
-    p.text = activity_name
-    p.font.size = Pt(28)
-    p.font.bold = True
-    p.font.color.rgb = BRAND_NAVY
-
-    # Steps
-    content_box = slide.shapes.add_textbox(Inches(0.5), Inches(1.4), Inches(9), Inches(5))
-    tf = content_box.text_frame
-    tf.word_wrap = True
-
-    for i, step in enumerate(steps):
-        if i == 0:
-            p = tf.paragraphs[0]
-        else:
-            p = tf.add_paragraph()
-        p.text = step
-        p.font.size = Pt(20)
-        p.font.color.rgb = BRAND_NAVY
-        p.space_after = Pt(10)
-
-    return slide
-
-def add_diagram_slide(prs, title, description):
-    """Add a slide for diagrams/visuals"""
-    slide_layout = prs.slide_layouts[6]
-    slide = prs.slides.add_slide(slide_layout)
-
-    # Title
-    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.7))
-    tf = title_box.text_frame
-    p = tf.paragraphs[0]
-    p.text = title
-    p.font.size = Pt(28)
-    p.font.bold = True
-    p.font.color.rgb = BRAND_NAVY
-
-    # Placeholder box for diagram
-    diagram_box = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.75), Inches(1.2), Inches(8.5), Inches(4.5))
-    diagram_box.fill.solid()
-    diagram_box.fill.fore_color.rgb = RGBColor(0xF5, 0xF9, 0xFC)
-    diagram_box.line.color.rgb = BRAND_BLUE_LIGHT
-    diagram_box.line.width = Pt(2)
-
-    # Description text
-    desc_box = slide.shapes.add_textbox(Inches(1), Inches(2.8), Inches(8), Inches(1.5))
-    tf = desc_box.text_frame
-    tf.word_wrap = True
-    p = tf.paragraphs[0]
-    p.text = f"[{description}]"
-    p.font.size = Pt(18)
+    p.text = f"[IMAGE: {description}]"
+    p.font.size = Pt(11)
     p.font.italic = True
     p.font.color.rgb = RGBColor(0x66, 0x66, 0x66)
     p.alignment = PP_ALIGN.CENTER
 
-    return slide
 
 def create_powerpoint():
-    """Create the full student PowerPoint"""
+    """Create the student presentation PowerPoint"""
+    output_path = os.path.join(OUTPUT_DIR, f'{LESSON_ID}-Student-Presentation.pptx')
     prs = Presentation()
     prs.slide_width = Inches(10)
     prs.slide_height = Inches(7.5)
 
-    # Slide 1: Title
-    add_title_slide(prs,
-        "When Trees Become Matches",
-        "California burns every year. It's not bad luck — it's science.")
+    # SLIDE 1: Cover
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    add_diagonal_corners(slide, prs)
+    add_modelit_logo(slide, 3.5, 1.8)
 
-    # Slide 2: The Mystery
-    add_question_slide(prs,
-        "Same state. Same trees.\nEvery single year. Why?",
-        "Split image: Beautiful California forest / Same forest on fire")
+    header = slide.shapes.add_textbox(Inches(1), Inches(3.2), Inches(8), Inches(0.6))
+    tf = header.text_frame
+    p = tf.paragraphs[0]
+    p.text = "Student Lesson"
+    p.font.size = Pt(28)
+    p.font.bold = True
+    p.font.color.rgb = NAVY
+    p.alignment = PP_ALIGN.CENTER
 
-    # Slide 3: Driving Question
-    add_question_slide(prs,
-        "How do Earth's systems work together\nto create perfect fire conditions?",
-        "Icons: Atmosphere + Biosphere + Hydrosphere = Fire")
+    title = slide.shapes.add_textbox(Inches(0.5), Inches(3.8), Inches(9), Inches(1.2))
+    tf = title.text_frame
+    p = tf.paragraphs[0]
+    p.text = LESSON_TITLE
+    p.font.size = Pt(44)
+    p.font.bold = True
+    p.font.color.rgb = BRAND_BLUE
+    p.alignment = PP_ALIGN.CENTER
 
-    # Slide 4: What We're Building
-    add_content_slide(prs, "What We're Building Today", [
-        "A cause-and-effect MODEL of wildfire conditions",
-        "Discover how Earth's systems connect",
-        "Predict what happens when conditions change",
-        "Think like a Wildfire Data Scientist"
-    ])
+    sub = tf.add_paragraph()
+    sub.text = LESSON_SUBTITLE
+    sub.font.size = Pt(18)
+    sub.font.italic = True
+    sub.font.color.rgb = DARK_TEXT
+    sub.alignment = PP_ALIGN.CENTER
 
-    # Slide 5: Components Introduction
-    add_content_slide(prs, "The Parts of Our Fire System", [
-        "EXTERNAL — things we CAN'T control",
-        "    Rainfall (weather decides)",
-        "    Wind (nature decides)",
-        "INTERNAL — things that CHANGE based on other things",
-        "    Dry Vegetation (changes based on rain)",
-        "    Fire Spread (what we're trying to understand)"
-    ])
+    add_image_placeholder(slide, 3, 5.2, 4, 1.8,
+        "California hillside showing dry golden grass and scattered trees during fire season. Warm sunset lighting. Culturally diverse community visible in distance.")
 
-    # Slide 6: Activity 1
-    add_activity_slide(prs, 1, "LOCATE — Build Your Fire System", [
-        "STEP 1: Look at the components in ModelIt",
-        "STEP 2: SORT them — which are External? Which are Internal?",
-        "STEP 3: Click the PLUS (+) button to add each component",
-        "STEP 4: You should have 4 components on your canvas",
-        "",
-        "Your teacher will show you how to sort in the video!"
-    ])
+    # SLIDE 2: The Question
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    add_diagonal_corners(slide, prs, 'top')
 
-    # Slide 7: Activity 2
-    add_activity_slide(prs, 2, "ESTABLISH — Connect the Relationships", [
-        "STEP 1: Click the CONNECT icon (top left)",
-        "STEP 2: Draw arrows between related components:",
-        "    • Rainfall → Dry Vegetation",
-        "    • Dry Vegetation → Fire Spread",
-        "    • Wind → Fire Spread",
-        "STEP 3: Set each connection as + (positive) or − (negative)",
-        "",
-        "Ask yourself: When THIS goes up, does THAT go up or down?"
-    ])
+    title = slide.shapes.add_textbox(Inches(0.5), Inches(1.2), Inches(9), Inches(0.8))
+    tf = title.text_frame
+    p = tf.paragraphs[0]
+    p.text = "The Big Question"
+    p.font.size = Pt(36)
+    p.font.bold = True
+    p.font.color.rgb = NAVY
+    p.alignment = PP_ALIGN.CENTER
 
-    # Slide 8: Relationships Diagram
-    add_diagram_slide(prs,
-        "The Chain Reaction",
-        "Diagram: Rainfall —(−)→ Dry Vegetation —(+)→ Fire Spread ←(+)— Wind\n\nWhen rain STOPS, the dominoes fall toward FIRE")
+    question = slide.shapes.add_textbox(Inches(1), Inches(2.5), Inches(8), Inches(1.5))
+    tf = question.text_frame
+    p = tf.paragraphs[0]
+    p.text = "Why does California burn at the same time every year?"
+    p.font.size = Pt(32)
+    p.font.bold = True
+    p.font.color.rgb = BRAND_BLUE
+    p.alignment = PP_ALIGN.CENTER
 
-    # Slide 9: Activity 3
-    add_activity_slide(prs, 3, "VISUALIZE — Run Your Fire Model", [
-        "STEP 1: Click the PLAY button (top left)",
-        "STEP 2: Watch the graph — see how components change",
-        "STEP 3: CREATE A DROUGHT:",
-        "    • Find the LOCK icon next to Rainfall",
-        "    • Lock Rainfall to OFF (0%)",
-        "STEP 4: Watch what happens to Dry Vegetation and Fire Spread",
-        "STEP 5: Lock WIND to ON (100%) — Santa Ana winds!"
-    ])
+    add_image_placeholder(slide, 2, 4, 6, 2.8,
+        "Split image: Left shows green California hillside in spring (rainy season). Right shows same hillside golden/brown in fall (fire season). Diverse group of 5th graders pointing at both images, discussing the difference. 70% students of color.")
 
-    # Slide 10: What The Graph Shows
-    add_diagram_slide(prs,
-        "Reading Your Simulation",
-        "Graph showing: Rainfall at 0% → Dry Vegetation climbing → Fire Spread climbing\n\nYou just simulated California's fire season!")
+    # SLIDE 3: What We'll Build
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    add_diagonal_corners(slide, prs, 'top')
 
-    # Slide 11: Activity 4
-    add_activity_slide(prs, 4, "EXTEND — Play, Research, Expand", [
-        "PLAY TIME! Experiment with your model:",
-        "    • What if rain comes back? How fast does the system recover?",
-        "    • What combination creates the WORST fire conditions?",
-        "",
-        "RESEARCH: What's MISSING from your model?",
-        "    • Temperature / Heat waves?",
-        "    • Humans (campfires, power lines)?",
-        "    • Firefighters?",
-        "",
-        "ADD one new component based on your research!"
-    ])
+    title = slide.shapes.add_textbox(Inches(0.5), Inches(1.2), Inches(9), Inches(0.8))
+    tf = title.text_frame
+    p = tf.paragraphs[0]
+    p.text = "Today We Will Build a Model!"
+    p.font.size = Pt(36)
+    p.font.bold = True
+    p.font.color.rgb = NAVY
+    p.alignment = PP_ALIGN.CENTER
 
-    # Slide 12: Earth Systems Connection
-    add_content_slide(prs, "Earth Systems Working Together", [
-        "ATMOSPHERE — weather, wind, temperature",
-        "BIOSPHERE — plants, trees, vegetation",
-        "HYDROSPHERE — rain, drought, water cycle",
-        "",
-        "Wildfires happen where all three OVERLAP",
-        "Your model shows how they CONNECT"
-    ])
+    content = slide.shapes.add_textbox(Inches(0.8), Inches(2.2), Inches(8.5), Inches(4))
+    tf = content.text_frame
+    tf.word_wrap = True
 
-    # Slide 13: Career Connection
-    add_content_slide(prs, "Career Connection: Wildfire Data Scientist", [
-        "Builds computer models just like yours — but BIGGER",
-        "Predicts where fires will start BEFORE they happen",
-        "Analyzes weather, vegetation, wind, and climate data",
-        "Helps position firefighters and warn communities",
-        "",
-        "SALARY: $95,000 - $150,000+ per year",
-        "",
-        "Your simple fire model? That's step one toward this career."
-    ], accent_color=RGBColor(0xE6, 0x55, 0x00))  # Orange accent for career
+    items = [
+        "Identify the COMPONENTS (parts) of the California fire system",
+        "Connect them with RELATIONSHIPS (how they affect each other)",
+        "Run SIMULATIONS to see what happens during drought",
+        "Make PREDICTIONS about fire conditions"
+    ]
+    for i, item in enumerate(items):
+        p = tf.paragraphs[0] if i == 0 else tf.add_paragraph()
+        p.text = f"{i+1}. {item}"
+        p.font.size = Pt(22)
+        p.font.color.rgb = DARK_TEXT
+        p.space_after = Pt(18)
 
-    # Slide 14: Reflection
-    add_question_slide(prs,
-        "What story does YOUR model tell?",
-        "Think-Pair-Share: Explain your model to a partner")
+    # SLIDE 4: Activity 1 - Sort Components
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    add_diagonal_corners(slide, prs, 'top')
 
-    # Save
-    output_path = os.path.join(OUTPUT_DIR, 'G05-L01-Student-Presentation.pptx')
+    title = slide.shapes.add_textbox(Inches(0.5), Inches(1.2), Inches(9), Inches(0.8))
+    tf = title.text_frame
+    p = tf.paragraphs[0]
+    p.text = "Activity 1: Sort the Components"
+    p.font.size = Pt(36)
+    p.font.bold = True
+    p.font.color.rgb = NAVY
+    p.alignment = PP_ALIGN.CENTER
+
+    content = slide.shapes.add_textbox(Inches(0.8), Inches(2.2), Inches(4.5), Inches(3.5))
+    tf = content.text_frame
+    tf.word_wrap = True
+    p = tf.paragraphs[0]
+    p.text = "Your components:"
+    p.font.size = Pt(20)
+    p.font.bold = True
+
+    components = ["Rainfall", "Dry Vegetation", "Wind", "Fire Spread"]
+    for comp in components:
+        p = tf.add_paragraph()
+        p.text = f"   * {comp}"
+        p.font.size = Pt(20)
+
+    p = tf.add_paragraph()
+    p.text = "\nSort them into two groups!"
+    p.font.size = Pt(18)
+    p.font.italic = True
+    p.font.color.rgb = BRAND_BLUE
+
+    add_image_placeholder(slide, 5.5, 2.2, 4, 3.5,
+        "Screenshot placeholder: ModelIt interface showing component sorting activity. Show the drag-and-drop area with Internal and External labels. Clean, educational style.")
+
+    # SLIDE 5: Activity 2 - Connect
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    add_diagonal_corners(slide, prs, 'top')
+
+    title = slide.shapes.add_textbox(Inches(0.5), Inches(1.2), Inches(9), Inches(0.8))
+    tf = title.text_frame
+    p = tf.paragraphs[0]
+    p.text = "Activity 2: Connect with Arrows"
+    p.font.size = Pt(36)
+    p.font.bold = True
+    p.font.color.rgb = NAVY
+    p.alignment = PP_ALIGN.CENTER
+
+    content = slide.shapes.add_textbox(Inches(0.5), Inches(2.2), Inches(9), Inches(3.5))
+    tf = content.text_frame
+    tf.word_wrap = True
+    p = tf.paragraphs[0]
+    p.text = "Draw arrows to show HOW components affect each other:"
+    p.font.size = Pt(20)
+
+    relationships = [
+        "(+) POSITIVE: When one goes UP, the other goes UP",
+        "(-) NEGATIVE: When one goes UP, the other goes DOWN"
+    ]
+    for rel in relationships:
+        p = tf.add_paragraph()
+        p.text = rel
+        p.font.size = Pt(18)
+        p.space_before = Pt(12)
+
+    p = tf.add_paragraph()
+    p.text = "\nThink: When RAINFALL goes UP, does DRY VEGETATION go UP or DOWN?"
+    p.font.size = Pt(20)
+    p.font.bold = True
+    p.font.color.rgb = BRAND_BLUE
+
+    add_image_placeholder(slide, 2.5, 5, 5, 1.8,
+        "Diagram showing: Rainfall --(-)--> Dry Vegetation --(+)--> Fire Spread <--(+)-- Wind. Clean arrows with +/- labels. Educational style matching ModelIt aesthetic.")
+
+    # SLIDE 6: Activity 3 - Simulate
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    add_diagonal_corners(slide, prs, 'top')
+
+    title = slide.shapes.add_textbox(Inches(0.5), Inches(1.2), Inches(9), Inches(0.8))
+    tf = title.text_frame
+    p = tf.paragraphs[0]
+    p.text = "Activity 3: Run the Simulation!"
+    p.font.size = Pt(36)
+    p.font.bold = True
+    p.font.color.rgb = NAVY
+    p.alignment = PP_ALIGN.CENTER
+
+    content = slide.shapes.add_textbox(Inches(0.5), Inches(2.2), Inches(4.5), Inches(4))
+    tf = content.text_frame
+    tf.word_wrap = True
+    p = tf.paragraphs[0]
+    p.text = "Test these scenarios:"
+    p.font.size = Pt(20)
+    p.font.bold = True
+
+    scenarios = [
+        "1. Drought: Turn RAINFALL OFF",
+        "2. Windy Day: Turn WIND ON",
+        "3. Fire Season: Both conditions!"
+    ]
+    for s in scenarios:
+        p = tf.add_paragraph()
+        p.text = s
+        p.font.size = Pt(18)
+        p.space_before = Pt(10)
+
+    p = tf.add_paragraph()
+    p.text = "\nWatch the graphs!"
+    p.font.size = Pt(20)
+    p.font.bold = True
+    p.font.color.rgb = BRAND_BLUE
+
+    add_image_placeholder(slide, 5.2, 2.2, 4.3, 4,
+        "Screenshot placeholder: ModelIt simulation results showing activity graphs. Display how Dry Vegetation and Fire Spread increase when Rainfall is OFF. Clear, educational visualization.")
+
+    # SLIDE 7: Discussion
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    add_diagonal_corners(slide, prs, 'top')
+
+    title = slide.shapes.add_textbox(Inches(0.5), Inches(1.2), Inches(9), Inches(0.8))
+    tf = title.text_frame
+    p = tf.paragraphs[0]
+    p.text = "What Did We Discover?"
+    p.font.size = Pt(36)
+    p.font.bold = True
+    p.font.color.rgb = NAVY
+    p.alignment = PP_ALIGN.CENTER
+
+    content = slide.shapes.add_textbox(Inches(0.8), Inches(2.2), Inches(8.5), Inches(4.5))
+    tf = content.text_frame
+    tf.word_wrap = True
+
+    discoveries = [
+        "California's dry season = more fire risk",
+        "Drought makes vegetation into FUEL",
+        "Wind helps fire SPREAD faster",
+        "These Earth systems work TOGETHER"
+    ]
+    for i, d in enumerate(discoveries):
+        p = tf.paragraphs[0] if i == 0 else tf.add_paragraph()
+        p.text = f"* {d}"
+        p.font.size = Pt(24)
+        p.font.color.rgb = DARK_TEXT
+        p.space_after = Pt(16)
+
+    add_image_placeholder(slide, 7, 4.5, 2.5, 2.5,
+        "Group of diverse 5th grade students (70% students of color) having an animated discussion, pointing at a laptop screen showing their model. Engaged, curious expressions.")
+
     prs.save(output_path)
-    print(f"Created: {output_path}")
+    print(f"[OK] Created: {output_path}")
     return output_path
 
+
 # ============================================
-# WORKSHEET PDF CREATION (Black & White)
+# WORD DOCUMENT - HELPER FUNCTIONS
 # ============================================
 
-class WorksheetPDF:
-    def __init__(self, filename):
-        self.filename = filename
-        self.c = canvas.Canvas(filename, pagesize=letter)
-        self.width, self.height = letter
-        self.margin = 0.75 * inch
-        self.y = self.height - self.margin
-        self.page_num = 1
+def add_page_header(doc, text):
+    """Add a styled page header"""
+    section = doc.sections[-1]
+    header = section.header
+    if not header.paragraphs:
+        p = header.add_paragraph()
+    else:
+        p = header.paragraphs[0]
+    p.text = text
+    p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+    run = p.runs[0] if p.runs else p.add_run()
+    run.font.size = DocxPt(9)
+    run.font.color.rgb = DOCX_BRAND_BLUE
 
-    def add_header(self, title="When Trees Become Matches"):
-        """Add header with name/date lines"""
-        # Title
-        self.c.setFont("Helvetica-Bold", 16)
-        self.c.drawString(self.margin, self.y, f"ModelIt | {title}")
-        self.y -= 20
 
-        # Name and Date lines
-        self.c.setFont("Helvetica", 10)
-        self.c.drawString(self.margin, self.y, "Name: _______________________________")
-        self.c.drawString(self.margin + 280, self.y, "Date: _______________")
-        self.y -= 8
+def add_name_date_line(doc):
+    """Add Name/Date line to page"""
+    table = doc.add_table(rows=1, cols=2)
+    table.alignment = WD_TABLE_ALIGNMENT.CENTER
+    row = table.rows[0]
+    row.cells[0].text = "Name: _______________________________"
+    row.cells[1].text = "Date: _______________"
+    for cell in row.cells:
+        cell.paragraphs[0].runs[0].font.size = DocxPt(11)
+    doc.add_paragraph()
 
-        # Line under header
-        self.c.setStrokeColor(black)
-        self.c.setLineWidth(1)
-        self.c.line(self.margin, self.y, self.width - self.margin, self.y)
-        self.y -= 20
 
-    def add_footer(self):
-        """Add footer with page number"""
-        self.c.setFont("Helvetica", 8)
-        self.c.setFillColor(gray)
-        self.c.drawString(self.margin, 0.5 * inch, f"G05-L01 | Page {self.page_num}")
-        self.c.drawRightString(self.width - self.margin, 0.5 * inch, "ModelIt | Systems Thinking for K-12")
-        self.c.setFillColor(black)
+def set_cell_shading(cell, color_hex):
+    """Set background color of a table cell"""
+    shading = OxmlElement('w:shd')
+    shading.set(qn('w:fill'), color_hex)
+    cell._tc.get_or_add_tcPr().append(shading)
 
-    def add_section_title(self, title):
-        """Add a section title"""
-        if self.y < 1.5 * inch:
-            self.new_page()
-        self.c.setFont("Helvetica-Bold", 14)
-        self.c.drawString(self.margin, self.y, title)
-        self.y -= 8
-        self.c.setLineWidth(0.5)
-        self.c.line(self.margin, self.y, self.margin + 200, self.y)
-        self.y -= 18
 
-    def add_text(self, text, bold=False, indent=0):
-        """Add a line of text"""
-        if self.y < 1 * inch:
-            self.new_page()
-        font = "Helvetica-Bold" if bold else "Helvetica"
-        self.c.setFont(font, 11)
-        self.c.drawString(self.margin + indent, self.y, text)
-        self.y -= 16
+# ============================================
+# STUDENT ACTIVITY PACK (WORD)
+# ============================================
 
-    def add_line(self, label="", width=400):
-        """Add a fill-in line"""
-        if self.y < 1 * inch:
-            self.new_page()
-        self.c.setFont("Helvetica", 11)
-        if label:
-            self.c.drawString(self.margin, self.y, label)
-            line_start = self.margin + self.c.stringWidth(label, "Helvetica", 11) + 5
-        else:
-            line_start = self.margin
-        self.c.line(line_start, self.y - 2, self.margin + width, self.y - 2)
-        self.y -= 22
+def create_student_activity_pack():
+    """Create the student activity pack as Word document"""
+    output_path = os.path.join(OUTPUT_DIR, f'{LESSON_ID}-Student-Activity-Pack.docx')
+    doc = Document()
 
-    def add_lines(self, count=3, width=450):
-        """Add multiple blank lines"""
-        for _ in range(count):
-            if self.y < 1 * inch:
-                self.new_page()
-            self.c.line(self.margin, self.y, self.margin + width, self.y)
-            self.y -= 22
+    # Set margins
+    for section in doc.sections:
+        section.top_margin = DocxInches(0.75)
+        section.bottom_margin = DocxInches(0.75)
+        section.left_margin = DocxInches(0.75)
+        section.right_margin = DocxInches(0.75)
 
-    def add_box(self, height=100, label=""):
-        """Add a drawing/answer box"""
-        if self.y < height/72 + 1 * inch:
-            self.new_page()
-        box_top = self.y
-        self.c.setStrokeColor(black)
-        self.c.setLineWidth(1)
-        self.c.rect(self.margin, self.y - height, self.width - 2*self.margin, height)
-        if label:
-            self.c.setFont("Helvetica-Oblique", 9)
-            self.c.setFillColor(gray)
-            self.c.drawString(self.margin + 5, self.y - 12, label)
-            self.c.setFillColor(black)
-        self.y -= height + 15
+    # ========== COVER PAGE ==========
+    doc.add_paragraph()
+    doc.add_paragraph()
 
-    def add_checkbox_item(self, text):
-        """Add a checkbox item"""
-        if self.y < 1 * inch:
-            self.new_page()
-        self.c.rect(self.margin, self.y - 10, 12, 12)
-        self.c.setFont("Helvetica", 11)
-        self.c.drawString(self.margin + 18, self.y - 8, text)
-        self.y -= 20
+    title = doc.add_paragraph()
+    title.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = title.add_run("ModelIt!")
+    run.bold = True
+    run.font.size = DocxPt(48)
+    run.font.color.rgb = DOCX_NAVY
 
-    def add_circle_options(self, options):
-        """Add circle-able options"""
-        if self.y < 1 * inch:
-            self.new_page()
-        self.c.setFont("Helvetica", 11)
-        x = self.margin
-        for opt in options:
-            self.c.drawString(x, self.y, opt)
-            x += self.c.stringWidth(opt, "Helvetica", 11) + 30
-        self.y -= 20
+    subtitle = doc.add_paragraph()
+    subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = subtitle.add_run("Student Activity Pack")
+    run.font.size = DocxPt(28)
+    run.font.color.rgb = DOCX_BRAND_BLUE
 
-    def add_space(self, points=15):
-        """Add vertical space"""
-        self.y -= points
+    doc.add_paragraph()
 
-    def new_page(self):
-        """Start a new page"""
-        self.add_footer()
-        self.c.showPage()
-        self.page_num += 1
-        self.y = self.height - self.margin
-        self.add_header()
+    lesson_title = doc.add_paragraph()
+    lesson_title.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = lesson_title.add_run(LESSON_TITLE)
+    run.bold = True
+    run.font.size = DocxPt(32)
+    run.font.color.rgb = DOCX_NAVY
 
-    def save(self):
-        """Save the PDF"""
-        self.add_footer()
-        self.c.save()
-        print(f"Created: {self.filename}")
+    lesson_sub = doc.add_paragraph()
+    lesson_sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = lesson_sub.add_run(LESSON_SUBTITLE)
+    run.italic = True
+    run.font.size = DocxPt(16)
 
-def create_worksheets():
-    """Create the student worksheet packet (B&W)"""
-    output_path = os.path.join(OUTPUT_DIR, 'G05-L01-Student-Worksheets.pdf')
-    pdf = WorksheetPDF(output_path)
+    doc.add_paragraph()
+    doc.add_paragraph()
 
-    # Page 1: Vocabulary
-    pdf.add_header()
-    pdf.add_section_title("VOCABULARY")
-    pdf.add_text("Match the term to the definition:")
-    pdf.add_space(10)
-    pdf.add_text("_____ Drought", indent=20)
-    pdf.add_text("_____ Atmosphere", indent=20)
-    pdf.add_text("_____ Biosphere", indent=20)
-    pdf.add_text("_____ Vegetation", indent=20)
-    pdf.add_text("_____ Hydrosphere", indent=20)
-    pdf.add_space(10)
-    pdf.add_text("A. Living things (plants, animals)", indent=40)
-    pdf.add_text("B. Long period without rainfall", indent=40)
-    pdf.add_text("C. The air and weather around Earth", indent=40)
-    pdf.add_text("D. All the water on Earth", indent=40)
-    pdf.add_text("E. Plants and trees", indent=40)
+    # Image placeholder
+    img_para = doc.add_paragraph()
+    img_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = img_para.add_run("[IMAGE PLACEHOLDER: California wildfire landscape - golden hills, blue sky, diverse community in distance]")
+    run.italic = True
+    run.font.size = DocxPt(10)
+    run.font.color.rgb = DocxRGB(0x66, 0x66, 0x66)
 
-    pdf.add_space(20)
-    pdf.add_section_title("MODEL PLANNING")
-    pdf.add_text("Before you build in ModelIt, sort your components:")
-    pdf.add_space(10)
-    pdf.add_text("EXTERNAL (things we can't control):", bold=True)
-    pdf.add_lines(2, 350)
-    pdf.add_space(5)
-    pdf.add_text("INTERNAL (things that change because of other things):", bold=True)
-    pdf.add_lines(2, 350)
+    doc.add_paragraph()
+    doc.add_paragraph()
+    doc.add_paragraph()
 
-    # Page 2: Activity Observations
-    pdf.new_page()
-    pdf.add_section_title("ACTIVITY 1: LOCATE")
-    pdf.add_text("List the 4 components you added to your model:")
-    pdf.add_text("1. ________________________________", indent=20)
-    pdf.add_text("2. ________________________________", indent=20)
-    pdf.add_text("3. ________________________________", indent=20)
-    pdf.add_text("4. ________________________________", indent=20)
+    # Name/Date on cover
+    add_name_date_line(doc)
 
-    pdf.add_space(15)
-    pdf.add_section_title("ACTIVITY 2: ESTABLISH")
-    pdf.add_text("Draw your model below. Show arrows and label each + or −")
-    pdf.add_box(150, "Draw your model here")
+    info = doc.add_paragraph()
+    info.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = info.add_run(f"Grade Level: {GRADE_LEVEL}  |  Standard: {NGSS_STANDARD}")
+    run.font.size = DocxPt(12)
 
-    pdf.add_text("Explain ONE relationship in your own words:")
-    pdf.add_lines(3)
+    doc.add_page_break()
 
-    # Page 3: Simulation Observations
-    pdf.new_page()
-    pdf.add_section_title("ACTIVITY 3: VISUALIZE")
-    pdf.add_text("SIMULATION OBSERVATIONS", bold=True)
-    pdf.add_space(10)
+    # ========== TABLE OF CONTENTS ==========
+    toc_title = doc.add_paragraph()
+    run = toc_title.add_run("What's Inside")
+    run.bold = True
+    run.font.size = DocxPt(24)
+    run.font.color.rgb = DOCX_NAVY
 
-    pdf.add_text("When I turned OFF Rainfall (drought), this happened:")
-    pdf.add_text("• Dry Vegetation:    went UP  /  went DOWN  /  stayed same", indent=20)
-    pdf.add_text("• Fire Spread:       went UP  /  went DOWN  /  stayed same", indent=20)
-    pdf.add_space(10)
+    add_name_date_line(doc)
 
-    pdf.add_text("When I turned ON Wind, this happened:")
-    pdf.add_text("• Fire Spread:       went UP  /  went DOWN  /  stayed same", indent=20)
-    pdf.add_space(10)
+    toc_items = [
+        ("1. Scoring Rubric", "How your work will be assessed"),
+        ("2. Model Recording Page", "Sketch your model"),
+        ("3. Simulation Observations", "Record what happens"),
+        ("4. Research & Extend", "Add new components"),
+        ("5. STEM Challenge", "Firebreak Engineers!"),
+    ]
 
-    pdf.add_text("The WORST fire conditions in my model are when:")
-    pdf.add_lines(2)
+    for item, desc in toc_items:
+        p = doc.add_paragraph()
+        run = p.add_run(item)
+        run.bold = True
+        run.font.size = DocxPt(14)
+        p.add_run(f"  -  {desc}").font.size = DocxPt(12)
 
-    pdf.add_space(15)
-    pdf.add_text("Sketch what your graph looked like:", bold=True)
-    pdf.add_box(120, "Sketch graph here")
+    doc.add_page_break()
 
-    # Page 4: Research & Extend
-    pdf.new_page()
-    pdf.add_section_title("ACTIVITY 4: EXTEND")
-    pdf.add_text("RESEARCH & EXTEND", bold=True)
-    pdf.add_space(10)
+    # ========== SCORING RUBRIC ==========
+    rubric_title = doc.add_paragraph()
+    run = rubric_title.add_run("Scoring Rubric")
+    run.bold = True
+    run.font.size = DocxPt(24)
+    run.font.color.rgb = DOCX_NAVY
 
-    pdf.add_line("NEW COMPONENT I want to add: ")
-    pdf.add_space(5)
-    pdf.add_text("Is it EXTERNAL or INTERNAL? (circle one)")
-    pdf.add_space(5)
-    pdf.add_line("What does it connect to? ")
-    pdf.add_space(5)
-    pdf.add_text("Is the relationship POSITIVE (+) or NEGATIVE (−)? _____")
-    pdf.add_space(5)
-    pdf.add_text("Why?")
-    pdf.add_lines(2)
+    add_name_date_line(doc)
 
-    pdf.add_space(10)
-    pdf.add_text("After adding it, my simulation showed:")
-    pdf.add_lines(3)
+    rubric_intro = doc.add_paragraph()
+    rubric_intro.add_run("This rubric shows how your modeling work will be assessed. Each skill is rated 1-4.").font.size = DocxPt(11)
 
-    pdf.add_space(15)
-    pdf.add_section_title("REFLECTION")
-    pdf.add_text("Explain, in your own words, why California has wildfires every year:")
-    pdf.add_lines(4)
+    doc.add_paragraph()
 
-    pdf.add_text("Which Earth systems interact to create fire conditions? (circle all)")
-    pdf.add_space(5)
-    pdf.add_text("ATMOSPHERE      BIOSPHERE      HYDROSPHERE      GEOSPHERE", indent=40)
+    # Rubric table
+    rubric_data = [
+        ["Skill", "4 - Expert", "3 - Proficient", "2 - Developing", "1 - Beginning"],
+        ["Components", "All components correctly identified and sorted", "Most components correct", "Some components correct", "Needs help identifying components"],
+        ["Relationships", "All arrows correct direction and +/- signs", "Most relationships correct", "Some relationships correct", "Needs help with relationships"],
+        ["Simulation", "Runs multiple scenarios, explains patterns", "Runs scenarios, observes patterns", "Runs simulation with guidance", "Needs help running simulation"],
+        ["Explanation", "Clear cause-effect explanation with evidence", "Explains connections", "Partial explanation", "Needs help explaining"],
+    ]
 
-    pdf.save()
+    table = doc.add_table(rows=len(rubric_data), cols=5)
+    table.style = 'Table Grid'
+
+    for i, row_data in enumerate(rubric_data):
+        for j, cell_text in enumerate(row_data):
+            cell = table.rows[i].cells[j]
+            cell.text = cell_text
+            cell.paragraphs[0].runs[0].font.size = DocxPt(9)
+            if i == 0:
+                cell.paragraphs[0].runs[0].bold = True
+                set_cell_shading(cell, "1A4780")
+                cell.paragraphs[0].runs[0].font.color.rgb = DocxRGB(0xFF, 0xFF, 0xFF)
+            elif j == 0:
+                cell.paragraphs[0].runs[0].bold = True
+
+    doc.add_page_break()
+
+    # ========== MODEL RECORDING PAGE ==========
+    model_title = doc.add_paragraph()
+    run = model_title.add_run("Model Recording Page")
+    run.bold = True
+    run.font.size = DocxPt(24)
+    run.font.color.rgb = DOCX_NAVY
+
+    add_name_date_line(doc)
+
+    doc.add_paragraph("Use this page to sketch your model before or after building it in ModelIt!")
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("My Components:")
+    run.bold = True
+    run.font.size = DocxPt(14)
+
+    # Component boxes
+    comp_table = doc.add_table(rows=2, cols=2)
+    comp_table.style = 'Table Grid'
+    labels = ["EXTERNAL Components\n(inputs from outside):", "INTERNAL Components\n(happen inside system):"]
+    for i, cell in enumerate(comp_table.rows[0].cells):
+        cell.text = labels[i]
+        cell.paragraphs[0].runs[0].bold = True
+        cell.paragraphs[0].runs[0].font.size = DocxPt(10)
+    for cell in comp_table.rows[1].cells:
+        cell.text = "\n\n\n"
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("My Model Sketch:")
+    run.bold = True
+    run.font.size = DocxPt(14)
+
+    doc.add_paragraph("Draw your components as circles. Draw arrows between them. Label each arrow with (+) or (-).")
+
+    # Big sketch box
+    sketch_table = doc.add_table(rows=1, cols=1)
+    sketch_table.style = 'Table Grid'
+    sketch_table.rows[0].cells[0].text = "\n\n\n\n\n\n\n\n\n\n"
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("Key:")
+    run.bold = True
+    doc.add_paragraph("(+) = When one goes UP, the other goes UP")
+    doc.add_paragraph("(-) = When one goes UP, the other goes DOWN")
+
+    doc.add_page_break()
+
+    # ========== SIMULATION OBSERVATIONS ==========
+    sim_title = doc.add_paragraph()
+    run = sim_title.add_run("Simulation Observations")
+    run.bold = True
+    run.font.size = DocxPt(24)
+    run.font.color.rgb = DOCX_NAVY
+
+    add_name_date_line(doc)
+
+    doc.add_paragraph("Run each scenario and record what you observe in the graphs!")
+
+    scenarios = [
+        ("Scenario 1: DROUGHT", "Turn RAINFALL to OFF. Watch the simulation.",
+         "What happens to DRY VEGETATION?", "What happens to FIRE SPREAD?"),
+        ("Scenario 2: WINDY DAY", "Turn WIND to ON. Watch the simulation.",
+         "What happens to FIRE SPREAD?", "Why do you think this happens?"),
+        ("Scenario 3: FIRE SEASON", "Turn RAINFALL OFF and WIND ON.",
+         "What happens to all the components?", "This is California in fall - why?"),
+    ]
+
+    for title, instruction, q1, q2 in scenarios:
+        p = doc.add_paragraph()
+        run = p.add_run(title)
+        run.bold = True
+        run.font.size = DocxPt(14)
+        run.font.color.rgb = DOCX_BRAND_BLUE
+
+        doc.add_paragraph(instruction)
+
+        doc.add_paragraph(q1)
+        response_table = doc.add_table(rows=1, cols=1)
+        response_table.style = 'Table Grid'
+        response_table.rows[0].cells[0].text = "\n\n"
+
+        doc.add_paragraph(q2)
+        response_table = doc.add_table(rows=1, cols=1)
+        response_table.style = 'Table Grid'
+        response_table.rows[0].cells[0].text = "\n\n"
+
+        doc.add_paragraph()
+
+    doc.add_page_break()
+
+    # ========== RESEARCH & EXTEND ==========
+    research_title = doc.add_paragraph()
+    run = research_title.add_run("Research & Extend")
+    run.bold = True
+    run.font.size = DocxPt(24)
+    run.font.color.rgb = DOCX_NAVY
+
+    add_name_date_line(doc)
+
+    doc.add_paragraph("Scientists are always adding to their models when they learn new information. Now it's your turn!")
+
+    p = doc.add_paragraph()
+    run = p.add_run("Research Challenge:")
+    run.bold = True
+    run.font.size = DocxPt(14)
+
+    doc.add_paragraph("Find ONE new component that could affect California wildfires. Examples to research:")
+
+    examples = ["Temperature / Heat waves", "Humidity levels", "Mountain slopes", "Santa Ana winds", "Human activity", "Invasive grasses"]
+    for ex in examples:
+        p = doc.add_paragraph(style='List Bullet')
+        p.add_run(ex)
+
+    doc.add_paragraph()
+    doc.add_paragraph("My new component: ________________________________")
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("How does it connect to the model?")
+    run.bold = True
+
+    doc.add_paragraph("Draw an arrow FROM or TO your new component. Label it (+) or (-).")
+
+    sketch = doc.add_table(rows=1, cols=1)
+    sketch.style = 'Table Grid'
+    sketch.rows[0].cells[0].text = "\n\n\n\n"
+
+    doc.add_paragraph()
+    doc.add_paragraph("Explain the relationship: _______________________________________________")
+    doc.add_paragraph("________________________________________________________________")
+
+    doc.add_page_break()
+
+    # ========== STEM CHALLENGE ==========
+    stem_title = doc.add_paragraph()
+    run = stem_title.add_run("STEM CHALLENGE")
+    run.bold = True
+    run.font.size = DocxPt(28)
+    run.font.color.rgb = DOCX_NAVY
+
+    subtitle = doc.add_paragraph()
+    subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = subtitle.add_run("Firebreak Engineers")
+    run.bold = True
+    run.font.size = DocxPt(24)
+    run.font.color.rgb = DOCX_BRAND_BLUE
+
+    add_name_date_line(doc)
+
+    # Mission box
+    mission = doc.add_paragraph()
+    run = mission.add_run("YOUR MISSION")
+    run.bold = True
+    run.font.size = DocxPt(16)
+    run.font.color.rgb = DOCX_NAVY
+
+    doc.add_paragraph("You've just learned that DRY VEGETATION is the FUEL that makes fires spread. Real firefighters and land managers use this knowledge to create FIREBREAKS - areas with no fuel where fire cannot spread!")
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("Your engineering challenge:")
+    run.bold = True
+    run.font.size = DocxPt(14)
+
+    doc.add_paragraph("Design a firebreak system to protect a small community surrounded by dry forest.")
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("THE SCENARIO:")
+    run.bold = True
+    run.font.size = DocxPt(14)
+    run.font.color.rgb = DOCX_BRAND_BLUE
+
+    scenario_text = """Willow Creek is a small town surrounded by dry grassland and forest. Fire season is coming! The town council has hired YOUR engineering team to design firebreaks that will protect the community.
+
+You have a LIMITED BUDGET - you can only clear 3 firebreak zones. Where will you put them for maximum protection?"""
+    doc.add_paragraph(scenario_text)
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("MATERIALS (grab from around the room!):")
+    run.bold = True
+    run.font.size = DocxPt(12)
+
+    materials = ["Paper (to draw your map)", "Pencil/markers", "Your brain and teamwork!"]
+    for m in materials:
+        p = doc.add_paragraph(style='List Bullet')
+        p.add_run(m)
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("YOUR DESIGN STEPS:")
+    run.bold = True
+    run.font.size = DocxPt(14)
+    run.font.color.rgb = DOCX_BRAND_BLUE
+
+    steps = [
+        "SKETCH the town in the center of your paper",
+        "Draw the surrounding forest and grassland (the FUEL!)",
+        "Add wind arrows showing Santa Ana winds come from the EAST",
+        "Draw your 3 firebreak zones - where will you remove vegetation?",
+        "Explain WHY you chose each location"
+    ]
+    for i, step in enumerate(steps, 1):
+        p = doc.add_paragraph()
+        run = p.add_run(f"Step {i}: ")
+        run.bold = True
+        p.add_run(step)
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("THINK LIKE AN ENGINEER:")
+    run.bold = True
+    run.font.size = DocxPt(12)
+
+    questions = [
+        "Which direction does fire spread fastest? (Remember: wind!)",
+        "Should firebreaks be uphill or downhill from town?",
+        "How does this connect to your model? (Hint: What happens when you reduce Dry Vegetation?)"
+    ]
+    for q in questions:
+        p = doc.add_paragraph(style='List Bullet')
+        p.add_run(q)
+
+    doc.add_page_break()
+
+    # STEM Challenge Design Page
+    design_title = doc.add_paragraph()
+    run = design_title.add_run("My Firebreak Design")
+    run.bold = True
+    run.font.size = DocxPt(24)
+    run.font.color.rgb = DOCX_NAVY
+
+    add_name_date_line(doc)
+
+    p = doc.add_paragraph()
+    run = p.add_run("Team Members: ")
+    run.bold = True
+    p.add_run("_________________________________________________")
+
+    doc.add_paragraph()
+    doc.add_paragraph("Draw your map here (town in center, forest around, wind direction, and your 3 firebreaks):")
+
+    # Big design box
+    design_box = doc.add_table(rows=1, cols=1)
+    design_box.style = 'Table Grid'
+    design_box.rows[0].cells[0].text = "\n\n\n\n\n\n\n\n\n\n\n\n"
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("Explain your design:")
+    run.bold = True
+
+    doc.add_paragraph("Firebreak #1 location and reason:")
+    fb1 = doc.add_table(rows=1, cols=1)
+    fb1.style = 'Table Grid'
+    fb1.rows[0].cells[0].text = "\n\n"
+
+    doc.add_paragraph("Firebreak #2 location and reason:")
+    fb2 = doc.add_table(rows=1, cols=1)
+    fb2.style = 'Table Grid'
+    fb2.rows[0].cells[0].text = "\n\n"
+
+    doc.add_paragraph("Firebreak #3 location and reason:")
+    fb3 = doc.add_table(rows=1, cols=1)
+    fb3.style = 'Table Grid'
+    fb3.rows[0].cells[0].text = "\n\n"
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("CONNECTION TO YOUR MODEL:")
+    run.bold = True
+    run.font.color.rgb = DOCX_BRAND_BLUE
+
+    doc.add_paragraph("How does your firebreak design connect to what you learned in ModelIt?")
+    conn = doc.add_table(rows=1, cols=1)
+    conn.style = 'Table Grid'
+    conn.rows[0].cells[0].text = "\n\n\n"
+
+    doc.save(output_path)
+    print(f"[OK] Created: {output_path}")
     return output_path
 
+
 # ============================================
-# TEACHER'S GUIDE PDF (Color)
+# TEACHER'S GUIDE (WORD)
 # ============================================
 
 def create_teachers_guide():
-    """Create the teacher's guide (Color PDF)"""
-    output_path = os.path.join(OUTPUT_DIR, 'G05-L01-Teachers-Guide.pdf')
+    """Create the teacher's guide as Word document with enhanced content"""
+    output_path = os.path.join(OUTPUT_DIR, f'{LESSON_ID}-Teachers-Guide.docx')
+    doc = Document()
 
-    styles = getSampleStyleSheet()
+    # Set margins
+    for section in doc.sections:
+        section.top_margin = DocxInches(0.75)
+        section.bottom_margin = DocxInches(0.75)
+        section.left_margin = DocxInches(0.75)
+        section.right_margin = DocxInches(0.75)
 
-    # Custom styles
-    title_style = ParagraphStyle(
-        'CustomTitle',
-        parent=styles['Title'],
-        fontSize=24,
-        textColor=HEX_BLUE_DARK,
-        spaceAfter=20
-    )
+    # ========== COVER PAGE ==========
+    doc.add_paragraph()
 
-    heading_style = ParagraphStyle(
-        'CustomHeading',
-        parent=styles['Heading1'],
-        fontSize=16,
-        textColor=HEX_BLUE_DARK,
-        spaceBefore=15,
-        spaceAfter=8,
-        borderColor=HEX_BLUE_LIGHT,
-        borderWidth=0,
-        borderPadding=5
-    )
+    title = doc.add_paragraph()
+    title.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = title.add_run("ModelIt!")
+    run.bold = True
+    run.font.size = DocxPt(48)
+    run.font.color.rgb = DOCX_NAVY
 
-    subheading_style = ParagraphStyle(
-        'CustomSubheading',
-        parent=styles['Heading2'],
-        fontSize=13,
-        textColor=HEX_BLUE_MID,
-        spaceBefore=10,
-        spaceAfter=5
-    )
+    subtitle = doc.add_paragraph()
+    subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = subtitle.add_run("Teacher's Guide")
+    run.font.size = DocxPt(28)
+    run.font.color.rgb = DOCX_BRAND_BLUE
 
-    body_style = ParagraphStyle(
-        'CustomBody',
-        parent=styles['Normal'],
-        fontSize=11,
-        spaceAfter=8,
-        leading=14
-    )
+    doc.add_paragraph()
 
-    bullet_style = ParagraphStyle(
-        'CustomBullet',
-        parent=styles['Normal'],
-        fontSize=11,
-        leftIndent=20,
-        spaceAfter=4
-    )
+    lesson = doc.add_paragraph()
+    lesson.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = lesson.add_run(f"{LESSON_ID}: {LESSON_TITLE}")
+    run.bold = True
+    run.font.size = DocxPt(24)
+    run.font.color.rgb = DOCX_NAVY
 
-    doc = SimpleDocTemplate(
-        output_path,
-        pagesize=letter,
-        rightMargin=0.75*inch,
-        leftMargin=0.75*inch,
-        topMargin=0.75*inch,
-        bottomMargin=0.75*inch
-    )
+    sub = doc.add_paragraph()
+    sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = sub.add_run(LESSON_SUBTITLE)
+    run.italic = True
+    run.font.size = DocxPt(14)
 
-    story = []
+    doc.add_paragraph()
+    doc.add_paragraph()
 
-    # Title
-    story.append(Paragraph("Teacher's Guide", title_style))
-    story.append(Paragraph("G05-L01: When Trees Become Matches", heading_style))
-    story.append(Paragraph("California's Burning Season and the Earth Systems That Fuel It", body_style))
-    story.append(Spacer(1, 20))
-
-    # Overview Table
-    overview_data = [
-        ['Grade', '5th'],
-        ['NGSS Standard', '5-ESS2-1'],
-        ['Time', '40-45 minutes (or split across 2 days)'],
-        ['Materials', 'Student devices with ModelIt access'],
+    # Quick reference table
+    quick_ref = [
+        ["Grade Level", GRADE_LEVEL],
+        ["NGSS Standard", NGSS_STANDARD],
+        ["Time", "40-45 minutes (can split across 2 days)"],
+        ["Materials", "Student devices with ModelIt access, Activity Pack"],
+        ["Prep Required", "None - lesson is self-contained"],
     ]
-    overview_table = Table(overview_data, colWidths=[1.5*inch, 4.5*inch])
-    overview_table.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (0, -1), HEX_BLUE_LIGHT),
-        ('TEXTCOLOR', (0, 0), (0, -1), HEX_NAVY),
-        ('FONTNAME', (0, 0), (0, -1), 'Helvetica-Bold'),
-        ('FONTNAME', (1, 0), (1, -1), 'Helvetica'),
-        ('FONTSIZE', (0, 0), (-1, -1), 10),
-        ('ALIGN', (0, 0), (0, -1), 'RIGHT'),
-        ('ALIGN', (1, 0), (1, -1), 'LEFT'),
-        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-        ('GRID', (0, 0), (-1, -1), 0.5, HEX_BLUE_MID),
-        ('PADDING', (0, 0), (-1, -1), 8),
-    ]))
-    story.append(overview_table)
-    story.append(Spacer(1, 20))
 
-    # Lesson Purpose
-    story.append(Paragraph("LESSON PURPOSE", heading_style))
-    story.append(Paragraph(
-        "This lesson serves as a <b>HOOK</b> for Earth systems inquiry. Students build a simple "
-        "cause-and-effect model, then identify gaps that drive further research. It's designed "
-        "to drop into existing curriculum with minimal prep.",
-        body_style
-    ))
-    story.append(Spacer(1, 10))
+    table = doc.add_table(rows=len(quick_ref), cols=2)
+    table.style = 'Table Grid'
+    for i, (label, value) in enumerate(quick_ref):
+        table.rows[i].cells[0].text = label
+        table.rows[i].cells[0].paragraphs[0].runs[0].bold = True
+        set_cell_shading(table.rows[i].cells[0], "7EC8E3")
+        table.rows[i].cells[1].text = value
 
-    # Learning Objectives
-    story.append(Paragraph("LEARNING OBJECTIVES", heading_style))
-    objectives = [
-        "Model how lack of rainfall affects vegetation",
-        "Trace cause-and-effect relationships between drought and fire conditions",
-        "Explain how Earth systems (atmosphere, biosphere, hydrosphere) interact",
-        "Predict what happens when one part of the system changes"
+    doc.add_page_break()
+
+    # ========== NGSS STANDARDS UNPACKING ==========
+    standards_title = doc.add_paragraph()
+    run = standards_title.add_run("NGSS Standards Unpacking")
+    run.bold = True
+    run.font.size = DocxPt(24)
+    run.font.color.rgb = DOCX_NAVY
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("Performance Expectation: 5-ESS2-1")
+    run.bold = True
+    run.font.size = DocxPt(14)
+    run.font.color.rgb = DOCX_BRAND_BLUE
+
+    doc.add_paragraph("Develop a model using an example to describe ways the geosphere, biosphere, hydrosphere, and/or atmosphere interact.")
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("How This Lesson Addresses the Standard:")
+    run.bold = True
+    run.font.size = DocxPt(12)
+
+    connections = [
+        ("Geosphere", "California's terrain and slopes affect how fires spread"),
+        ("Biosphere", "Vegetation (living plants) serves as fuel for fires"),
+        ("Hydrosphere", "Rainfall (or lack of it) determines how dry vegetation becomes"),
+        ("Atmosphere", "Wind patterns and weather drive fire behavior"),
     ]
-    for obj in objectives:
-        story.append(Paragraph(f"• {obj}", bullet_style))
-    story.append(Spacer(1, 10))
 
-    # Pacing Guide
-    story.append(Paragraph("PACING GUIDE", heading_style))
-    pacing_data = [
-        ['Activity', 'LEVER Phase', 'Time'],
-        ['Activity 1: Build Your Fire System', 'LOCATE', '8-10 min'],
-        ['Activity 2: Connect the Relationships', 'ESTABLISH', '8-10 min'],
-        ['Activity 3: Run Your Fire Model', 'VISUALIZE & EVALUATE', '10-12 min'],
-        ['Activity 4: Play, Research, Expand', 'REVISE & EXTEND', '10-15 min'],
+    for sphere, connection in connections:
+        p = doc.add_paragraph()
+        run = p.add_run(f"{sphere}: ")
+        run.bold = True
+        p.add_run(connection)
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("From A Framework for K-12 Science Education (NRC, 2012):")
+    run.bold = True
+    run.font.size = DocxPt(12)
+    run.font.color.rgb = DOCX_BRAND_BLUE
+
+    framework_quote = doc.add_paragraph()
+    framework_quote.style = 'Quote'
+    framework_quote.add_run("\"Earth's major systems are the geosphere, the hydrosphere, the atmosphere, and the biosphere. These systems interact in multiple ways to affect Earth's surface materials and processes. The ocean supports a variety of ecosystems and organisms, shapes landforms, and influences climate. Winds and clouds in the atmosphere interact with the landforms to determine patterns of weather.\" (p. 187)")
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("Key Disciplinary Core Idea (ESS2.A):")
+    run.bold = True
+
+    doc.add_paragraph("Earth's major systems interact in multiple ways to affect Earth's surface materials and processes. Students should understand that these interactions create observable phenomena - in this case, the predictable fire seasons in California.")
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("Science & Engineering Practices Addressed:")
+    run.bold = True
+    run.font.size = DocxPt(12)
+
+    practices = [
+        ("Developing and Using Models", "Students build a computational model showing system interactions"),
+        ("Analyzing and Interpreting Data", "Students observe simulation graphs and identify patterns"),
+        ("Constructing Explanations", "Students explain cause-effect relationships in the system"),
+        ("Engaging in Argument from Evidence", "Students predict and justify what will happen under different conditions"),
     ]
-    pacing_table = Table(pacing_data, colWidths=[3*inch, 1.8*inch, 1*inch])
-    pacing_table.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, 0), HEX_BLUE_DARK),
-        ('TEXTCOLOR', (0, 0), (-1, 0), white),
-        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-        ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
-        ('FONTSIZE', (0, 0), (-1, -1), 10),
-        ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
-        ('ALIGN', (2, 0), (2, -1), 'CENTER'),
-        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-        ('GRID', (0, 0), (-1, -1), 0.5, HEX_BLUE_MID),
-        ('PADDING', (0, 0), (-1, -1), 6),
-        ('ROWBACKGROUNDS', (0, 1), (-1, -1), [white, HexColor('#F5F9FC')]),
-    ]))
-    story.append(pacing_table)
-    story.append(Spacer(1, 15))
 
-    # Common Misconceptions
-    story.append(Paragraph("COMMON MISCONCEPTIONS", heading_style))
+    for practice, description in practices:
+        p = doc.add_paragraph()
+        run = p.add_run(f"- {practice}: ")
+        run.bold = True
+        p.add_run(description)
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("Crosscutting Concepts:")
+    run.bold = True
+    run.font.size = DocxPt(12)
+
+    ccc = [
+        ("Cause and Effect", "Central to this lesson - students trace how drought causes dry vegetation, which causes fire spread"),
+        ("Systems and System Models", "Students explicitly build a model of Earth system interactions"),
+    ]
+
+    for concept, desc in ccc:
+        p = doc.add_paragraph()
+        run = p.add_run(f"- {concept}: ")
+        run.bold = True
+        p.add_run(desc)
+
+    doc.add_page_break()
+
+    # ========== LEVER FRAMEWORK ==========
+    lever_title = doc.add_paragraph()
+    run = lever_title.add_run("The LEVER Framework")
+    run.bold = True
+    run.font.size = DocxPt(24)
+    run.font.color.rgb = DOCX_NAVY
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("What is LEVER?")
+    run.bold = True
+    run.font.size = DocxPt(14)
+    run.font.color.rgb = DOCX_BRAND_BLUE
+
+    doc.add_paragraph("LEVER is ModelIt's pedagogical framework for teaching systems thinking through computational modeling. Each phase guides students through authentic scientific practices while building deep conceptual understanding.")
+
+    doc.add_paragraph()
+    lever_phases = [
+        ("L - LOCATE the System",
+         "Students identify the components (parts) of the system they're studying.",
+         "Students sort components into INTERNAL (happening inside the system) and EXTERNAL (inputs from outside).",
+         "\"What are the important parts of this system?\" \"What can we control vs. what happens naturally?\""),
+
+        ("E - ESTABLISH Relationships",
+         "Students determine HOW components affect each other.",
+         "Students draw arrows with (+) for positive relationships and (-) for negative relationships.",
+         "\"When this goes UP, does that go UP or DOWN?\" \"How do these parts connect?\""),
+
+        ("V - VISUALIZE & Model",
+         "Students build their model in the ModelIt platform.",
+         "Students arrange components and create the network of relationships.",
+         "\"How should we organize this?\" \"Does our model match our thinking?\""),
+
+        ("E - EVALUATE Outcomes",
+         "Students run simulations and analyze the results.",
+         "Students observe graphs, test scenarios, and identify patterns.",
+         "\"What happens when...?\" \"Why do you think that happened?\""),
+
+        ("R - REVISE & Extend",
+         "Students improve their model based on new information.",
+         "Students add components from research, fix errors, and explore extensions.",
+         "\"What's missing?\" \"How could we make this more accurate?\""),
+    ]
+
+    for phase, description, student_action, questions in lever_phases:
+        p = doc.add_paragraph()
+        run = p.add_run(phase)
+        run.bold = True
+        run.font.size = DocxPt(12)
+        run.font.color.rgb = DOCX_BRAND_BLUE
+
+        doc.add_paragraph(description)
+
+        p = doc.add_paragraph()
+        run = p.add_run("Student Action: ")
+        run.bold = True
+        p.add_run(student_action)
+
+        p = doc.add_paragraph()
+        run = p.add_run("Key Questions: ")
+        run.italic = True
+        p.add_run(questions)
+
+        doc.add_paragraph()
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("Why LEVER Works:")
+    run.bold = True
+    run.font.size = DocxPt(12)
+
+    reasons = [
+        "Mirrors authentic scientific practice (scientists build, test, and revise models)",
+        "Builds from concrete (components) to abstract (relationships)",
+        "Encourages productive struggle and exploration",
+        "Centers student reasoning over memorization",
+        "Connects to NGSS three-dimensional learning (SEPs, DCIs, CCCs)",
+    ]
+    for r in reasons:
+        p = doc.add_paragraph(style='List Bullet')
+        p.add_run(r)
+
+    doc.add_page_break()
+
+    # ========== LESSON FLOW ==========
+    flow_title = doc.add_paragraph()
+    run = flow_title.add_run("Lesson Flow & Timing")
+    run.bold = True
+    run.font.size = DocxPt(24)
+    run.font.color.rgb = DOCX_NAVY
+
+    doc.add_paragraph()
+
+    flow_table = [
+        ["Phase", "Time", "What Students Do", "Teacher Role"],
+        ["LOCATE", "8-10 min", "Sort components into Internal/External", "Facilitate sorting discussion; ask \"Which can we control?\""],
+        ["ESTABLISH", "8-10 min", "Connect components with arrows (+/-)", "Guide with \"When X goes UP, does Y go UP or DOWN?\""],
+        ["VISUALIZE & EVALUATE", "10-12 min", "Run simulations, test scenarios, observe graphs", "Let students explore; ask \"What did you notice?\""],
+        ["REVISE & EXTEND", "10-15 min", "Research and add new components", "Provide resources; celebrate extensions"],
+    ]
+
+    table = doc.add_table(rows=len(flow_table), cols=4)
+    table.style = 'Table Grid'
+
+    for i, row_data in enumerate(flow_table):
+        for j, cell_text in enumerate(row_data):
+            cell = table.rows[i].cells[j]
+            cell.text = cell_text
+            if i == 0:
+                cell.paragraphs[0].runs[0].bold = True
+                set_cell_shading(cell, "1A4780")
+                cell.paragraphs[0].runs[0].font.color.rgb = DocxRGB(0xFF, 0xFF, 0xFF)
+
+    doc.add_paragraph()
+
+    # ========== ANSWER KEY ==========
+    answer_title = doc.add_paragraph()
+    run = answer_title.add_run("Answer Key")
+    run.bold = True
+    run.font.size = DocxPt(18)
+    run.font.color.rgb = DOCX_NAVY
+
+    p = doc.add_paragraph()
+    run = p.add_run("Component Sorting:")
+    run.bold = True
+    doc.add_paragraph("EXTERNAL: Rainfall, Wind")
+    doc.add_paragraph("INTERNAL: Dry Vegetation, Fire Spread")
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("Relationships:")
+    run.bold = True
+    doc.add_paragraph("Rainfall --> Dry Vegetation = NEGATIVE (more rain = less dry plants)")
+    doc.add_paragraph("Dry Vegetation --> Fire Spread = POSITIVE (more fuel = more fire)")
+    doc.add_paragraph("Wind --> Fire Spread = POSITIVE (more wind = fire spreads faster)")
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("Simulation Results:")
+    run.bold = True
+    doc.add_paragraph("Drought (Rainfall OFF): Dry Vegetation UP, Fire Spread UP")
+    doc.add_paragraph("Windy (Wind ON): Fire Spread UP significantly")
+    doc.add_paragraph("Fire Season (both): Maximum fire risk - this is California fall!")
+
+    doc.add_page_break()
+
+    # ========== STEM CHALLENGE TEACHER GUIDANCE ==========
+    stem_title = doc.add_paragraph()
+    run = stem_title.add_run("STEM Challenge: Teacher Guidance")
+    run.bold = True
+    run.font.size = DocxPt(24)
+    run.font.color.rgb = DOCX_NAVY
+
+    subtitle = doc.add_paragraph()
+    run = subtitle.add_run("Firebreak Engineers")
+    run.bold = True
+    run.font.size = DocxPt(18)
+    run.font.color.rgb = DOCX_BRAND_BLUE
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("Purpose of This Challenge:")
+    run.bold = True
+    run.font.size = DocxPt(12)
+
+    doc.add_paragraph("This STEM challenge extends students' model understanding into real-world engineering application. Students apply their knowledge that DRY VEGETATION is the fuel for fire spread by designing firebreaks - areas where vegetation is removed to stop fire progression.")
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("Connection to the Model:")
+    run.bold = True
+    run.font.size = DocxPt(12)
+
+    doc.add_paragraph("In their ModelIt simulation, students saw that reducing Dry Vegetation reduces Fire Spread. Firebreaks are the real-world application of this relationship. Engineers and land managers create firebreaks to protect communities by interrupting the fuel chain.")
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("How to Introduce This Challenge:")
+    run.bold = True
+    run.font.size = DocxPt(14)
+    run.font.color.rgb = DOCX_BRAND_BLUE
+
+    intro_script = """
+Say to students:
+
+\"You've just discovered something important in your model - that DRY VEGETATION is the FUEL that makes fires spread. Real firefighters and land managers use this exact knowledge every day!
+
+They create something called FIREBREAKS - areas where they remove all the vegetation so fire has nothing to burn. It's like creating a wall of 'no fuel' that fire can't cross.
+
+Now YOU are going to become Firebreak Engineers. A small town called Willow Creek needs your help. Fire season is coming, and they need you to design where to put firebreaks to protect their community.
+
+Here's the challenge: You only have enough budget for THREE firebreaks. Where will you put them to give the town the BEST protection?
+
+Think about what you learned in your model. Think about wind direction. Think about where fire would come from. Then design your solution!\"
+"""
+    doc.add_paragraph(intro_script)
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("Materials Needed:")
+    run.bold = True
+    run.font.size = DocxPt(12)
+
+    doc.add_paragraph("- Paper (regular copy paper works fine)")
+    doc.add_paragraph("- Pencils/markers")
+    doc.add_paragraph("- That's it! This is designed as a NO-PREP challenge.")
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("Facilitation Tips:")
+    run.bold = True
+    run.font.size = DocxPt(12)
+
+    tips = [
+        "Let students work in pairs or small groups for richer discussion",
+        "Don't give away the \"right\" answer - there are multiple good solutions!",
+        "Ask probing questions: \"Why did you put that firebreak there?\" \"What about the wind direction?\"",
+        "Encourage students to reference their MODEL when explaining their design",
+        "Have groups share and compare designs at the end - celebrate different solutions",
+    ]
+    for tip in tips:
+        p = doc.add_paragraph(style='List Bullet')
+        p.add_run(tip)
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("Key Concepts Students Should Apply:")
+    run.bold = True
+    run.font.size = DocxPt(12)
+
+    concepts = [
+        "Wind direction matters - Santa Ana winds come from the east in California",
+        "Fire spreads uphill faster than downhill",
+        "Firebreaks should be BETWEEN the fire source and what you're protecting",
+        "Reducing fuel (dry vegetation) reduces fire spread - directly from their model!",
+    ]
+    for c in concepts:
+        p = doc.add_paragraph(style='List Bullet')
+        p.add_run(c)
+
+    doc.add_paragraph()
+    p = doc.add_paragraph()
+    run = p.add_run("Extension Opportunity:")
+    run.bold = True
+    run.font.size = DocxPt(12)
+
+    doc.add_paragraph("After the design challenge, have students return to ModelIt and ADD \"Firebreaks\" as a new component with a NEGATIVE relationship to Fire Spread. Run the simulation to see how firebreaks affect the system!")
+
+    doc.add_page_break()
+
+    # ========== DIFFERENTIATION ==========
+    diff_title = doc.add_paragraph()
+    run = diff_title.add_run("Differentiation Strategies")
+    run.bold = True
+    run.font.size = DocxPt(24)
+    run.font.color.rgb = DOCX_NAVY
+
+    diff_data = [
+        ("Support", [
+            "Pre-label some relationships on the recording page",
+            "Provide sentence starters for explanations",
+            "Pair with stronger partner for simulation analysis",
+            "Use visual cues (color-coded arrows) for +/- relationships",
+        ]),
+        ("Challenge", [
+            "Add 3+ research components to the model",
+            "Calculate fire risk percentages from simulation data",
+            "Research real California fire data and compare to model predictions",
+            "Create a presentation explaining their extended model",
+        ]),
+        ("English Language Learners", [
+            "Provide visual vocabulary cards for key terms",
+            "Pair with English-proficient partner",
+            "Allow drawing/labeling instead of written explanations",
+            "Use home language for initial brainstorming",
+        ]),
+    ]
+
+    for category, strategies in diff_data:
+        p = doc.add_paragraph()
+        run = p.add_run(category)
+        run.bold = True
+        run.font.size = DocxPt(14)
+        run.font.color.rgb = DOCX_BRAND_BLUE
+
+        for s in strategies:
+            p = doc.add_paragraph(style='List Bullet')
+            p.add_run(s)
+
+        doc.add_paragraph()
+
+    # ========== COMMON MISCONCEPTIONS ==========
+    misc_title = doc.add_paragraph()
+    run = misc_title.add_run("Common Misconceptions")
+    run.bold = True
+    run.font.size = DocxPt(18)
+    run.font.color.rgb = DOCX_NAVY
+
     misconceptions = [
-        ("<b>\"Fires are caused by bad people\"</b> → Most are human-caused, but conditions must be right. Without dry fuel, fires don't spread.", bullet_style),
-        ("<b>\"More firefighters = no fires\"</b> → Firefighters respond, but conditions (drought, wind) determine severity.", bullet_style),
-        ("<b>\"Climate doesn't affect fires\"</b> → Fire season has lengthened significantly due to climate patterns.", bullet_style),
+        ("\"Fires are caused by bad people starting them\"",
+         "While many fires are human-caused (campfires, equipment sparks), the CONDITIONS must be right for fire to spread. Without dry fuel and wind, a spark won't become a wildfire. Help students understand it's the SYSTEM that creates fire risk."),
+        ("\"More firefighters would prevent fires\"",
+         "Firefighters RESPOND to fires but can't change the underlying conditions (drought, dry vegetation, wind). This lesson helps students understand that fire risk is determined by Earth systems, not just human response."),
+        ("\"Climate doesn't affect fires\"",
+         "Fire season has lengthened significantly due to changing climate patterns. Warmer temperatures and shifting rainfall patterns directly affect vegetation dryness. The model helps students see this cause-effect chain."),
     ]
-    for m in misconceptions:
-        story.append(Paragraph(m[0], m[1]))
-    story.append(Spacer(1, 10))
 
-    # Page Break
-    story.append(PageBreak())
+    for misconception, response in misconceptions:
+        p = doc.add_paragraph()
+        run = p.add_run(misconception)
+        run.bold = True
+        run.italic = True
+        doc.add_paragraph(response)
+        doc.add_paragraph()
 
-    # Facilitation Tips
-    story.append(Paragraph("FACILITATION TIPS", heading_style))
-    story.append(Paragraph("<b>Activity 1:</b> Let students explore the interface. Don't over-explain.", bullet_style))
-    story.append(Paragraph("<b>Activity 2:</b> Ask \"When this goes up, what happens to that?\" to guide +/− decisions.", bullet_style))
-    story.append(Paragraph("<b>Activity 3:</b> Give time for students to \"break\" the model — turn things on/off. This is where insight happens.", bullet_style))
-    story.append(Paragraph("<b>Activity 4:</b> Don't give answers. Ask questions. Let curiosity drive.", bullet_style))
-    story.append(Spacer(1, 15))
+    # ========== DISCUSSION PROMPTS ==========
+    disc_title = doc.add_paragraph()
+    run = disc_title.add_run("Discussion Prompts")
+    run.bold = True
+    run.font.size = DocxPt(18)
+    run.font.color.rgb = DOCX_NAVY
 
-    # Discussion Prompts
-    story.append(Paragraph("DISCUSSION PROMPTS", heading_style))
     prompts = [
         "\"Why does California burn at the same time every year?\"",
         "\"What would need to change to prevent these fires?\"",
-        "\"How is this connected to what we learned about the water cycle?\"",
-        "\"If you were a firefighter, where would you want to be positioned BEFORE fire season?\""
+        "\"How is this connected to the water cycle?\"",
+        "\"If you were a firefighter, where would you position BEFORE fire season?\"",
+        "\"What could communities do to reduce fire risk?\"",
     ]
-    for p in prompts:
-        story.append(Paragraph(f"• {p}", bullet_style))
-    story.append(Spacer(1, 15))
+    for prompt in prompts:
+        p = doc.add_paragraph(style='List Bullet')
+        p.add_run(prompt)
 
-    # Answer Key
-    story.append(Paragraph("ANSWER KEY", heading_style))
-    story.append(Paragraph("<b>Vocabulary Matching:</b>", subheading_style))
-    story.append(Paragraph("Drought = B, Atmosphere = C, Biosphere = A, Vegetation = E, Hydrosphere = D", body_style))
-    story.append(Spacer(1, 5))
-
-    story.append(Paragraph("<b>Component Sorting:</b>", subheading_style))
-    story.append(Paragraph("EXTERNAL: Rainfall, Wind", body_style))
-    story.append(Paragraph("INTERNAL: Dry Vegetation, Fire Spread", body_style))
-    story.append(Spacer(1, 5))
-
-    story.append(Paragraph("<b>Relationships:</b>", subheading_style))
-    story.append(Paragraph("• Rainfall → Dry Vegetation = NEGATIVE (more rain = less dry plants)", body_style))
-    story.append(Paragraph("• Dry Vegetation → Fire Spread = POSITIVE (more fuel = more fire)", body_style))
-    story.append(Paragraph("• Wind → Fire Spread = POSITIVE (more wind = fire spreads faster)", body_style))
-    story.append(Spacer(1, 5))
-
-    story.append(Paragraph("<b>Simulation Observations:</b>", subheading_style))
-    story.append(Paragraph("When Rainfall OFF: Dry Vegetation goes UP, Fire Spread goes UP", body_style))
-    story.append(Paragraph("When Wind ON: Fire Spread goes UP", body_style))
-    story.append(Paragraph("Worst conditions: No rain + High wind", body_style))
-    story.append(Spacer(1, 15))
-
-    # Differentiation
-    story.append(Paragraph("DIFFERENTIATION", heading_style))
-    diff_data = [
-        ['Support', 'Pre-label relationships; use sentence starters for explanations'],
-        ['Challenge', 'Add 3+ components; research actual fire risk percentages'],
-        ['ELL', 'Provide visual vocabulary cards; pair with English-proficient partner'],
-    ]
-    diff_table = Table(diff_data, colWidths=[1.2*inch, 4.8*inch])
-    diff_table.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (0, -1), HEX_BLUE_LIGHT),
-        ('FONTNAME', (0, 0), (0, -1), 'Helvetica-Bold'),
-        ('FONTNAME', (1, 0), (1, -1), 'Helvetica'),
-        ('FONTSIZE', (0, 0), (-1, -1), 10),
-        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-        ('GRID', (0, 0), (-1, -1), 0.5, HEX_BLUE_MID),
-        ('PADDING', (0, 0), (-1, -1), 8),
-    ]))
-    story.append(diff_table)
-    story.append(Spacer(1, 15))
-
-    # Extension Connections
-    story.append(Paragraph("EXTENSION CONNECTIONS", heading_style))
-    story.append(Paragraph("• <b>Water Cycle Unit:</b> Drought as part of larger pattern", bullet_style))
-    story.append(Paragraph("• <b>Human Impact:</b> Adding humans/power lines to model", bullet_style))
-    story.append(Paragraph("• <b>Climate Change:</b> Researching how fire season has changed over decades", bullet_style))
-
-    # Build PDF
-    doc.build(story)
-    print(f"Created: {output_path}")
+    doc.save(output_path)
+    print(f"[OK] Created: {output_path}")
     return output_path
+
 
 # ============================================
 # MAIN
@@ -856,16 +1371,21 @@ def create_teachers_guide():
 
 if __name__ == "__main__":
     ensure_output_dir()
-    print("\n" + "="*50)
-    print("ModelIt Lesson Materials Generator")
-    print("G05-L01: When Trees Become Matches")
-    print("="*50 + "\n")
+    print("\n" + "=" * 60)
+    print("ModelIt! Lesson Materials Generator v2")
+    print(f"{LESSON_ID}: {LESSON_TITLE}")
+    print("=" * 60 + "\n")
 
     ppt_path = create_powerpoint()
-    worksheet_path = create_worksheets()
+    activity_path = create_student_activity_pack()
     guide_path = create_teachers_guide()
 
-    print("\n" + "="*50)
-    print("All materials created successfully!")
+    print("\n" + "=" * 60)
+    print("All materials created!")
     print(f"Location: {OUTPUT_DIR}")
-    print("="*50)
+    print("=" * 60)
+    print("\nFiles created:")
+    print(f"  - {LESSON_ID}-Student-Presentation.pptx")
+    print(f"  - {LESSON_ID}-Student-Activity-Pack.docx")
+    print(f"  - {LESSON_ID}-Teachers-Guide.docx")
+    print("\nImage placeholders included - ready for your visual API!")
