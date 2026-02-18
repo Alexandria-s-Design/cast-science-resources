@@ -76,11 +76,11 @@ STEP 2: ADD TO YOUR MODEL
 • Click the PLUS (+) button to add each component to your picture
 • You should now see 4 components on your canvas
 
-STEP 3: ARRANGE YOUR MODEL
-• Drag and drop components to organize them
-• Put EXTERNAL components on the LEFT
-• Put INTERNAL components on the RIGHT
-• This shows cause → effect flow
+STEP 3: SORT YOUR COMPONENTS
+• Sort your components into EXTERNAL and INTERNAL
+• EXTERNAL = things we can't control (weather, wind)
+• INTERNAL = things that change because of other things
+• Your teacher will show you how this works in the video
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -114,10 +114,12 @@ Click on 'Wind' — also external. Can't control that either.
 Now click 'Dry Vegetation' — internal. This CHANGES based on conditions.
 Finally, 'Fire Spread' — internal. This is what we're trying to understand.
 
-Hit the PLUS button to add each one to your model canvas.
+But first, you need to SORT them. Which ones are external — things we
+can't control? Which ones are internal — things that change because of
+other things in the system?
 
-Now drag them around. Put your external components on the left, internal
-on the right. This shows the flow — outside forces affecting inside results.
+Sort your components, then hit the PLUS button to add each one to your
+model canvas.
 
 You've got your pieces. But right now they're just sitting there, not
 connected. In the next activity, we'll draw the invisible lines that
@@ -127,7 +129,7 @@ Now it's your turn to ModelIt!"
 ```
 
 ### Image
-[Screenshot showing 4 components arranged: Rainfall and Wind on left (External), Dry Vegetation and Fire Spread on right (Internal)]
+[Screenshot showing 4 components sorted: Rainfall and Wind (External), Dry Vegetation and Fire Spread (Internal)]
 
 ### Graph
 [Empty graph panel — no simulation yet]
@@ -665,14 +667,13 @@ ___ Hydrosphere     E. Plants and trees
 MODEL PLANNING SPACE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Before you build in ModelIt, sketch your model here:
+Before you build in ModelIt, sort your components here:
 
-EXTERNAL (can't control)          INTERNAL (changes based on other things)
-┌─────────────────────┐          ┌─────────────────────┐
-│                     │          │                     │
-│                     │          │                     │
-│                     │          │                     │
-└─────────────────────┘          └─────────────────────┘
+EXTERNAL (can't control):
+_______________ _______________ _______________
+
+INTERNAL (changes based on other things):
+_______________ _______________ _______________
 
 Draw arrows showing relationships. Label each + or −.
 
