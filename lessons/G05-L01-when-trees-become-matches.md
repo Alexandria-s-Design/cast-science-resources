@@ -78,8 +78,8 @@ STEP 2: ADD TO YOUR MODEL
 
 STEP 3: ARRANGE YOUR MODEL
 • Drag and drop components to organize them
-• Put EXTERNAL components (orange) on the LEFT
-• Put INTERNAL components (gray) on the RIGHT
+• Put EXTERNAL components on the LEFT
+• Put INTERNAL components on the RIGHT
 • This shows cause → effect flow
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -103,10 +103,10 @@ into matches.
 Let's build our fire system. Look at the component panel on the right
 side of your screen. You'll see two types of components:
 
-EXTERNAL components — these are orange. They're things we can't control.
+EXTERNAL components — things we can't control.
 Weather. Wind. Nature does what nature does.
 
-INTERNAL components — these are gray. They change BECAUSE of other things
+INTERNAL components — things that change BECAUSE of other things
 in the system.
 
 Click on 'Rainfall' — that's external. We can't make it rain.
@@ -127,7 +127,7 @@ Now it's your turn to ModelIt!"
 ```
 
 ### Image
-[Screenshot showing 4 components arranged: Rainfall and Wind on left (orange), Dry Vegetation and Fire Spread on right (gray)]
+[Screenshot showing 4 components arranged: Rainfall and Wind on left (External), Dry Vegetation and Fire Spread on right (Internal)]
 
 ### Graph
 [Empty graph panel — no simulation yet]
@@ -496,7 +496,7 @@ Text: "A cause-and-effect model of wildfire conditions"
 
 SLIDE 5: ACTIVITY 1 — LOCATE
 Screenshot of ModelIt component panel
-Bullet points: External (orange) vs Internal (gray) components
+Bullet points: External vs Internal components (sort before adding)
 
 SLIDE 6: OUR COMPONENTS
 Visual cards for each:
