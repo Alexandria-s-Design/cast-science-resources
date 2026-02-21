@@ -18,7 +18,10 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
-API_KEY = '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'
+# API Key - read from ~/.env (never hardcode keys)
+import dotenv as _dotenv
+_dotenv.load_dotenv(os.path.join(os.path.expanduser('~'), '.env'))
+API_KEY = os.environ.get('OPENROUTER_API_KEY', '')
 BASE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'materials', 'grade-05')
 NAVY=RGBColor(0x0D,0x1B,0x2A); BB=RGBColor(0x1A,0x47,0x80); MB=RGBColor(0x2E,0x86,0xAB)
 LB=RGBColor(0x7E,0xC8,0xE3); SB=RGBColor(0x5D,0xB7,0xDE); OG=RGBColor(0xE6,0x7E,0x22)

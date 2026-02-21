@@ -45,8 +45,10 @@ AGE_RANGE = "10-11 years old"
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), '..', 'materials', 'grade-05', LESSON_ID)
 IMAGES_DIR = os.path.join(OUTPUT_DIR, 'images')
 
-# API Configuration
-OPENROUTER_API_KEY = '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'
+# API Configuration - read from ~/.env (never hardcode keys)
+import dotenv as _dotenv
+_dotenv.load_dotenv(os.path.join(os.path.expanduser('~'), '.env'))
+OPENROUTER_API_KEY = os.environ.get('OPENROUTER_API_KEY', '')
 
 # ============================================
 # BRAND COLORS
