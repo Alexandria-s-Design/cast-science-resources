@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """ModelIt! Batch Generator - G05-L02 through G05-L10"""
 import os, sys, time, base64, requests
+from lesson_data_L02_L10 import ALL_LESSONS
 from PIL import Image
 from pptx import Presentation
 from pptx.util import Inches, Pt
@@ -17,7 +18,7 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
-API_KEY = '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'
+API_KEY = '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'
 BASE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'materials', 'grade-05')
 NAVY=RGBColor(0x0D,0x1B,0x2A); BB=RGBColor(0x1A,0x47,0x80); MB=RGBColor(0x2E,0x86,0xAB)
 LB=RGBColor(0x7E,0xC8,0xE3); SB=RGBColor(0x5D,0xB7,0xDE); OG=RGBColor(0xE6,0x7E,0x22)
@@ -640,3 +641,25 @@ def generate_lesson(c):
     make_guide(c,out_dir)
     print(f"[DONE] {lid} complete!\n")
 
+if __name__ == "__main__":
+    print("="*60)
+    print("ModelIt! Batch Generator - G05-L02 through G05-L10")
+    print("="*60)
+    print(f"\nGenerating {len(ALL_LESSONS)} lessons:")
+    for lesson in ALL_LESSONS:
+        print(f"  - {lesson['id']}: {lesson['title']}")
+    print()
+
+    start_time = time.time()
+    for i, lesson in enumerate(ALL_LESSONS, 1):
+        print(f"\n[{i}/{len(ALL_LESSONS)}] Processing {lesson['id']}...")
+        generate_lesson(lesson)
+
+    elapsed = time.time() - start_time
+    print("\n" + "="*60)
+    print("BATCH GENERATION COMPLETE!")
+    print("="*60)
+    print(f"Lessons generated: {len(ALL_LESSONS)}")
+    print(f"Total time: {elapsed/60:.1f} minutes")
+    print(f"Estimated image cost: ${total_cost:.2f}")
+    print("="*60)
