@@ -46,7 +46,7 @@ OUTPUT_DIR = os.path.join(os.path.dirname(__file__), '..', 'materials', 'grade-0
 IMAGES_DIR = os.path.join(OUTPUT_DIR, 'images')
 
 # API Configuration
-OPENROUTER_API_KEY = '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'
+OPENROUTER_API_KEY = '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'
 
 # ============================================
 # BRAND COLORS

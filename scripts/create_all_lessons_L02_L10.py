@@ -142,179 +142,302 @@ def rbox(doc,lines=3,prompt=""):
     t=doc.add_table(rows=1,cols=1);t.style="Table Grid"
     t.rows[0].cells[0].text="\n"*lines;doc.add_paragraph();return t
 
-def make_ppt(c,imgs,out_dir):
-    prs=Presentation();prs.slide_width=Inches(10);prs.slide_height=Inches(7.5)
-    blank=prs.slide_layouts[6]
-    lid=c["id"];title=c["title"];sub=c["subtitle"];ngss=c["ngss"]
+def make_ppt(c, imgs, out_dir):
+    """Create branded student presentation matching G05-L01 exemplar design."""
+    prs = Presentation()
+    prs.slide_width = Inches(10)
+    prs.slide_height = Inches(7.5)
+    blank = prs.slide_layouts[6]
+    lid = c["id"]; title = c["title"]; sub = c["subtitle"]; ngss = c["ngss"]
 
-    # SLIDE 1: COVER
-    sl=prs.slides.add_slide(blank);corners(sl,prs,"both")
-    bg=sl.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,Inches(0.4),Inches(1.0),Inches(5.5),Inches(5.5))
-    bg.fill.solid();bg.fill.fore_color.rgb=RGBColor(0xF0,0xF5,0xFA);bg.line.fill.background()
-    tb=sl.shapes.add_textbox(Inches(0.6),Inches(1.2),Inches(5.0),Inches(1.0))
-    p=tb.text_frame.paragraphs[0];p.text="ModelIt!";p.font.size=Pt(20);p.font.bold=True
-    p.font.color.rgb=MB;p.font.name="Comic Sans MS"
-    tb2=sl.shapes.add_textbox(Inches(0.6),Inches(2.0),Inches(5.0),Inches(1.5))
-    tf=tb2.text_frame;tf.word_wrap=True
-    p=tf.paragraphs[0];p.text=title;p.font.size=Pt(36);p.font.bold=True;p.font.color.rgb=NAVY
-    tb3=sl.shapes.add_textbox(Inches(0.6),Inches(3.5),Inches(5.0),Inches(0.8))
-    tf=tb3.text_frame;tf.word_wrap=True
-    p=tf.paragraphs[0];p.text=sub;p.font.size=Pt(16);p.font.italic=True;p.font.color.rgb=MB
-    tb4=sl.shapes.add_textbox(Inches(0.6),Inches(4.5),Inches(5.0),Inches(0.5))
-    p=tb4.text_frame.paragraphs[0];p.text=f"{lid}  |  {ngss}  |  5th Grade"
-    p.font.size=Pt(12);p.font.color.rgb=RGBColor(0x66,0x66,0x66)
-    logo(sl,0.7,5.8,2.5)
-    put_img(sl,imgs.get("cover"),5.7,1.2,4.0,5.8,center=True)
-    pagenum(sl,1)
+    # ========== SLIDE 1: COVER ==========
+    sl = prs.slides.add_slide(blank)
+    corners(sl, prs, "both")
+    logo(sl, 3.5, 1.3)
 
-    # SLIDE 2: OBJECTIVES
-    sl=prs.slides.add_slide(blank);corners(sl,prs,"top")
-    tb=sl.shapes.add_textbox(Inches(0.5),Inches(1.2),Inches(9),Inches(0.8))
-    p=tb.text_frame.paragraphs[0];p.text="Learning Objectives & Key Vocabulary"
-    p.font.size=Pt(30);p.font.bold=True;p.font.color.rgb=NAVY;p.alignment=PP_ALIGN.CENTER
-    goals=sl.shapes.add_textbox(Inches(0.5),Inches(2.1),Inches(4.5),Inches(4.5))
-    tf=goals.text_frame;tf.word_wrap=True
-    p=tf.paragraphs[0];p.text="Learning Goals";p.font.size=Pt(18);p.font.bold=True;p.font.color.rgb=BB
+    # Cover image (bottom-left, aspect-ratio preserved)
+    put_img(sl, imgs.get("cover"), 0.3, 4.5, 3.2, 2.5, center=True)
+
+    # "Student Lesson" header
+    tb = sl.shapes.add_textbox(Inches(1), Inches(2.5), Inches(8), Inches(0.6))
+    p = tb.text_frame.paragraphs[0]; p.text = "Student Lesson"
+    p.font.size = Pt(22); p.font.bold = True; p.font.color.rgb = NAVY; p.alignment = PP_ALIGN.CENTER
+
+    # Title centered
+    tb2 = sl.shapes.add_textbox(Inches(0.5), Inches(3.0), Inches(9), Inches(1.2))
+    tf = tb2.text_frame; tf.word_wrap = True
+    p = tf.paragraphs[0]; p.text = title
+    p.font.size = Pt(38); p.font.bold = True; p.font.color.rgb = BB; p.alignment = PP_ALIGN.CENTER
+    p = tf.add_paragraph(); p.text = sub
+    p.font.size = Pt(15); p.font.italic = True; p.font.color.rgb = DK; p.alignment = PP_ALIGN.CENTER
+
+    # NGSS Standards badge (right-aligned)
+    badge = sl.shapes.add_textbox(Inches(6), Inches(5.5), Inches(3.5), Inches(0.8))
+    tf = badge.text_frame
+    p = tf.paragraphs[0]; p.text = f"NGSS: {ngss}"
+    p.font.size = Pt(14); p.font.bold = True; p.font.color.rgb = MB; p.alignment = PP_ALIGN.RIGHT
+    p = tf.add_paragraph(); p.text = "5th Grade"
+    p.font.size = Pt(12); p.font.color.rgb = DK; p.alignment = PP_ALIGN.RIGHT
+    pagenum(sl, 1)
+
+    # ========== SLIDE 2: LEARNING OBJECTIVES ==========
+    sl = prs.slides.add_slide(blank)
+    corners(sl, prs, "top")
+
+    tb = sl.shapes.add_textbox(Inches(0.5), Inches(1.2), Inches(9), Inches(0.8))
+    p = tb.text_frame.paragraphs[0]; p.text = "What You Will Learn Today"
+    p.font.size = Pt(34); p.font.bold = True; p.font.color.rgb = NAVY; p.alignment = PP_ALIGN.CENTER
+
+    # Left column - Learning Goals
+    goals = sl.shapes.add_textbox(Inches(0.5), Inches(2.2), Inches(4.5), Inches(4.5))
+    tf = goals.text_frame; tf.word_wrap = True
+    p = tf.paragraphs[0]; p.text = "Learning Goals"
+    p.font.size = Pt(20); p.font.bold = True; p.font.color.rgb = BB
     for obj in c["objectives"]:
-        p=tf.add_paragraph();p.text=f"  *  {obj}";p.font.size=Pt(13);p.font.color.rgb=DK;p.space_before=Pt(8)
-    vocab=sl.shapes.add_textbox(Inches(5.2),Inches(2.1),Inches(4.5),Inches(4.5))
-    tf=vocab.text_frame;tf.word_wrap=True
-    p=tf.paragraphs[0];p.text="Key Vocabulary";p.font.size=Pt(18);p.font.bold=True;p.font.color.rgb=BB
-    for term,defn in c["vocabulary"]:
-        p=tf.add_paragraph();p.text=f"  {term}:";p.font.size=Pt(13);p.font.bold=True;p.font.color.rgb=NAVY;p.space_before=Pt(8)
-        p=tf.add_paragraph();p.text=f"     {defn}";p.font.size=Pt(12);p.font.color.rgb=DK
-    pagenum(sl,2)
+        p = tf.add_paragraph(); p.text = f"  *  {obj}"
+        p.font.size = Pt(16); p.font.color.rgb = DK; p.space_before = Pt(8)
 
-    # SLIDE 3: BIG QUESTION
-    sl=prs.slides.add_slide(blank);corners(sl,prs,"top")
-    tb=sl.shapes.add_textbox(Inches(0.5),Inches(1.2),Inches(9),Inches(0.8))
-    p=tb.text_frame.paragraphs[0];p.text="The Big Question"
-    p.font.size=Pt(30);p.font.bold=True;p.font.color.rgb=NAVY;p.alignment=PP_ALIGN.CENTER
-    qbox=sl.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,Inches(0.5),Inches(2.1),Inches(9),Inches(1.8))
-    qbox.fill.solid();qbox.fill.fore_color.rgb=RGBColor(0xE8,0xF4,0xF8);qbox.line.color.rgb=MB
-    tb2=sl.shapes.add_textbox(Inches(0.8),Inches(2.3),Inches(8.4),Inches(1.4))
-    tf=tb2.text_frame;tf.word_wrap=True
-    p=tf.paragraphs[0];p.text=c["big_question"];p.font.size=Pt(24);p.font.bold=True
-    p.font.color.rgb=NAVY;p.alignment=PP_ALIGN.CENTER
-    tb3=sl.shapes.add_textbox(Inches(0.5),Inches(4.1),Inches(5.5),Inches(1.5))
-    tf=tb3.text_frame;tf.word_wrap=True
-    p=tf.paragraphs[0];p.text="By the end of today, your model will answer this question!"
-    p.font.size=Pt(16);p.font.italic=True;p.font.color.rgb=MB
-    put_img(sl,imgs.get("landscape"),5.7,3.8,4.0,3.5,center=True)
-    pagenum(sl,3)
+    # Right column - Key Vocabulary (bold term + italic definition)
+    vocab = sl.shapes.add_textbox(Inches(5.2), Inches(2.2), Inches(4.3), Inches(4.5))
+    tf = vocab.text_frame; tf.word_wrap = True
+    p = tf.paragraphs[0]; p.text = "Key Vocabulary"
+    p.font.size = Pt(20); p.font.bold = True; p.font.color.rgb = BB
+    for term, defn in c["vocabulary"]:
+        p = tf.add_paragraph(); p.text = f"  {term}"
+        p.font.size = Pt(15); p.font.bold = True; p.font.color.rgb = NAVY; p.space_before = Pt(8)
+        p = tf.add_paragraph(); p.text = f"     {defn}"
+        p.font.size = Pt(13); p.font.italic = True; p.font.color.rgb = DK
+    pagenum(sl, 2)
 
-    # SLIDE 4: TODAY WE BUILD
-    sl=prs.slides.add_slide(blank);corners(sl,prs,"top")
-    tb=sl.shapes.add_textbox(Inches(0.5),Inches(1.2),Inches(9),Inches(0.8))
-    p=tb.text_frame.paragraphs[0];p.text="Today We Build a Model!"
-    p.font.size=Pt(30);p.font.bold=True;p.font.color.rgb=NAVY;p.alignment=PP_ALIGN.CENTER
-    lever=sl.shapes.add_textbox(Inches(0.5),Inches(2.1),Inches(5.5),Inches(4.5))
-    tf=lever.text_frame;tf.word_wrap=True
-    for letter,desc in[("L - LOCATE","Find the system's components"),
-                       ("E - ESTABLISH","Map out how parts connect"),
-                       ("V - VISUALIZE","Build your model in ModelIt!"),
-                       ("E - EVALUATE","Run simulations and observe"),
-                       ("R - REVISE","Improve your model with new evidence")]:
-        p=tf.add_paragraph();p.text=letter;p.font.size=Pt(18);p.font.bold=True;p.font.color.rgb=BB;p.space_before=Pt(10)
-        p=tf.add_paragraph();p.text=f"   {desc}";p.font.size=Pt(14);p.font.color.rgb=DK
-    put_img(sl,imgs.get("modeling"),5.8,2.1,3.8,4.0,center=True)
-    pagenum(sl,4)
+    # ========== SLIDE 3: THE BIG QUESTION ==========
+    sl = prs.slides.add_slide(blank)
+    corners(sl, prs, "top")
 
-    # SLIDE 5: ACTIVITY 1 - SORT
-    sl=prs.slides.add_slide(blank);corners(sl,prs,"top")
-    tb=sl.shapes.add_textbox(Inches(0.5),Inches(1.2),Inches(9),Inches(0.8))
-    p=tb.text_frame.paragraphs[0];p.text="Activity 1: Sort the Components!"
-    p.font.size=Pt(34);p.font.bold=True;p.font.color.rgb=NAVY;p.alignment=PP_ALIGN.CENTER
-    ct=sl.shapes.add_textbox(Inches(0.5),Inches(2.1),Inches(5.5),Inches(4.5))
-    tf=ct.text_frame;tf.word_wrap=True
-    p=tf.paragraphs[0];p.text="Our system has 4 components:";p.font.size=Pt(17);p.font.bold=True;p.font.color.rgb=BB
-    for name,desc,ext in c["components"]:
-        p=tf.add_paragraph();p.text=f"  *  {name}";p.font.size=Pt(16);p.font.bold=True;p.font.color.rgb=NAVY;p.space_before=Pt(8)
-        p=tf.add_paragraph();p.text=f"     {desc}";p.font.size=Pt(13);p.font.color.rgb=DK
-    p=tf.add_paragraph();p.space_before=Pt(14)
-    p=tf.add_paragraph();p.text="Sort them: EXTERNAL vs INTERNAL";p.font.size=Pt(15);p.font.bold=True;p.font.color.rgb=OG
-    put_img(sl,imgs.get("discussion"),5.8,2.1,3.8,4.5,center=True)
-    pagenum(sl,5)
+    tb = sl.shapes.add_textbox(Inches(0.5), Inches(1.2), Inches(9), Inches(0.8))
+    p = tb.text_frame.paragraphs[0]; p.text = "The Big Question"
+    p.font.size = Pt(34); p.font.bold = True; p.font.color.rgb = NAVY; p.alignment = PP_ALIGN.CENTER
 
-    # SLIDE 6: ACTIVITY 2 - CONNECT
-    sl=prs.slides.add_slide(blank);corners(sl,prs,"top")
-    tb=sl.shapes.add_textbox(Inches(0.5),Inches(1.2),Inches(9),Inches(0.8))
-    p=tb.text_frame.paragraphs[0];p.text="Activity 2: Connect with Arrows!"
-    p.font.size=Pt(34);p.font.bold=True;p.font.color.rgb=NAVY;p.alignment=PP_ALIGN.CENTER
-    ct=sl.shapes.add_textbox(Inches(0.5),Inches(2.1),Inches(5.5),Inches(3))
-    tf=ct.text_frame;tf.word_wrap=True
-    p=tf.paragraphs[0];p.text="Draw arrows to show HOW components affect each other:";p.font.size=Pt(17)
-    p=tf.add_paragraph();p.text="(+) POSITIVE Relationship";p.font.size=Pt(16);p.font.bold=True
-    p.font.color.rgb=RGBColor(0x22,0x8B,0x22);p.space_before=Pt(14)
-    p=tf.add_paragraph();p.text="     When one goes UP, the other goes UP too";p.font.size=Pt(14)
-    p=tf.add_paragraph();p.text="(-) NEGATIVE Relationship";p.font.size=Pt(16);p.font.bold=True
-    p.font.color.rgb=RGBColor(0xDC,0x14,0x3C);p.space_before=Pt(14)
-    p=tf.add_paragraph();p.text="     When one goes UP, the other goes DOWN";p.font.size=Pt(14)
-    ex=sl.shapes.add_textbox(Inches(0.5),Inches(5.2),Inches(5.5),Inches(1.5))
-    tf=ex.text_frame;tf.word_wrap=True
-    p=tf.paragraphs[0];p.text="Think About It:";p.font.size=Pt(16);p.font.bold=True;p.font.color.rgb=BB
-    p=tf.add_paragraph();p.text=c["think_about_it"];p.font.size=Pt(15);p.font.italic=True;p.space_before=Pt(6)
-    put_img(sl,imgs.get("discussion"),5.8,2.5,3.8,3.2,center=True)
-    pagenum(sl,6)
+    # Question in styled box
+    tb2 = sl.shapes.add_textbox(Inches(0.8), Inches(2.2), Inches(8.4), Inches(1.0))
+    tf = tb2.text_frame; tf.word_wrap = True
+    p = tf.paragraphs[0]; p.text = c["big_question"]
+    p.font.size = Pt(26); p.font.bold = True; p.font.color.rgb = BB; p.alignment = PP_ALIGN.CENTER
 
-    # SLIDE 7: ACTIVITY 3 - SIMULATE
-    sl=prs.slides.add_slide(blank);corners(sl,prs,"top")
-    tb=sl.shapes.add_textbox(Inches(0.5),Inches(1.2),Inches(9),Inches(0.8))
-    p=tb.text_frame.paragraphs[0];p.text="Activity 3: Run the Simulation!"
-    p.font.size=Pt(34);p.font.bold=True;p.font.color.rgb=NAVY;p.alignment=PP_ALIGN.CENTER
-    ct=sl.shapes.add_textbox(Inches(0.5),Inches(2.1),Inches(5),Inches(4))
-    tf=ct.text_frame;tf.word_wrap=True
-    p=tf.paragraphs[0];p.text="Test these scenarios in ModelIt!";p.font.size=Pt(18);p.font.bold=True;p.font.color.rgb=BB
-    for name,instr in c["scenarios"]:
-        p=tf.add_paragraph();p.text=name;p.font.size=Pt(16);p.font.bold=True;p.space_before=Pt(12)
-        p=tf.add_paragraph();p.text=f"     {instr}";p.font.size=Pt(14)
-    p=tf.add_paragraph();p.text="\nWatch the activity graphs change!";p.font.size=Pt(16);p.font.bold=True;p.font.color.rgb=MB
-    box=sl.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,Inches(5.3),Inches(2.1),Inches(4.3),Inches(4.2))
-    box.fill.solid();box.fill.fore_color.rgb=RGBColor(0xF0,0xF5,0xFA);box.line.color.rgb=MB
-    tb2=sl.shapes.add_textbox(Inches(5.5),Inches(4.0),Inches(3.9),Inches(1.0))
-    p=tb2.text_frame.paragraphs[0];p.text="[ModelIt Platform Screenshot - Simulation Results]"
-    p.font.size=Pt(11);p.font.italic=True;p.font.color.rgb=RGBColor(0x66,0x66,0x66);p.alignment=PP_ALIGN.CENTER
-    pagenum(sl,7)
+    # Context paragraph (like exemplar's descriptive intro)
+    ctx = sl.shapes.add_textbox(Inches(0.8), Inches(3.4), Inches(4.5), Inches(1.5))
+    tf = ctx.text_frame; tf.word_wrap = True
+    p = tf.paragraphs[0]; p.text = f"{sub}. Today we'll build a MODEL to discover the answer!"
+    p.font.size = Pt(16); p.font.color.rgb = DK
 
-    # SLIDE 8: DISCOVERIES
-    sl=prs.slides.add_slide(blank);corners(sl,prs,"top")
-    tb=sl.shapes.add_textbox(Inches(0.5),Inches(1.2),Inches(9),Inches(0.8))
-    p=tb.text_frame.paragraphs[0];p.text="What Did We Discover?"
-    p.font.size=Pt(34);p.font.bold=True;p.font.color.rgb=NAVY;p.alignment=PP_ALIGN.CENTER
-    ct=sl.shapes.add_textbox(Inches(0.6),Inches(2.1),Inches(5.5),Inches(4.5))
-    tf=ct.text_frame;tf.word_wrap=True
-    p=tf.paragraphs[0];p.text="Our Model Showed Us:";p.font.size=Pt(18);p.font.bold=True;p.font.color.rgb=BB
+    # Landscape image (right side)
+    put_img(sl, imgs.get("landscape"), 5.3, 3.2, 4.2, 3.2, center=True)
+    pagenum(sl, 3)
+
+    # ========== SLIDE 4: TODAY WE BUILD A MODEL ==========
+    sl = prs.slides.add_slide(blank)
+    corners(sl, prs, "top")
+
+    tb = sl.shapes.add_textbox(Inches(0.5), Inches(1.2), Inches(9), Inches(0.8))
+    p = tb.text_frame.paragraphs[0]; p.text = "Today We Will Build a Model!"
+    p.font.size = Pt(34); p.font.bold = True; p.font.color.rgb = NAVY; p.alignment = PP_ALIGN.CENTER
+
+    lever = sl.shapes.add_textbox(Inches(0.6), Inches(2.1), Inches(5.2), Inches(4.5))
+    tf = lever.text_frame; tf.word_wrap = True
+    # Intro text (like exemplar)
+    p = tf.paragraphs[0]; p.text = "A model helps us understand complex systems!"
+    p.font.size = Pt(16); p.font.italic = True; p.font.color.rgb = MB
+
+    # Numbered LEVER steps (like exemplar)
+    for step, desc in [("1. LOCATE", "Identify the COMPONENTS (parts) of the system"),
+                       ("2. ESTABLISH", "Connect them with RELATIONSHIPS (+ or -)"),
+                       ("3. VISUALIZE", "Build your model in ModelIt!"),
+                       ("4. EVALUATE", "Run SIMULATIONS to test scenarios"),
+                       ("5. REVISE", "Improve your model based on evidence")]:
+        p = tf.add_paragraph(); p.text = step
+        p.font.size = Pt(17); p.font.bold = True; p.font.color.rgb = BB; p.space_before = Pt(10)
+        p = tf.add_paragraph(); p.text = f"     {desc}"
+        p.font.size = Pt(14); p.font.color.rgb = DK
+
+    # Modeling image (right side)
+    put_img(sl, imgs.get("modeling"), 5.8, 2.5, 3.8, 3.5, center=True)
+    pagenum(sl, 4)
+
+    # ========== SLIDE 5: ACTIVITY 1 - SORT COMPONENTS ==========
+    sl = prs.slides.add_slide(blank)
+    corners(sl, prs, "top")
+
+    tb = sl.shapes.add_textbox(Inches(0.5), Inches(1.2), Inches(9), Inches(0.8))
+    p = tb.text_frame.paragraphs[0]; p.text = "Activity 1: Sort the Components"
+    p.font.size = Pt(34); p.font.bold = True; p.font.color.rgb = NAVY; p.alignment = PP_ALIGN.CENTER
+
+    # Instructions
+    inst = sl.shapes.add_textbox(Inches(0.6), Inches(2.1), Inches(4.8), Inches(1.0))
+    tf = inst.text_frame; tf.word_wrap = True
+    p = tf.paragraphs[0]
+    p.text = "Sort these components into EXTERNAL (inputs from outside) and INTERNAL (inside the system):"
+    p.font.size = Pt(15); p.font.color.rgb = DK
+
+    # Components list
+    ct = sl.shapes.add_textbox(Inches(0.6), Inches(3.0), Inches(4.8), Inches(2.5))
+    tf = ct.text_frame; tf.word_wrap = True
+    p = tf.paragraphs[0]; p.text = "Your Components:"
+    p.font.size = Pt(18); p.font.bold = True; p.font.color.rgb = BB
+    for name, desc, ext in c["components"]:
+        p = tf.add_paragraph(); p.text = f"     *  {name}"
+        p.font.size = Pt(16); p.space_before = Pt(6)
+
+    # Think-pair-share prompt (like exemplar)
+    think = sl.shapes.add_textbox(Inches(0.6), Inches(5.5), Inches(4.8), Inches(1.0))
+    tf = think.text_frame; tf.word_wrap = True
+    p = tf.paragraphs[0]
+    p.text = "Think: Which components can we control? Which happen on their own?"
+    p.font.size = Pt(14); p.font.italic = True; p.font.color.rgb = MB
+
+    # Discussion image (right side)
+    put_img(sl, imgs.get("discussion"), 5.6, 2.1, 4.0, 3.8, center=True)
+    pagenum(sl, 5)
+
+    # ========== SLIDE 6: ACTIVITY 2 - CONNECT WITH ARROWS ==========
+    sl = prs.slides.add_slide(blank)
+    corners(sl, prs, "top")
+
+    tb = sl.shapes.add_textbox(Inches(0.5), Inches(1.2), Inches(9), Inches(0.8))
+    p = tb.text_frame.paragraphs[0]; p.text = "Activity 2: Connect with Arrows"
+    p.font.size = Pt(34); p.font.bold = True; p.font.color.rgb = NAVY; p.alignment = PP_ALIGN.CENTER
+
+    ct = sl.shapes.add_textbox(Inches(0.5), Inches(2.1), Inches(5.5), Inches(3))
+    tf = ct.text_frame; tf.word_wrap = True
+    p = tf.paragraphs[0]; p.text = "Draw arrows to show HOW components affect each other:"
+    p.font.size = Pt(17)
+
+    p = tf.add_paragraph(); p.text = "(+) POSITIVE Relationship"
+    p.font.size = Pt(16); p.font.bold = True
+    p.font.color.rgb = RGBColor(0x22, 0x8B, 0x22); p.space_before = Pt(14)
+    p = tf.add_paragraph(); p.text = "     When one goes UP, the other goes UP too"
+    p.font.size = Pt(14)
+
+    p = tf.add_paragraph(); p.text = "(-) NEGATIVE Relationship"
+    p.font.size = Pt(16); p.font.bold = True
+    p.font.color.rgb = RGBColor(0xDC, 0x14, 0x3C); p.space_before = Pt(14)
+    p = tf.add_paragraph(); p.text = "     When one goes UP, the other goes DOWN"
+    p.font.size = Pt(14)
+
+    # Think About It question
+    ex = sl.shapes.add_textbox(Inches(0.5), Inches(5.2), Inches(5.5), Inches(1.5))
+    tf = ex.text_frame; tf.word_wrap = True
+    p = tf.paragraphs[0]; p.text = "Think About It:"
+    p.font.size = Pt(16); p.font.bold = True; p.font.color.rgb = BB
+    p = tf.add_paragraph(); p.text = c["think_about_it"]
+    p.font.size = Pt(15); p.font.italic = True; p.space_before = Pt(6)
+
+    # Discussion image (right side)
+    put_img(sl, imgs.get("discussion"), 5.8, 2.5, 3.8, 3.2, center=True)
+    pagenum(sl, 6)
+
+    # ========== SLIDE 7: ACTIVITY 3 - SIMULATE ==========
+    sl = prs.slides.add_slide(blank)
+    corners(sl, prs, "top")
+
+    tb = sl.shapes.add_textbox(Inches(0.5), Inches(1.2), Inches(9), Inches(0.8))
+    p = tb.text_frame.paragraphs[0]; p.text = "Activity 3: Run the Simulation!"
+    p.font.size = Pt(34); p.font.bold = True; p.font.color.rgb = NAVY; p.alignment = PP_ALIGN.CENTER
+
+    ct = sl.shapes.add_textbox(Inches(0.5), Inches(2.1), Inches(5), Inches(4))
+    tf = ct.text_frame; tf.word_wrap = True
+    p = tf.paragraphs[0]; p.text = "Test these scenarios in ModelIt!"
+    p.font.size = Pt(18); p.font.bold = True; p.font.color.rgb = BB
+    for name, instr in c["scenarios"]:
+        p = tf.add_paragraph(); p.text = name
+        p.font.size = Pt(16); p.font.bold = True; p.space_before = Pt(12)
+        p = tf.add_paragraph(); p.text = f"     {instr}"
+        p.font.size = Pt(14)
+    p = tf.add_paragraph(); p.text = "\nWatch the activity graphs change!"
+    p.font.size = Pt(16); p.font.bold = True; p.font.color.rgb = MB; p.space_before = Pt(16)
+
+    # Platform screenshot placeholder
+    box = sl.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(5.3), Inches(2.1), Inches(4.3), Inches(4.2))
+    box.fill.solid(); box.fill.fore_color.rgb = RGBColor(0xF0, 0xF5, 0xFA); box.line.color.rgb = MB
+    tb2 = sl.shapes.add_textbox(Inches(5.5), Inches(4.0), Inches(3.9), Inches(1.0))
+    p = tb2.text_frame.paragraphs[0]; p.text = "[ModelIt Platform Screenshot - Simulation Results Graph]"
+    p.font.size = Pt(11); p.font.italic = True; p.font.color.rgb = RGBColor(0x66, 0x66, 0x66)
+    p.alignment = PP_ALIGN.CENTER
+    pagenum(sl, 7)
+
+    # ========== SLIDE 8: WHAT DID WE DISCOVER ==========
+    sl = prs.slides.add_slide(blank)
+    corners(sl, prs, "top")
+
+    tb = sl.shapes.add_textbox(Inches(0.5), Inches(1.2), Inches(9), Inches(0.8))
+    p = tb.text_frame.paragraphs[0]; p.text = "What Did We Discover?"
+    p.font.size = Pt(34); p.font.bold = True; p.font.color.rgb = NAVY; p.alignment = PP_ALIGN.CENTER
+
+    ct = sl.shapes.add_textbox(Inches(0.6), Inches(2.1), Inches(5.5), Inches(4.5))
+    tf = ct.text_frame; tf.word_wrap = True
+    p = tf.paragraphs[0]; p.text = "Our Model Showed Us:"
+    p.font.size = Pt(18); p.font.bold = True; p.font.color.rgb = BB
     for d in c["discoveries"]:
-        p=tf.add_paragraph();p.text=f"  *  {d}";p.font.size=Pt(15);p.font.color.rgb=DK;p.space_before=Pt(10)
-    ans=sl.shapes.add_textbox(Inches(0.6),Inches(5.5),Inches(5.5),Inches(1.2))
-    tf=ans.text_frame;tf.word_wrap=True
-    p=tf.paragraphs[0];p.text=f"Answer: {c['answer']}";p.font.size=Pt(13);p.font.italic=True;p.font.color.rgb=MB
-    put_img(sl,imgs.get("cover"),6.2,2.5,3.3,3.0,center=True)
-    pagenum(sl,8)
+        p = tf.add_paragraph(); p.text = f"  *  {d}"
+        p.font.size = Pt(15); p.font.color.rgb = DK; p.space_before = Pt(10)
 
-    # SLIDE 9: STEM CHALLENGE
-    sl=prs.slides.add_slide(blank);corners(sl,prs,"top")
-    tb=sl.shapes.add_textbox(Inches(0.5),Inches(1.2),Inches(9),Inches(0.8))
-    p=tb.text_frame.paragraphs[0];p.text=c["stem_title"]
-    p.font.size=Pt(28);p.font.bold=True;p.font.color.rgb=NAVY;p.alignment=PP_ALIGN.CENTER
-    ct=sl.shapes.add_textbox(Inches(0.6),Inches(2.1),Inches(5.2),Inches(4.5))
-    tf=ct.text_frame;tf.word_wrap=True
-    p=tf.paragraphs[0];p.text="YOUR ENGINEERING MISSION";p.font.size=Pt(18);p.font.bold=True;p.font.color.rgb=OG
-    p=tf.add_paragraph();p.text=c["stem_mission"];p.font.size=Pt(14);p.space_before=Pt(10)
-    p=tf.add_paragraph();p.text="\nThink Like an Engineer:";p.font.size=Pt(16);p.font.bold=True;p.font.color.rgb=BB;p.space_before=Pt(10)
+    # Answer box
+    ans = sl.shapes.add_textbox(Inches(0.6), Inches(5.5), Inches(5.5), Inches(1.2))
+    tf = ans.text_frame; tf.word_wrap = True
+    p = tf.paragraphs[0]; p.text = f"Answer: {c['answer']}"
+    p.font.size = Pt(13); p.font.italic = True; p.font.color.rgb = MB
+
+    # Cover image reuse (right side)
+    put_img(sl, imgs.get("cover"), 6.2, 2.5, 3.3, 3.0, center=True)
+    pagenum(sl, 8)
+
+    # ========== SLIDE 9: STEM CHALLENGE ==========
+    sl = prs.slides.add_slide(blank)
+    corners(sl, prs, "top")
+
+    tb = sl.shapes.add_textbox(Inches(0.5), Inches(1.2), Inches(9), Inches(0.8))
+    p = tb.text_frame.paragraphs[0]; p.text = f"STEM Challenge: {c['stem_title']}"
+    p.font.size = Pt(32); p.font.bold = True; p.font.color.rgb = NAVY; p.alignment = PP_ALIGN.CENTER
+
+    ct = sl.shapes.add_textbox(Inches(0.6), Inches(2.1), Inches(5.2), Inches(4.5))
+    tf = ct.text_frame; tf.word_wrap = True
+
+    p = tf.paragraphs[0]; p.text = "YOUR ENGINEERING MISSION"
+    p.font.size = Pt(18); p.font.bold = True; p.font.color.rgb = OG
+
+    p = tf.add_paragraph(); p.text = c["stem_mission"]
+    p.font.size = Pt(14); p.space_before = Pt(10)
+
+    p = tf.add_paragraph(); p.text = "\nThe Challenge:"
+    p.font.size = Pt(16); p.font.bold = True; p.font.color.rgb = BB; p.space_before = Pt(10)
+
+    p = tf.add_paragraph(); p.text = c["stem_scenario"]
+    p.font.size = Pt(14)
+
+    p = tf.add_paragraph(); p.text = "\nThink Like an Engineer:"
+    p.font.size = Pt(16); p.font.bold = True; p.font.color.rgb = BB; p.space_before = Pt(10)
     for q in c["stem_questions"]:
-        p=tf.add_paragraph();p.text=f"     *  {q}";p.font.size=Pt(13);p.space_before=Pt(4)
-    put_img(sl,imgs.get("stem"),5.8,2.5,3.8,3.5,center=True)
-    car=sl.shapes.add_textbox(Inches(0.5),Inches(6.3),Inches(9.0),Inches(0.95))
-    car.fill.solid();car.fill.fore_color.rgb=RGBColor(0x1A,0x23,0x7E)
-    tf=car.text_frame;tf.word_wrap=True;tf.margin_left=Pt(8);tf.margin_top=Pt(4)
-    p=tf.paragraphs[0];p.text="REAL CAREER CONNECTION:  "
-    p.font.size=Pt(11);p.font.bold=True;p.font.color.rgb=RGBColor(0xFF,0xA5,0x00)
-    run=p.add_run();run.text=c["career"];run.font.size=Pt(11);run.font.bold=False;run.font.color.rgb=WH
-    pagenum(sl,9)
+        p = tf.add_paragraph(); p.text = f"     *  {q}"
+        p.font.size = Pt(13); p.space_before = Pt(4)
 
-    out=os.path.join(out_dir,f"{lid}-Student-Presentation.pptx")
-    prs.save(out);print(f"[OK] PPT: {out}");return out
+    # STEM image (right side)
+    put_img(sl, imgs.get("stem"), 5.8, 2.5, 3.8, 3.5, center=True)
+
+    # Career Connection bar (navy background, orange label, white text)
+    car = sl.shapes.add_textbox(Inches(0.5), Inches(6.3), Inches(9.0), Inches(0.95))
+    car.fill.solid(); car.fill.fore_color.rgb = RGBColor(0x1A, 0x23, 0x7E)
+    tf = car.text_frame; tf.word_wrap = True
+    tf.margin_left = Pt(8); tf.margin_right = Pt(8)
+    tf.margin_top = Pt(4); tf.margin_bottom = Pt(4)
+    p = tf.paragraphs[0]; p.text = "REAL CAREER CONNECTION:  "
+    p.font.size = Pt(11); p.font.bold = True; p.font.color.rgb = RGBColor(0xFF, 0xA5, 0x00)
+    run = p.add_run(); run.text = c["career"]
+    run.font.size = Pt(11); run.font.bold = False; run.font.color.rgb = WH
+    run2 = p.add_run()
+    run2.text = " The skills you're using TODAY are the same ones they use on the job!"
+    run2.font.size = Pt(11); run2.font.bold = False; run2.font.color.rgb = WH
+    pagenum(sl, 9)
+
+    out = os.path.join(out_dir, f"{lid}-Student-Presentation.pptx")
+    prs.save(out); print(f"[OK] PPT: {out}"); return out
 
 def make_pack(c,out_dir):
     lid=c["id"];title=c["title"];sub=c["subtitle"];ngss=c["ngss"]
