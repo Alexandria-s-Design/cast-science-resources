@@ -18,6 +18,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lesson_data_G06 import ALL_LESSONS as G06_LESSONS
 from lesson_data_G07 import ALL_LESSONS as G07_LESSONS
 from lesson_data_G08 import ALL_LESSONS as G08_LESSONS
+from lesson_data_G09_L1 import ALL_LESSONS as G09L1_LESSONS
+from lesson_data_G09_L2 import ALL_LESSONS as G09L2_LESSONS
+from lesson_data_G09_L3 import ALL_LESSONS as G09L3_LESSONS
 
 
 def slugify(title):
@@ -31,7 +34,13 @@ def slugify(title):
 
 def get_grade_info(lesson_id):
     """Return grade label, full label, age range, and session time."""
-    if lesson_id.startswith("G06"):
+    if lesson_id.startswith("G09L1"):
+        return "9th", "9th Grade — Level 1: Foundations", "14-15 years old", "50-70 minutes"
+    elif lesson_id.startswith("G09L2"):
+        return "9th", "9th Grade — Level 2: Advanced", "14-15 years old", "50-70 minutes"
+    elif lesson_id.startswith("G09L3"):
+        return "9th", "9th Grade — Level 3: Biotech", "14-15 years old", "50-70 minutes"
+    elif lesson_id.startswith("G06"):
         return "6th", "6th Grade", "11-12 years old", "45-60 minutes"
     elif lesson_id.startswith("G07"):
         return "7th", "7th Grade", "12-13 years old", "45-60 minutes"
@@ -70,7 +79,7 @@ def generate_markdown(L):
     add('| Field | Value |')
     add('|-------|-------|')
     add(f'| **Lesson ID** | {L["id"]} |')
-    add(f'| **Grade** | {grade} |')
+    add(f'| **Grade** | {grade_label} |')
     add(f'| **Lesson Name** | {L["title"]} |')
     add('| **Status** | Template |')
     add('', '---', '')
@@ -90,7 +99,7 @@ def generate_markdown(L):
     add(f'[{L["images"]["cover"][1]}]', '')
 
     add('### Grade')
-    add(grade, '')
+    add(grade_label, '')
 
     add('### NGSS Standard')
     add(f'**{L["ngss"]}**: {L["ngss_desc"]}', '')
@@ -100,7 +109,8 @@ def generate_markdown(L):
         add(f'- {obj}')
     add('')
 
-    add('### Component List (Starting Model: 3-4 Components)', '')
+    comp_count = len(L["components"])
+    add(f'### Component List (Starting Model: {comp_count} Components)', '')
     add('| Component | Type | What It Represents |')
     add('|-----------|------|-------------------|')
     for name, desc, is_ext in L["components"]:
@@ -901,7 +911,7 @@ def main():
     os.makedirs(out_dir, exist_ok=True)
 
     # Determine which grades to generate
-    grades_to_gen = sys.argv[1:] if len(sys.argv) > 1 else ["G06", "G07", "G08"]
+    grades_to_gen = sys.argv[1:] if len(sys.argv) > 1 else ["G06", "G07", "G08", "G09L1", "G09L2", "G09L3"]
 
     all_lessons = []
     if "G06" in grades_to_gen:
@@ -910,9 +920,15 @@ def main():
         all_lessons.extend(G07_LESSONS)
     if "G08" in grades_to_gen:
         all_lessons.extend(G08_LESSONS)
+    if "G09L1" in grades_to_gen:
+        all_lessons.extend(G09L1_LESSONS)
+    if "G09L2" in grades_to_gen:
+        all_lessons.extend(G09L2_LESSONS)
+    if "G09L3" in grades_to_gen:
+        all_lessons.extend(G09L3_LESSONS)
 
     if not all_lessons:
-        print("No lessons to generate. Use: python generate_lesson_markdown.py [G06] [G07] [G08]")
+        print("No lessons to generate. Use: python generate_lesson_markdown.py [G06] [G07] [G08] [G09L1] [G09L2] [G09L3]")
         return
 
     print(f"Generating {len(all_lessons)} lesson markdown files...\n")
@@ -920,7 +936,12 @@ def main():
     for lesson in all_lessons:
         slug = slugify(lesson["title"])
         filename = f'{lesson["id"]}-{slug}.md'
-        grade_folder = f'grade-{lesson["id"][1:3]}'
+        lid = lesson["id"]
+        if lid.startswith("G09L"):
+            level_num = lid[4]  # "1", "2", or "3"
+            grade_folder = os.path.join('grade-09', f'level-{level_num}')
+        else:
+            grade_folder = f'grade-{lid[1:3]}'
         grade_dir = os.path.join(out_dir, grade_folder)
         os.makedirs(grade_dir, exist_ok=True)
         filepath = os.path.join(grade_dir, filename)

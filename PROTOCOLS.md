@@ -9,7 +9,7 @@
 **Project:** CAST/ModelIt! Science Curriculum Materials
 **Repository:** `cast-science-resources` (GitHub fork: `alexandriasworld1234-source/cast-science-resources`)
 **Working Directory:** `C:\Users\ginja\cast-science-resources`
-**Status:** Grade 5 complete (10 lessons), Grade 6 complete (10 lessons), Grade 7 complete (10 lessons), Grade 8 complete (10 lessons)
+**Status:** Grade 5 complete (10 lessons), Grade 6 complete (10 lessons), Grade 7 complete (10 lessons), Grade 8 complete (10 lessons), Grade 9 complete (30 lessons: 10 per level × 3 levels)
 
 ---
 
@@ -175,7 +175,12 @@ cast-science-resources/
 │   ├── create_all_lessons_G07.py       # G07 batch generator (all 10)
 │   ├── lesson_data_G07.py             # G07 lesson data
 │   ├── create_all_lessons_G08.py       # G08 batch generator (all 10)
-│   └── lesson_data_G08.py             # G08 lesson data
+│   ├── lesson_data_G08.py             # G08 lesson data
+│   ├── create_all_lessons_G09.py       # G09 unified batch generator (all 3 levels)
+│   ├── lesson_data_G09_L1.py          # G09 Level 1 lesson data (10 lessons)
+│   ├── lesson_data_G09_L2.py          # G09 Level 2 lesson data (10 lessons)
+│   ├── lesson_data_G09_L3.py          # G09 Level 3 lesson data (10 lessons)
+│   └── generate_lesson_markdown.py    # Markdown lesson file generator (all grades)
 ├── materials/
 │   ├── grade-05/
 │   │   ├── G05-L01/ through G05-L10/  # Each contains:
@@ -189,6 +194,19 @@ cast-science-resources/
 │   │   ├── G07-L01/ through G07-L10/  # Same structure
 │   ├── grade-08/
 │   │   ├── G08-L01/ through G08-L10/  # Same structure
+│   ├── grade-09/
+│   │   ├── level-1/
+│   │   │   ├── G09L1-L01/ through G09L1-L10/  # Level 1: Foundations (4-5 components)
+│   │   ├── level-2/
+│   │   │   ├── G09L2-L01/ through G09L2-L10/  # Level 2: Advanced (6-8 components)
+│   │   ├── level-3/
+│   │   │   ├── G09L3-L01/ through G09L3-L10/  # Level 3: Biotech (8-10 components)
+├── lessons/
+│   ├── grade-06/ through grade-08/    # Markdown lesson files
+│   ├── grade-09/
+│   │   ├── level-1/                   # Level 1 markdown lessons
+│   │   ├── level-2/                   # Level 2 markdown lessons
+│   │   ├── level-3/                   # Level 3 markdown lessons
 ├── reference/
 │   └── NGSS-Badge-Certification/
 │       ├── GAP-ANALYSIS.md
@@ -255,6 +273,93 @@ cast-science-resources/
 | G08-L08 | MS-LS3-1/2 | Genetics (Inheritance) |
 | G08-L09 | MS-PS4-1/2 | Music Is a Wave (Wave Properties) |
 | G08-L10 | MS-PS1-4/5 | Hand Warmers (Chemical Reactions) |
+
+### Grade 9 Level 1: Foundations of Computational Modeling
+| Lesson | NGSS | Topic | Components |
+|--------|------|-------|------------|
+| G09L1-L01 | HS-LS1-3 | Why Do Athletes Collapse in the Heat? | 4 |
+| G09L1-L02 | HS-LS1-2 | The Vaping Crisis | 5 |
+| G09L1-L03 | HS-ESS1-2, HS-ETS1-2 | Can We Actually Live on Mars? | 5 |
+| G09L1-L04 | HS-PS3-1, HS-PS3-3 | Why Your Phone Battery Dies So Fast | 5 |
+| G09L1-L05 | HS-ESS3-6, HS-PS1-7 | The Ocean Is Turning to Acid | 5 |
+| G09L1-L06 | HS-LS3-1 | Why Some People Can't Drink Milk | 5 |
+| G09L1-L07 | HS-LS1-2 | How Social Media Hacks Your Brain | 5 |
+| G09L1-L08 | HS-ESS3-4, HS-ETS1-3 | Fast Fashion Is Killing the Planet | 5 |
+| G09L1-L09 | HS-ESS2-1 | Why Earthquakes Hit Some Cities Harder | 5 |
+| G09L1-L10 | HS-ESS3-3, HS-LS2-6 | The Wildfire Feedback Loop | 5 |
+
+### Grade 9 Level 2: Advanced Computational Modeling
+| Lesson | NGSS | Topic | Components |
+|--------|------|-------|------------|
+| G09L2-L01 | HS-LS4-2, HS-LS4-3 | The Antibiotic Resistance Arms Race | 7 |
+| G09L2-L02 | HS-ESS3-5, HS-ESS2-4 | Climate Tipping Points | 7 |
+| G09L2-L03 | HS-LS2-6, HS-ETS1-4 | Why Pandemics Go Exponential | 7 |
+| G09L2-L04 | HS-LS1-2, HS-ETS1-4 | The Opioid Epidemic | 7 |
+| G09L2-L05 | HS-LS2-6, HS-ESS3-3 | Coral Reef Collapse | 7 |
+| G09L2-L06 | HS-ESS3-4, HS-ETS1-2 | The Water-Energy-Food Nexus | 6 |
+| G09L2-L07 | HS-ESS3-4, HS-PS3-4 | Urban Heat Islands | 6 |
+| G09L2-L08 | HS-LS3-1, HS-LS4-5 | CRISPR Gene Drives | 7 |
+| G09L2-L09 | HS-LS2-6, HS-ESS3-3 | Microplastics in the Food Chain | 7 |
+| G09L2-L10 | HS-PS3-3, HS-ETS1-3 | Renewable Energy Grid Optimization | 8 |
+
+### Grade 9 Level 3: Biotech Modeling & Simulation
+| Lesson | NGSS | Topic | Components |
+|--------|------|-------|------------|
+| G09L3-L01 | HS-LS1-1, HS-PS2-6 | Protein Folding and Drug Design | 8 |
+| G09L3-L02 | HS-LS1-4, HS-LS3-1 | Cancer Cell Signaling Networks | 9 |
+| G09L3-L03 | HS-LS1-1, HS-ETS1-2 | Synthetic Biology: Engineering Life | 8 |
+| G09L3-L04 | HS-LS1-2, HS-PS1-7 | Pharmacokinetics: Drug Delivery | 9 |
+| G09L3-L05 | HS-LS2-6, HS-ESS3-5 | Ecosystem Tipping Points | 10 |
+| G09L3-L06 | HS-LS1-2, HS-PS4-1 | Neural Network Modeling | 8 |
+| G09L3-L07 | HS-LS1-5, HS-ETS1-3 | Metabolic Engineering for Biofuels | 9 |
+| G09L3-L08 | HS-LS3-1, HS-LS1-4 | Gene Regulatory Networks | 10 |
+| G09L3-L09 | HS-LS1-4, HS-LS4-2 | Vaccine Design Optimization | 9 |
+| G09L3-L10 | HS-ESS3-5, HS-LS2-6 | Climate-Ecosystem Coupled Models | 10 |
+
+---
+
+## 8b. GRADE 9 LEVEL DEFINITIONS
+
+### Level 1: Foundations of Computational Modeling
+- **Target Students:** Students new to computational modeling or who need foundational skills
+- **Components:** 4-5 per model
+- **Model Complexity:** Linear cause-and-effect relationships, single feedback loops
+- **Relationships:** Primarily positive (+) and negative (-) linear relationships
+- **Key Skills:** Component identification, basic relationship mapping, simple simulation interpretation
+- **Materials Design:** Scaffolded activities, explicit LEVER framework walkthrough, concrete real-world phenomena
+- **Assessment Focus:** Can students identify components and trace single cause-effect chains?
+
+### Level 2: Advanced Computational Modeling
+- **Target Students:** Students who have mastered Level 1 skills and need more challenge; developing college readiness
+- **Components:** 6-8 per model
+- **Model Complexity:** Multiple interacting feedback loops, threshold effects, non-linear dynamics, coupled subsystems
+- **Relationships:** Non-linear relationships, conditional thresholds, delayed effects, amplifying feedback
+- **Key Skills:** Multi-variable analysis, identifying emergent behavior, intervention optimization, quantitative reasoning
+- **Materials Design:** More open-ended investigations, less scaffolding, emphasis on model critique and revision
+- **Assessment Focus:** Can students analyze multi-variable systems and predict emergent outcomes?
+
+### Level 3: Biotech Modeling & Simulation
+- **Target Students:** Advanced students pursuing computational biology / biotechnology pathways
+- **Components:** 8-10 per model
+- **Model Complexity:** Multi-scale systems (molecular → cellular → organism → ecosystem), optimization problems, synthetic design challenges
+- **Relationships:** Complex network interactions, cascading effects, scale-dependent dynamics, stochastic elements
+- **Three Core Biotech Skills:**
+  1. **Multi-scale Modeling** — Connecting molecular-level processes to organism/ecosystem-level outcomes
+  2. **Predictive Optimization** — Finding optimal parameter combinations for desired outcomes
+  3. **Systems Biology & Synthetic Design** — Engineering biological systems using computational predictions
+- **Materials Design:** Research-grade scenarios, minimal scaffolding, professional scientific vocabulary, design-build-test cycles
+- **Assessment Focus:** Can students design, optimize, and defend complex multi-scale computational models?
+
+### Level Comparison Summary
+| Aspect | Level 1 | Level 2 | Level 3 |
+|--------|---------|---------|---------|
+| Components | 4-5 | 6-8 | 8-10 |
+| Feedback Loops | Single | Multiple | Complex networks |
+| Relationships | Linear | Non-linear, threshold | Multi-scale, cascading |
+| Scaffolding | High | Moderate | Minimal |
+| Vocabulary | Foundational | Intermediate | Research-grade |
+| Assessment | Trace chains | Analyze systems | Design & optimize |
+| College Readiness | Introduction | Developing | Advanced |
 
 ---
 
@@ -339,9 +444,11 @@ A gap analysis is stored at `reference/NGSS-Badge-Certification/GAP-ANALYSIS.md`
    - `AGE_RANGE` (e.g., "11-12 years old")
    - `BASE_DIR` output path (e.g., `materials/grade-06`)
 3. **Run the generator:** `python scripts/create_all_lessons_G[XX].py`
+   - **For Grade 9:** `python scripts/create_all_lessons_G09.py 1 2 3` (or individual levels)
 4. **Retry any failed images** — check output for `[!] No image in response`
 5. **Rebuild PPTs** for lessons with retried images
-6. **Push to repo:** `git add materials/grade-[XX]/ scripts/*G[XX]* && git commit && git push`
+6. **Generate markdown:** `python scripts/generate_lesson_markdown.py G09L1 G09L2 G09L3`
+7. **Push to repo:** `git add materials/grade-[XX]/ scripts/*G[XX]* && git commit && git push`
 
 ---
 
@@ -352,11 +459,21 @@ A gap analysis is stored at `reference/NGSS-Badge-Certification/GAP-ANALYSIS.md`
 cd cast-science-resources/scripts
 python create_all_lessons_G08.py
 
+# Generate Grade 9 (all 3 levels — 30 lessons, 150 images)
+python create_all_lessons_G09.py 1 2 3
+
+# Generate Grade 9 Level 1 only
+python create_all_lessons_G09.py 1
+
 # Test lesson data loads
 python -c "from lesson_data_G08 import ALL_LESSONS; print(len(ALL_LESSONS))"
+python -c "from lesson_data_G09_L1 import ALL_LESSONS; print(len(ALL_LESSONS))"
+
+# Generate markdown lesson files
+python generate_lesson_markdown.py G09L1 G09L2 G09L3
 
 # Check image count
-ls materials/grade-08/G08-L*/images/ | wc -l
+ls materials/grade-09/level-*/G09L*/images/ | wc -l
 
 # Push to GitHub
 git add . && git commit -m "message" && git push origin master
