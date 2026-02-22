@@ -9,7 +9,7 @@
 **Project:** CAST/ModelIt! Science Curriculum Materials
 **Repository:** `cast-science-resources` (GitHub fork: `alexandriasworld1234-source/cast-science-resources`)
 **Working Directory:** `C:\Users\ginja\cast-science-resources`
-**Status:** Grade 5 complete (10 lessons), Grade 8 complete (10 lessons)
+**Status:** Grade 5 complete (10 lessons), Grade 6 complete (10 lessons), Grade 8 complete (10 lessons)
 
 ---
 
@@ -170,15 +170,19 @@ cast-science-resources/
 │   ├── create_lesson_materials.py      # G05-L01 exemplar generator
 │   ├── create_all_lessons_L02_L10.py   # G05 batch generator (L02-L10)
 │   ├── lesson_data_L02_L10.py          # G05 lesson data
+│   ├── create_all_lessons_G06.py       # G06 batch generator (all 10)
+│   ├── lesson_data_G06.py             # G06 lesson data
 │   ├── create_all_lessons_G08.py       # G08 batch generator (all 10)
 │   └── lesson_data_G08.py             # G08 lesson data
 ├── materials/
 │   ├── grade-05/
 │   │   ├── G05-L01/ through G05-L10/  # Each contains:
-│   │   │   ├── G05-L0X-Student-Presentation.pptx
-│   │   │   ├── G05-L0X-Student-Activity-Pack.docx
-│   │   │   ├── G05-L0X-Teachers-Guide.docx
+│   │   │   ├── G0X-L0X-Student-Presentation.pptx
+│   │   │   ├── G0X-L0X-Student-Activity-Pack.docx
+│   │   │   ├── G0X-L0X-Teachers-Guide.docx
 │   │   │   └── images/ (5 PNGs)
+│   ├── grade-06/
+│   │   ├── G06-L01/ through G06-L10/  # Same structure
 │   ├── grade-08/
 │   │   ├── G08-L01/ through G08-L10/  # Same structure
 ├── reference/
@@ -205,6 +209,20 @@ cast-science-resources/
 | G05-L08 | 5-LS2-1 | Predator vs. Prey (Population Balance) |
 | G05-L09 | 5-ESS1-2 | Starlight Is Old Light (Space) |
 | G05-L10 | 5-PS2-1 | The Gravity Challenge (Forces) |
+
+### Grade 6 Lessons
+| Lesson | NGSS | Topic |
+|--------|------|-------|
+| G06-L01 | MS-LS1-1/2 | Why Can't You See Your Own Cells? |
+| G06-L02 | MS-ESS2-2 | When the Earth Cracks Open (Plate Tectonics) |
+| G06-L03 | MS-PS3-3/4 | Why Your Hot Cocoa Betrays You (Thermal Energy) |
+| G06-L04 | MS-ESS2-1/3 | The Rock That Remembers Everything (Rock Cycle) |
+| G06-L05 | MS-PS1-1/2 | Slime Is Serious Science (Molecular Structure) |
+| G06-L06 | MS-LS1-3 | Your Body Is a City of Trillions (Body Systems) |
+| G06-L07 | MS-LS1-6 | The Invisible Plant Factory (Photosynthesis) |
+| G06-L08 | MS-ESS3-2 | Can You Outsmart a Disaster? (Natural Hazards) |
+| G06-L09 | MS-PS1-3/6 | Your Sneakers Are Made of Dinosaurs (Synthetic Materials) |
+| G06-L10 | MS-LS2-2/3/5 | The Secret War in Your Backyard (Ecosystems) |
 
 ### Grade 8 Lessons
 | Lesson | NGSS | Topic |
