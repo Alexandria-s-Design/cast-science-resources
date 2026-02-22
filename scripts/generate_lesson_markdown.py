@@ -16,6 +16,7 @@ import os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from lesson_data_G06 import ALL_LESSONS as G06_LESSONS
+from lesson_data_G07 import ALL_LESSONS as G07_LESSONS
 from lesson_data_G08 import ALL_LESSONS as G08_LESSONS
 
 
@@ -32,6 +33,8 @@ def get_grade_info(lesson_id):
     """Return grade label, full label, age range, and session time."""
     if lesson_id.startswith("G06"):
         return "6th", "6th Grade", "11-12 years old", "45-60 minutes"
+    elif lesson_id.startswith("G07"):
+        return "7th", "7th Grade", "12-13 years old", "45-60 minutes"
     elif lesson_id.startswith("G08"):
         return "8th", "8th Grade", "13-14 years old", "50-70 minutes"
     else:
@@ -898,16 +901,18 @@ def main():
     os.makedirs(out_dir, exist_ok=True)
 
     # Determine which grades to generate
-    grades_to_gen = sys.argv[1:] if len(sys.argv) > 1 else ["G06", "G08"]
+    grades_to_gen = sys.argv[1:] if len(sys.argv) > 1 else ["G06", "G07", "G08"]
 
     all_lessons = []
     if "G06" in grades_to_gen:
         all_lessons.extend(G06_LESSONS)
+    if "G07" in grades_to_gen:
+        all_lessons.extend(G07_LESSONS)
     if "G08" in grades_to_gen:
         all_lessons.extend(G08_LESSONS)
 
     if not all_lessons:
-        print("No lessons to generate. Use: python generate_lesson_markdown.py [G06] [G08]")
+        print("No lessons to generate. Use: python generate_lesson_markdown.py [G06] [G07] [G08]")
         return
 
     print(f"Generating {len(all_lessons)} lesson markdown files...\n")
@@ -915,7 +920,10 @@ def main():
     for lesson in all_lessons:
         slug = slugify(lesson["title"])
         filename = f'{lesson["id"]}-{slug}.md'
-        filepath = os.path.join(out_dir, filename)
+        grade_folder = f'grade-{lesson["id"][1:3]}'
+        grade_dir = os.path.join(out_dir, grade_folder)
+        os.makedirs(grade_dir, exist_ok=True)
+        filepath = os.path.join(grade_dir, filename)
 
         md_content = generate_markdown(lesson)
         line_count = md_content.count('\n') + 1
@@ -923,7 +931,7 @@ def main():
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(md_content)
 
-        print(f'  [OK] {filename} ({line_count} lines)')
+        print(f'  [OK] {grade_folder}/{filename} ({line_count} lines)')
 
     print(f'\n{"=" * 50}')
     print(f'Generated {len(all_lessons)} lesson markdown files in lessons/')

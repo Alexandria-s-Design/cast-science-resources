@@ -9,7 +9,7 @@
 **Project:** CAST/ModelIt! Science Curriculum Materials
 **Repository:** `cast-science-resources` (GitHub fork: `alexandriasworld1234-source/cast-science-resources`)
 **Working Directory:** `C:\Users\ginja\cast-science-resources`
-**Status:** Grade 5 complete (10 lessons), Grade 6 complete (10 lessons), Grade 8 complete (10 lessons)
+**Status:** Grade 5 complete (10 lessons), Grade 6 complete (10 lessons), Grade 7 complete (10 lessons), Grade 8 complete (10 lessons)
 
 ---
 
@@ -172,6 +172,8 @@ cast-science-resources/
 │   ├── lesson_data_L02_L10.py          # G05 lesson data
 │   ├── create_all_lessons_G06.py       # G06 batch generator (all 10)
 │   ├── lesson_data_G06.py             # G06 lesson data
+│   ├── create_all_lessons_G07.py       # G07 batch generator (all 10)
+│   ├── lesson_data_G07.py             # G07 lesson data
 │   ├── create_all_lessons_G08.py       # G08 batch generator (all 10)
 │   └── lesson_data_G08.py             # G08 lesson data
 ├── materials/
@@ -183,6 +185,8 @@ cast-science-resources/
 │   │   │   └── images/ (5 PNGs)
 │   ├── grade-06/
 │   │   ├── G06-L01/ through G06-L10/  # Same structure
+│   ├── grade-07/
+│   │   ├── G07-L01/ through G07-L10/  # Same structure
 │   ├── grade-08/
 │   │   ├── G08-L01/ through G08-L10/  # Same structure
 ├── reference/
@@ -223,6 +227,20 @@ cast-science-resources/
 | G06-L08 | MS-ESS3-2 | Can You Outsmart a Disaster? (Natural Hazards) |
 | G06-L09 | MS-PS1-3/6 | Your Sneakers Are Made of Dinosaurs (Synthetic Materials) |
 | G06-L10 | MS-LS2-2/3/5 | The Secret War in Your Backyard (Ecosystems) |
+
+### Grade 7 Lessons
+| Lesson | NGSS | Topic |
+|--------|------|-------|
+| G07-L01 | MS-ESS1-1, MS-ESS1-2 | Blood Moon (Earth-Sun-Moon System) |
+| G07-L02 | MS-LS4-1, MS-LS4-2 | Your Inner Fish (Fossil Evidence) |
+| G07-L03 | MS-ESS3-5 | Earth Has a Fever (Climate Change) |
+| G07-L04 | MS-PS2-3, MS-PS2-5 | Invisible Force (Electromagnetism) |
+| G07-L05 | MS-ESS2-4 | Recycled Dinosaur Water (Water Cycle) |
+| G07-L06 | MS-LS1-8 | Hot Cheetos Make You Cry (Sensory Processing) |
+| G07-L07 | MS-PS3-5 | Can't Slide Forever (Energy Transfer & Friction) |
+| G07-L08 | MS-ESS1-4 | Crime Scene in Every Rock (Geologic History) |
+| G07-L09 | MS-LS4-5 | Built a Better Dog (Artificial Selection) |
+| G07-L10 | MS-PS4-3 | Phone Speaks in 1s and 0s (Digital Signals) |
 
 ### Grade 8 Lessons
 | Lesson | NGSS | Topic |
